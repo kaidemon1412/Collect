@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8"/>
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="http://www.bootcss.com/p/buttons/css/buttons.css" rel="stylesheet" />
+    <script src="http://common.cnblogs.com/script/jquery.js"></script>
+    <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" />
+    <title></title>
+    <style type="text/css">
+        .header {
+            width: 100%;
+            padding: 0px;
+            margin: 0px;
+            background-color: #699C03;
+        }
+
+        .header-nav {
+            min-width: 1170px;
+            padding: 15px;
+            height: 50px;
+        }
+
+        .header-nav-left {
+            float: left;
+            padding-left: 150px;
+            width: 40%;
+        }
+
+            .header-nav-left h3 {
+                font-size: 18px;
+                line-height: 25px;
+                margin: 0px;
+            }
+
+        .header-nav-right {
+            float: left;
+            width: 59.9999%;
+            position: relative;
+        }
+
+            .header-nav-right ul {
+                padding: 0px;
+                margin: 0px;
+                list-style: none;
+                position: absolute;
+                right: 25px;
+            }
+
+                .header-nav-right ul li {
+                    float: left;
+                    margin-left: 5px;
+                    color: #fff;
+                }
+
+                    .header-nav-right ul li a {
+                        color: #fff;
+                        text-decoration: none;
+                    }
+
+        .content {
+            min-width: 1170px;
+            padding: 0px;
+            margin: 0px auto;
+        }
+
+        .content-side {
+            width: 25%;
+            float: left;
+            margin: 20px 0px;
+            padding: 20px;
+        }
+
+            .content-side ul {
+                padding: 0px 0px 0px 50px;
+                margin: 0px;
+                list-style: none;
+            }
+
+                .content-side ul li {
+                    margin-bottom: 10px;
+                }
+
+                    .content-side ul li a {
+                        display: inline-block;
+                        padding: 5px 10px;
+                        border: 1px solid #ddd;
+                        border-radius: 4px;
+                        box-shadow: 0px 0px 5px 2px #eee;
+                        text-decoration: none;
+                    }
+
+        .content-right {
+            width: 59.999%;
+            margin: 20px 0px;
+            padding: 20px;
+            float: left;
+        }
+
+        .content-right-about {
+            height: 250px;
+            width: 100%;
+        }
+
+        .content-right-form {
+            margin: 0px auto;
+            padding: 0px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .write {
+            margin-top: 10px;
+            height: 250px;
+            width: 99.99%;
+            border: 1px solid #BBBBBB;
+            border-radius: 4px;
+            box-shadow: 0px 0px 5px 2px #DDDDDD;
+        }
+
+        .btn {
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .footer {
+            border-top: 1px solid #bbb;
+            min-width: 1200px;
+            margin-top: 20px;
+        }
+
+        .submits button {
+            background-color: #4CB0F9;
+            border-radius: 4px;
+            color: #fff;
+        }
+
+            .submits button:hover {
+                background-color: #4F9FCF;
+            }
+            .on{
+                display:none;
+            }
+            .uptext{
+                width:100%;
+                 display:none;
+                 z-index:100;
+            }
+            .uptext-list{
+                width:900px;
+                height:auto;
+                margin:0px auto;
+                position:fixed;
+                left:0px;
+                right:0px;
+                top:50px;
+                bottom:0px;
+                z-index:101;
+                background-color:#fff;
+               
+            }
+            #pages{
+                padding:0px;
+                margin:0px auto;
+                list-style:none;
+            }
+            #pages li{
+                float:left;
+            }
+            .tablebody{
+                overflow:hidden;
+            }
+    </style>
+</head>
+<body style="position:relative">
+    <div class="header">
+        <div class="header-nav">
+            <div class="header-nav-left">
+                <h3>网站后台管理</h3>
+            </div>
+            <div class="header-nav-right">
+                <ul>
+                    <li><span>欢迎到来到网站后台</span></li>
+                    <li><a href="" onclick="window.location.reload()">主菜单</a></li>
+                    <li><a href="">网站首页</a></li>
+                    <li><a href="">后台主页</a></li>
+                    <li><a href="">内容发布</a></li>
+                    <li><a href="">内容管理</a></li>
+                    <li><a href="">退出</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content-side">
+            <ul>
+                
+                <li><a href="">删除内容</a></li>
+                <li><a href="">更改内容</a></li>
+                <li><a href="">查询内容</a></li>
+                <li><a href="">搜索内容</a></li>
+            </ul>
+        </div>
+        <div class="content-right">
+            <div class="content-right-form">
+                <form id="myform" action="" method="post">
+                    <dl>
+                        <dt class="lead">标题</dt>
+                        <dd><input id="frist" type="text" name="title" class="form-control" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>内容</dt>
+                        <dd><textarea style="width:100%;height:250px"></textarea></dd>
+                    </dl>
+                    <div class=" submits row" style="margin-top: 20px;">
+                        <div class="col-lg-6 col-md-6">
+                            <button id="addtext" type="submit" class="pull-left form-control ">增加</button>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <button type="reset" class="pull-right form-control ">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="content-right on">
+            <table cellpadding="0" class="table table-bordered">
+                <tr class="toptr">
+                    <th>标题</th>
+                    <th>内容</th>
+                    <th>删除</th>
+                </tr>
+                <tbody class="tablebody"></tbody>
+            </table>
+            <ul id="pages">
+               
+            </ul>
+        </div>
+        <div class="content-right on">
+            <table cellpadding="0" class="table table-bordered">
+                <tr class="toptr">
+                    <th>标题</th>
+                    <th>内容</th>
+                    <th>修改</th>
+                </tr>
+                <tbody class="tablebody"></tbody>
+            </table>
+            <ul id="pages">
+              
+            </ul>
+        </div>
+        <div class="content-right on">
+            <table cellpadding="0" class="table table-bordered">
+                <tr class="toptr">
+                    <th>标题</th>
+                    <th>内容</th>
+                </tr>
+                <tbody class="tablebody"></tbody>
+            </table>
+            <ul id="pages"></ul>
+        </div>
+        <div class="uptext">
+            <div class="uptext-list">
+                <form id="myform" action="" method="post">
+                    <dl>
+                        <dt class="lead">标题</dt>
+                        <dd><input type="text" name="title" class="form-control" /></dd>
+                    </dl>
+                    <dl>
+                        <dt>内容</dt>
+                        <dd><textarea style="width:100%;height:250px"></textarea></dd>
+                    </dl>
+                    <div class=" submits row" style="margin-top: 20px;">
+                        <div class="col-lg-6 col-md-6">
+                            <button id="uptext-button" type="submit" class=" pull-left form-control ">增加</button>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <button type="button" id="black" class="pull-right form-control ">取消</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="content-right on">
+            <div style="padding:20px;" ><label for="search" id="searchs" style="margin-right:5px;border:1px solid #ccc;border-radius:4px;padding:4px;cursor:pointer;color:#fff;background-color:#4CB0F9">搜索</label><input id="key" style="border:1px solid #bbb;border-radius:4px;line-height:14px;font-size:14px;padding:6px 12px"  type="text" placeholder="请输入关键字" /></div>
+            <table cellpadding="0" class="table table-bordered">
+                <tr class="toptr">
+                    <th>标题</th>
+                    <th>内容</th>
+                </tr>
+                <tbody class="tablebody"></tbody>
+            </table>
+            <ul id="pages">
+
+            </ul>
+        </div>
+        </div>
+    <script>
+       $(function(){ //提交增加数据
+        $("#addtext").on('click', function () {
+            var $titleval = $("input[id=frist]").val(), $bodyval = $("textarea").val()
+            if ($titleval == "" || $bodyval == "") {
+                alert("标题与内容不能为空");
+            } else {
+                var datas = {
+                    title: $titleval,
+                    body: $bodyval
+                };
+                $.ajax({
+                    type: 'post',
+                    timeout: 6000,
+                    data: datas,
+                    url: '/indexs/addtext',
+                    async: 'false',
+                    success: function (result) {
+                        $("input[type=text]").val('');
+                        $bodyval = $("textarea").val('');
+                        if (result == 'true') {
+                            alert('增加成功');
+                        } else if (result == 'repeat') {
+                            alert('标题或内容已存在');
+                        } else {
+                            alert('出错');
+                        }
+                    },
+                    error: function () {
+                        alert('false');
+                    }
+                })
+            } return false;
+        })
+        //end
+        var table = function () {
+            var tablebody = '';
+            $.ajax({
+                url: '/Indexs/Listtext',
+                dataType: 'json',
+                type: 'post',
+                success: function (result) {
+                    $(".tablebody").empty();
+                    $.each(result, function (i, data) {
+                        if (i <= result.length) {
+                            tablebody += "<tr><td>" + data.Name + "</td><td>" + data.Link + "</td><td style='text-align:cneter'><span><a href='#' id='remove' textid='" + data.ID + "'>删除</a></td></tr>"
+                        }
+                    })
+                    $(".tablebody").html(tablebody);
+                }
+            })
+        }
+        var table1 = function(){
+            var tablebody = '';
+            $.ajax({
+                url: '/Indexs/Listtext',
+                dataType: 'json',
+                type: 'post',
+                success: function (result) {
+                    $(".tablebody").empty();
+                    $.each(result, function (i, data) {
+                        if (i <= result.length) {
+                            tablebody += "<tr><td id='title'>" + data.Name + "</td><td id='bodyval'>" + data.Link + "</td><td  style='text-align:cneter'><span><a href='#' id='uptext' textid='" + data.ID + "'>修改</a></td></tr>"
+                        }
+                    })
+                    $(".tablebody").html(tablebody);
+                }
+            })
+        }
+        var page = 0,//当前页初始化
+          onepage = 2,//每页数
+          all = 0,
+          pagenum = 0;//页数初始化
+        var pg = 0; //页码索引
+        var table2 = function () {
+            var tablebody = '';
+            var   spanhtml='';
+            $.ajax({
+                url: '/Indexs/Listtext',
+                dataType: 'json',
+                type: 'post',
+                success: function (result) {
+                    $(".tablebody").empty();
+                    $(".content .content-right").eq(3).children('ul').empty();
+                    all = result.length;
+                    pagenum = Math.ceil(all / 2);
+                    var start = page * onepage, 
+                       end = (page + 1) * onepage;
+                    $.each(result, function (i, data){
+                        if (i>=start&&i<end) {
+                            tablebody += "<tr><td id='title'>" + data.Name + "</td><td id='bodyval'>" + data.Link + "</td></tr>"
+                        }
+                    })
+                    for (pg = 0; pg <= 2; pg++) {
+                        if (page == pg) {
+                            spanhtml += "<span style='float:left;cursor:pointer;padding:0px 5px ;background-color:#21B9A4;color:#fff'>" + (page + 1) + "</span>";//当前页颜色突出
+                        }else
+                        spanhtml += "<span style='float:left;cursor:pointer;padding:0px 5px'>" + (pg+1) + "</span>";
+                    }
+                    $(".tablebody").html(tablebody);
+                    $(".content .content-right").eq(3).children('ul').append("<li style='cursor:pointer'>上一页</li><li  style='cursor:pointer'>下一页</li>").children('li:eq(0)').after(spanhtml);
+                }
+            })
+        }
+        var table3 = function () {
+            var tablebody = '';
+            $.ajax({
+                url: '/Indexs/Listtext',
+                dataType: 'json',
+                type: 'post',
+                success: function (result) {
+                    $(".tablebody").empty();
+                    $.each(result, function (i, data) {
+                        if (i <= result.length) {
+                            tablebody += "<tr><td id='title'>" + data.Name + "</td><td id='bodyval'>" + data.Link + "</td></tr>"
+                        }
+                    })
+                    $(".tablebody").html(tablebody);
+                }
+            })
+        }
+       
+        $(".content-side ul li").click(function () {
+            var index = $(this).index();
+            $(".content .content-right").eq(index + 1).removeClass("on").siblings('div.content-right').addClass("on");
+            if (index == 1) {
+               table1();
+            } else if(index==2){
+                table2();
+            } else if (index == 3) {
+                table3();
+            }else{
+                table();    
+            }
+            return false;
+        })
+           //上下翻页
+        $("ul#pages li").live('click', function () {
+            var index = $(this).index();
+            if (index == 0 && page > 0) {
+                page--;
+                
+            } else if (index == (pg+1) && page < pagenum-1) {
+                page++;
+            }
+            else return false;
+            table2();
+        })
+           //跳转页
+        $("ul#pages span").live('click', function () {
+               page = $(this).index()-1;
+               table2();
+           })
+        //删除数据
+        $("#remove").live('click', function () {
+            var TextID = $(this).attr('textid');
+            $.ajax({
+                type: 'post',
+                data: {
+                    TextID: TextID
+                },
+                url: '/Indexs/Removetext',
+                success: function () {
+                    table();
+                }
+            })
+            return false;
+        })//end
+        //修改数据
+        $("#uptext").live('click', function () {
+            var TextID = $(this).attr('textid'),
+                title = $(this).parents('td').siblings('#title').html();
+            body = $(this).parents('td').siblings('#bodyval').html();
+            
+                $(".uptext input[type=text]").val(title);
+                $(".uptext textarea").val(body);
+                $(".uptext").show();
+                $("#black").click(function () {
+                    $('.uptext').hide();
+                })
+                $('#uptext-button').on('click', function () {
+                    var title = $(".uptext input[type=text]").val(),
+                        bodyval = $(".uptext textarea").val();
+                    var uptext = {
+                        title: title,
+                        bodyval:bodyval,
+                        TextID:TextID,
+                    }
+                    $.ajax({
+                        type: 'post',
+                        url: '/Indexs/Uptext',
+                        data: uptext,
+                        success: function () {
+                            $('.uptext').hide();
+                            table1();
+                        },
+                        error: function () {
+                            alert('错误');
+                        }
+                      
+                    })
+                    return false;
+                })
+        })//end
+           //搜索
+        $("#searchs").live('click', function () {
+            var $keys = $("input[id=key]").val(),
+            resulthtml = '',
+            i = 0;
+            var keys = {
+                keys: $keys
+            };
+            $.ajax({
+                url: '/Indexs/Listtext',
+                data: keys,
+                dataType: 'json',
+                type: 'post',
+                success: function (result) {
+                    if (result.length <= 0) {
+                        alert('没有找到相关内容');
+                    }
+                    else {
+                        $(".tablebody").empty();
+                        $.each(result, function (i,data) {
+                                resulthtml += "<tr><td id='title'>" + data.Name + "</td><td id='bodyval'>" + data.Link + "</td></tr>"
+                        })
+                        $(".tablebody").html(resulthtml);
+                    }
+                }
+            })
+        })
+      })    
+    </script>
+    <div class="footer" style="position:fixed;bottom:20px;left:0px;right:0px">
+        <p class="text-center">Copyright © 2016.4.6 </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+.this_is_fristbox {
+  color: red;
+  width: 200px;
+  background-color: #ccc;
+  height: 500px;
+}
+
+.this_is_fristbox .inchiaodbox {
+  font-size: 10px;
+  background-color: yellow;
+  color: #ccc;
+  height: 300px;
+  width: 100px;
+}
+
+.this_is_fristbox:after, .this_is_fristbox:before {
+  content: "";
+  display: table;
+}
+
+.this_is_fristbox:before {
+  height: 0;
+  clear: both;
+}
+
+body .this_is_fristbox {
+  background-color: yellow;
+}

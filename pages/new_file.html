@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>图片轮播代码</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0">
+</head>
+<style type="text/css">
+    body{max-width: 640px;margin: 0 auto;}
+    #lunbo ul li{
+    	width:100%;
+    	list-style: none;
+    	width:640px; 
+    	height:250px;
+    	/*background-color: #f00;*/
+    	text-align: center;
+    }
+    #lunbo ul li:not(:first-child){
+    	display: none;
+    }
+</style>
+
+<body>
+<div id="lunbo">
+    <ul>
+        <li style="background: red;">1</li>
+        <li style="background: blue;">2</li>
+        <li style="background: yellow;">3</li>
+        <li style="background: green;">4</li>
+    </ul>
+    
+</div>
+<script type="text/javascript">
+    //因为使用了document，所以js需要放在需要执行的代码下面生效才能生效
+    var li=document.getElementById('lunbo').getElementsByTagName("li");
+    var num=0;
+    var len=li.length;
+
+    setInterval(function(){
+        li[num].style.display="none";
+        console.log(li[num]);
+        console.log(num);
+        num=++num==len?0:num;
+        console.log(num);
+        li[num].style.display="inline-block";
+
+    },3000);//切换时间
+</script>
+</body>
+</html>

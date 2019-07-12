@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			li{
+				list-style: none;
+			}
+			
+			html,body{
+				width: 100%;
+				height: 100%;
+			}
+			
+			.nav{
+				width: 950px;
+				height: 500px;
+				background-color:#2AC3CB;
+				margin: 100px auto;
+			}
+			
+			.nav ul{
+				margin-top: 100px;
+				width: 77.4%;
+				margin: 0 auto;
+				
+			}
+			
+			.nav ul:after{
+				content: "\0020";
+				display: block;
+				height: 0;
+				clear: both;
+			}
+			.nav ul li{
+				float: left;
+				width: 130px;
+				height: 75px;
+				border: 0.5px solid #2AC3CB;
+				background-color:rgba(0,0,0,0.1);
+				margin: 50px 0px 0px 20px;
+			}
+			.nav ul li.six{
+				margin-left: 75px;
+			}
+			
+			.nav ul li div:nth-of-type(1){
+				float: left;
+				transform: rotate(60deg);
+				transform-origin: center;
+				width: 100%;
+				height: 100%;
+				border: 0.5px solid #2AC3CB;
+				background-color:rgba(0,0,0,0.1);
+			}
+			.nav ul li div:nth-of-type(2){
+				transform: rotate(-60deg);
+				transform-origin: center;
+				width: 100%;
+				height: 100%;
+				border: 0.5px solid #2AC3CB;
+				background-color:rgba(0,0,0,0.1);
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+			<ul>
+				<li style="margin-left: 0;">
+					<div></div>
+					<div></div>
+				</li>
+				<li>
+					<div></div>
+					<div></div>
+				</li>
+				<li>
+					<div></div>
+					<div></div>
+				</li>
+				<li>
+					<div></div>
+					<div></div>
+				</li>
+				<li>
+					<div></div>
+					<div></div>
+				</li>
+				<li class="six">
+					<div></div>
+					<div></div>
+				</li>
+				<li>
+					<div></div>
+					<div></div>
+				</li>
+				<li>
+					<div></div>
+					<div></div>
+				</li>
+				<li>
+					<div></div>
+					<div></div>
+				</li>
+				<li style="clear: both;margin-left: 0;">
+					<div></div>
+					<div></div>
+				</li>
+				<li>
+					<div></div>
+					<div></div>
+				</li>
+				<li>
+					<div></div>
+					<div></div>
+				</li>
+				<li>
+					<div></div>
+					<div></div>
+				</li>
+				<li>
+					<div></div>
+					<div></div>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

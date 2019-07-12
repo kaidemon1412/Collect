@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画范例</title>
+		<style type="text/css">
+			#SomeElementYouWantToAnimate{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="SomeElementYouWantToAnimate">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		var start = null;
+		var element = document.getElementById('SomeElementYouWantToAnimate');
+		element.style.position = 'absolute';
+		
+		function step(timestamp) {
+		  if (!start) start = timestamp;
+		  var progress = timestamp - start;
+		  element.style.left = Math.min(progress / 10, 10000) + 'px';
+		  if (progress < 10000) {
+		    window.requestAnimationFrame(step);
+		  }
+		}
+		
+		window.requestAnimationFrame(step);
+	</script>
+</html>

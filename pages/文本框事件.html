@@ -1,0 +1,74 @@
+<!doctype html>  
+<html lang="en">  
+<head>  
+  <meta charset="utf-8">  
+  <title>TEXTBOX EVENT</title>  
+  <script src="js/jquery-3.2.1.min.js"></script>  
+    
+<script>  
+$(document).ready(function(){  
+    //按键弹起时触发事件  
+    $("#mytext").keyup(function(){    
+        var txtChange = $("#mytext").val();           
+        $("#p1").html("<p>"+txtChange+"</p>");    
+    });    
+      
+    //按键按下时触发事件（先响应事件，再显示输入结果（获得的是上一次结果），可能被输入法拦截）  
+    $("#mytext2").keypress(function(){    
+        var txtChange = $("#mytext2").val();          
+        $("#p2").html("<p>"+txtChange+"</p>");    
+    });    
+      
+    //属性改变时触发事件（不管是获得焦点还是value改变等,目前只在IE下有效）  
+    $("#mytext3").bind("propertychange",function(){    
+        var txtChange = $("#mytext3").val();          
+        $("#p3").html("<p>"+txtChange+"</p>");    
+    });   
+      
+    //焦点离开时触发事件 内容改变并失去焦点
+    $("#mytext4").change(function(){    
+        var txtChange = $("#mytext4").val();          
+        $("#p4").html("<p>"+txtChange+"</p>");    
+    });    
+      
+    //获得焦点时触发事件  获得焦点
+    $("#mytext5").focus(function(){    
+        var txtChange = $("#mytext5").val();          
+        $("#p5").html("<p>"+txtChange+"</p>");    
+    }); 
+    
+    //失去焦点事件
+     $("#mytext6").blur(function(){    
+        var txtChange = $("#mytext6").val();          
+        $("#p6").html("<p>"+txtChange+"</p>");    
+    }); 
+      
+})  
+</script>  
+    
+</head>  
+<body>  
+    <input type="text" id="mytext" name="test" class="txt" value="key up "/>    
+    <p id="p1"></p>    
+      
+    <input type="text" id="mytext2" name="test" class="txt" value="key press "/>    
+    <p id="p2"></p>    
+      
+    <input type="text" id="mytext3" name="test" class="txt" value="just useful in IE"/>    
+    <p id="p3"></p>    
+      
+    <input type="text" id="mytext4" name="test" class="txt" value="change"/>    
+    <p id="p4"></p>    
+  
+    <input type="text" id="mytext5" name="test" class="txt" value="focus"/>    
+    <p id="p5"></p> 
+    
+    <input type="text" id="mytext6" name="test" class="txt" value="blur"/>    
+    <p id="p6"></p> 
+</body>  
+  
+  <script>    
+    
+  
+</script>   
+</html>  

@@ -1,0 +1,264 @@
+<!--<script type="text/javascript">
+			onload = function(){
+		    	
+				var size = document.getElementsByClassName("content")[0].getElementsByTagName("p");
+				for(let i = 0 ; i < size.length ; i++){
+					size[i].onclick = function(){
+						var text_size = getStyle(this,"font-size");
+						console.log(text_size);
+					}
+				}
+				
+			}
+			
+			 function getStyle(obj,attr) {
+	            if(typeof getComputedStyle)
+	                return getComputedStyle(obj,null)[attr];
+	            else return obj.currentStyle[attr];
+	        }
+		</script>-->
+		
+
+
+ $(".tablebody div").eq(3).on("click",function(){
+           		if($(this).html() !== ""){
+           			
+           		}
+           });
+
+
+
+
+清除input样式{
+
+	border: none;
+    outline: none;
+    background-color: rgba(255,255,255,0);
+}
+
+
+:after {
+				content: "\0020";
+				display: block;
+				height: 0;
+				clear: both;
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--个人中心-->
+<!D!DOCTYPE >
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>这是移动端swiper的基本样式页面</title>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/swiper.min.css"/>
+	<script type="text/javascript" src="js/swiper.min.js"></script>
+	<script type="text/javascript">
+		//designWidth:设计稿的实际宽度值，需要根据实际设置
+		//maxWidth:制作稿的最大宽度值，需要根据实际设置
+		//这段js的最后面有两个参数记得要设置，一个为设计稿实际宽度，一个为制作稿最大宽度，例如设计稿为750，最大宽度为750，则为(750,750);
+		(function(designWidth, maxWidth) {
+			var doc = document,
+			win = window,
+			docEl = doc.documentElement,
+			remStyle = document.createElement("style"),
+			tid;
+		
+			function refreshRem() {
+				var width = docEl.getBoundingClientRect().width;
+				maxWidth = maxWidth || 540;
+				width>maxWidth && (width=maxWidth);
+				//这里的20倍是实际设计稿的倍数，即设计稿的20px==1rem；如果是100则是100px == 1rem
+				var rem = width * 20 / designWidth;   
+				remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+			}
+		
+			if (docEl.firstElementChild) {
+				docEl.firstElementChild.appendChild(remStyle);
+			} else {
+				var wrap = doc.createElement("div");
+				wrap.appendChild(remStyle);
+				doc.write(wrap.innerHTML);
+				wrap = null;
+			}
+			//要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+			refreshRem();
+		
+			win.addEventListener("resize", function() {
+				clearTimeout(tid); //防止执行两次
+				tid = setTimeout(refreshRem, 300);
+			}, false);
+		
+			win.addEventListener("pageshow", function(e) {
+				if (e.persisted) { // 浏览器后退的时候重新计算
+					clearTimeout(tid);
+					tid = setTimeout(refreshRem, 300);
+				}
+			}, false);
+		
+			if (doc.readyState === "complete") {
+				doc.body.style.fontSize = "16px";
+			} else {
+				doc.addEventListener("DOMContentLoaded", function(e) {
+					doc.body.style.fontSize = "16px";
+				}, false);
+			}
+		})(750, 750);
+	</script>
+		
+			
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+		.course_table{
+			height: 4.16rem;
+			text-align: center;
+			border-bottom: 0.04rem solid #dee1e2;
+		}
+		
+		.course_table ul{
+			height: 100%;
+		}
+		
+		li{
+			list-style: none;
+		}
+		
+		.course_table ul:after{
+			content: "\0020";
+			display: block;
+			height: 0;
+			clear: both;
+		}
+		
+		.course_table ul li{
+			/*width: 10rem;*/
+			width: 25%;
+			line-height: 4rem;
+			height: 4rem;
+			float: left;
+			color: #999999;
+		}
+		.course_table ul li.liston{
+            border-bottom: 0.16rem solid #51bae9;
+            color: #4396e8;
+        }
+        .swiper-slide{
+        	background-color: #ecf0f1;
+        	padding-bottom: 10rem;
+        }
+       	
+       
+	</style>
+</head>
+<body>	
+		<div class="course_table">
+			
+			<ul class="swiplist">
+				<li class="liston">个人资料</li>
+				<li>修改密码</li>
+				<li>优惠券</li>
+				<li>我的订单</li>
+			</ul>
+			
+		</div>
+		<div class="swiper-container">
+          <div class="swiper-wrapper">
+          	<!--个人资料-->
+            <div class="swiper-slide course_one" >
+            	
+            </div>
+            <!--修改密码-->
+            <div class="swiper-slide" >
+            	
+            </div>
+            <!--优惠券-->
+            <div class="swiper-slide" >
+            
+            </div>
+            <!--我的订单-->
+            <div class="swiper-slide">
+            	
+            </div>
+          </div>
+       </div>
+       
+</body>       
+	<script> 
+        $(function(){
+        	
+            var mySwiper = new Swiper('.swiper-container', {
+                onTransitionEnd: function(swiper){
+                    $('.swiplist li').eq(mySwiper.activeIndex).addClass('liston').siblings().removeClass('liston');
+                }
+            })
+            $('.swiplist li').click(function(){
+                $(this).addClass('liston').siblings().removeClass('liston');
+                mySwiper.slideTo($(this).index(), 500)
+            });
+            
+        })        
+    </script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

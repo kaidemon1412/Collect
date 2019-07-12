@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>canvas基本动画</title>
+		<style type="text/css">
+			#frist_canvas{
+				display: block;
+				margin: 0 auto;
+				box-shadow: 0 0 8px #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="frist_canvas" width="300" height="300">
+			提示：你的浏览器不支持canvas！
+			canvas本身并没有绘画能力，所有的绘画都是由js完成的
+		</canvas>
+	</body>
+	<script type="text/javascript">
+		var sun = new Image();
+		var moon = new Image();
+		var earth = new Image();
+		function init(){
+			sun.src = "https://mdn.mozillademos.org/files/1456/Canvas_sun.png";
+			moon.src = "https://mdn.mozillademos.org/files/1443/Canvas_moon.png";
+			earth.src = "https://mdn.mozillademos.org/files/1429/Canvas_earth.png";
+			window.requestAnimationFrame(draw);
+		}
+		
+		function draw(){
+			var ctx = document.getElementById("frist_canvas").getContext("2d");//创建画板
+			ctx.globalCompositeOperation = "destination-over";//设置或者返回新图像如何绘制到已有图像上，属性值这里是在源图像上显示目标图像
+			ctx.clearRect(0,0,300,300);//在给定的矩形内清除指定像素
+			
+			ctx.fillStyle = "rgba(0,0,0,0.4)";//设置或者返回填充绘画的颜色、渐变或模式
+			ctx.strokeStyle = "rgba(0,153,255,0.4)";//设置或返回用于笔触的颜色、渐变或模式
+			ctx.save();//保存当前的环境状态
+			ctx.translate(150,150);//定义映射在画布上的位置（坐标），不写默认是（0,0）
+			
+			var time = new Date();
+			ctx.rotate(((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds());
+			ctx.translate(105,0);//定义映射在画布上的位置（坐标），不写默认是（0,0）
+			ctx.fillRect(0,-12,50,24);//绘制被填充的矩形，
+			ctx.drawImage(earth,-12,-12);//绘制图像，在图像上定义图片、画布或者视频。后面的数字是起点和终点坐标
+			
+			ctx.save();//保存当前环境状态。
+			ctx.rotate(((2*Math.PI)/6)*time.getSeconds() + ((2*Math.PI)/6000)*time.getMilliseconds());//旋转当前绘图
+			//如需将角度转换为弧度，请使用 degrees*Math.PI/180 公式进行计算。
+			//举例：如需旋转 5 度，可规定下面的公式：5*Math.PI/180。
+			ctx.translate(0,28.5);//如果没写位置（数字坐标），那就是默认的重新映射画布上（0，0）的位置。参数是坐标的起点位置
+			ctx.drawImage(moon,-3.5,-3.5);//图像绘制，在图像上定义图片、画布或者视频，后面的师数字是起点和终点的位置
+			ctx.restore();//方法，直接调用就行，返回之前保存过的路径状态和属性
+			
+			ctx.restore();//方法，直接调用就行，返回之前保存过的路径状态和属性
+			
+			ctx.beginPath();//其实一条路径或者是重置一条路径
+			ctx.arc(150,150,105,0,Math.PI*2,false);//创建弧形、曲线，（用于创建圆形或者部分圆）
+			ctx.stroke();//绘制已定义的路径
+			
+			ctx.drawImage(sun,0,0,300,300); //图像绘制，在图像上定义图片、画布或者视频，后面的数字就是起点和终点的位置
+			window.requestAnimationFrame(draw);
+			
+		}
+		
+		init();
+	</script>
+</html>

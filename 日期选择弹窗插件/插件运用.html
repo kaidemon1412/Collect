@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/datestyle.css" media="all">
+		<link rel="stylesheet" type="text/css" href="css/setpage.css"/>
+		<link rel="stylesheet" type="text/css" href="css/iconfont.css"/>
+		<script type="text/javascript">
+			//designWidth:设计稿的实际宽度值，需要根据实际设置
+			//maxWidth:制作稿的最大宽度值，需要根据实际设置
+			//这段js的最后面有两个参数记得要设置，一个为设计稿实际宽度，一个为制作稿最大宽度，例如设计稿为750，最大宽度为750，则为(750,750);
+			(function(designWidth, maxWidth) {
+				var doc = document,
+				win = window,
+				docEl = doc.documentElement,
+				remStyle = document.createElement("style"),
+				tid;
+			
+				function refreshRem() {
+					var width = docEl.getBoundingClientRect().width;
+					maxWidth = maxWidth || 540;
+					width>maxWidth && (width=maxWidth);
+					//这里的20倍是实际设计稿的倍数，即设计稿的20px==1rem；如果是100则是100px == 1rem
+					var rem = width * 100 / designWidth;   
+					remStyle.innerHTML = 'html{font-size:' + rem + 'px;} body{width:'+width/rem+'rem;}';
+					
+				}
+			
+				if (docEl.firstElementChild) {
+					docEl.firstElementChild.appendChild(remStyle);
+				} else {
+					var wrap = doc.createElement("div");
+					wrap.appendChild(remStyle);
+					doc.write(wrap.innerHTML);
+					wrap = null;
+				}
+				//要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+				refreshRem();
+			
+				win.addEventListener("resize", function() {
+					clearTimeout(tid); //防止执行两次
+					tid = setTimeout(refreshRem, 300);
+				}, false);
+			
+				win.addEventListener("pageshow", function(e) {
+					if (e.persisted) { // 浏览器后退的时候重新计算
+						clearTimeout(tid);
+						tid = setTimeout(refreshRem, 300);
+					}
+				}, false);
+			
+				if (doc.readyState === "complete") {
+					doc.body.style.fontSize = "16px";
+				} else {
+					doc.addEventListener("DOMContentLoaded", function(e) {
+						doc.body.style.fontSize = "16px";
+					}, false);
+				}
+			})(750, 1024);
+		</script>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<script src="js/iconfont.js"></script>
+		<script type="text/javascript" src="js/moment.js"></script>
+		<script type="text/javascript" src="js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				if($(".iDate.date").length>0){
+			        $(".iDate.date").datetimepicker({
+			            locale:"zh-cn",
+			            format:"YYYY-MM-DD",
+			            dayViewHeaderFormat:"YYYY年 MMMM"
+			        });
+			    }
+			})
+		</script>
+		<style type="text/css">
+			.iconf {
+			   width: 0.3rem; 
+			   height: 0.3rem;
+			   vertical-align: -0.15em;
+			   fill: currentColor;
+			   overflow: hidden;
+			   position: relative;
+			   top: 0.3rem;
+			   margin-right: 0.2rem;
+			}
+		</style>
+	</head>
+	<body style="margin: 0 auto;">
+		<div class="setting_center">
+			<div class="user_img">
+				<div class="portrait">
+					<img src="img/59f54bb99b988.jpg"/>
+				</div>
+			</div>
+			<div class="admin_list">
+				<div class="thisli">
+					<span class="fristcont">用户名</span>
+					<span class="textcont"><span class="wortext">雷布斯</span><input class="intext" type="text"/></span>
+					<span class="icont"><span class="icontone"><i class="iconfont icon-xiugai"></i>修改</span><span class="smbtn">保存</span></span>
+				</div>
+				<div class="thisli">
+					<span class="fristcont">积分</span>
+					<span class="textcont">3000</span>
+					<span class="icont"></span>
+				</div>
+				<div class="thisli">
+					<span class="fristcont">真实姓名</span>
+					<span class="textcont"><span class="wortext">小明</span><input class="intext" type="text"/></span>
+					<span class="icont"><span class="icontone"><i class="iconfont icon-xiugai"></i>修改</span><span class="smbtn">保存</span></span>
+				</div>
+				<div class="thisli">
+					<span class="fristcont">电话号码</span>
+					<span class="textcont"><span class="wortext">13523502505</span><input class="intext" type="text"/></span>
+					<span class="icont"><span class="icontone"><i class="iconfont icon-xiugai"></i>修改</span><span class="smbtn">保存</span></span>
+				</div>
+				<div class="modify_code">
+					<input class="fristInput" type="text" placeholder="输入新的手机号" /><br />
+					<input class="towInput" type="text" placeholder="输入验证码"/><button class="btnpass">发送验证码</button>
+					<span class="hold">保存</span><span class="cancel">取消</span>
+				</div>
+				<div class="thisli">
+					<span class="fristcont">性别</span>
+					<span class="textcont">
+						<span class="wortext">男</span>
+						<div class="modify_sex" style="display: none;">
+							<input type="radio" name="sex" id="a" value="secrecy" class="radio"><label for="a" class="radio">保密</label>
+						    <input type="radio" name="sex" id="b" value="boy" class="radio"><label for="b" class="radio" >男</label>
+						    <input type="radio" name="sex" id="c" value="girl" class="radio"><label for="c" class="radio" >女</label>
+							<span class="sexon">保存</span><span class="sexoff">取消</span>
+						</div>
+					</span>
+					<span class="icont"><span class="icontone"><i class="iconfont icon-xiugai"></i>修改</span><span class="smbtn">保存</span></span>
+				</div>
+				
+				<div class="thisli">
+					<span class="fristcont">生日</span>
+					<span class="textcont">
+						<span class="wortext">1996-06-08</span>
+						<!--<input class="intext" type="text"/>-->
+						<div class="birthday">
+							<div class="iDate date">
+								<input type="text">
+								<button type="button" class="thisOn"></button>
+							</div>
+							<span class="dateon">保存</span><span class="dateoff">取消</span>
+							
+						</div>
+							
+					</span>
+					<span class="icont datebtn"><span class="icontone"><i class="iconfont icon-xiugai"></i>修改</span><span class="smbtn">保存</span></span>
+				</div>
+				
+				<div class="thisli">
+					<span class="fristcont">QQ</span>
+					<span class="textcont"><span class="wortext">965570322</span><input class="intext" type="text"/></span>
+					<span class="icont"><span class="icontone"><i class="iconfont icon-xiugai"></i>修改</span><span class="smbtn">保存</span></span>
+				</div>
+				<div class="thisli">
+					<span class="fristcont">学校</span>
+					<span class="textcont"><span class="wortext">北京航天航空大学</span><input class="intext" type="text"/></span>
+					<span class="icont"><span class="icontone"><i class="iconfont icon-xiugai"></i>修改</span><span class="smbtn">保存</span></span>
+				</div>
+			</div>
+			<div class="bound">
+				<span class="bound_title">账号绑定</span>
+				<div class="bound_list">
+					<div class="bound qq">
+						<svg class="iconf" aria-hidden="true">
+						  <use xlink:href="#icon-qq1"></use>
+						</svg>
+						<span class="tx">腾讯QQ<span class="bound_on">(未绑定)</span></span>
+					</div>
+					<div class="bound weibo">
+						<svg class="iconf" aria-hidden="true">
+						  <use xlink:href="#icon-wb"></use>
+						</svg>
+						<span class="xl">新浪微博<span class="bound_on">(未绑定)</span></span>
+					</div>
+					<div class="bound chat">
+						<svg class="iconf" aria-hidden="true">
+						  <use xlink:href="#icon-weixin"></use>
+						</svg>
+						<span class="wechat">微信<span class="bound_on">(未绑定)</span></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+	
+	<script type="text/javascript">
+		$(function(){
+			$(".icont").on("click",function(){
+				var xgtext = $(this).parent(".thisli").find(".textcont").find(".wortext").html();
+				console.log(xgtext);
+				console.log($(this).parent(".thisli").index());
+        		$(this).parent(".thisli").find(".textcont").find(".wortext").hide();
+				$(this).parent(".thisli").find(".textcont").find(".intext").show();
+				$(this).parent(".thisli").find(".textcont").find(".intext").val(xgtext);
+				$(this).parent(".thisli").find(".textcont").find(".intext").focus();
+            	
+				if($(this).parent(".thisli").index() == 3){
+					$(".modify_code").css("display","block");
+					//取消修改
+					$(".cancel").on("click",function(){
+						$(this).parent(".modify_code").hide();
+						$(this).parent(".modify_code").prev(".thisli").find(".textcont").find(".wortext").show();
+						$(this).parent(".modify_code").prev(".thisli").find(".textcont").find(".intext").hide();
+					});
+					
+				}else if($(this).parent(".thisli").index() == 5){
+					$(this).html("");
+					$(this).parent(".thisli").find(".textcont").find(".wortext").hide();
+					$(this).parent(".thisli").css("height","1.6rem");
+					$(this).parent(".thisli").find(".textcont").find(".modify_sex").show();
+					
+					var firstval = $(this).parent(".thisli").find(".textcont").find(".wortext").html();
+					
+				}else if($(this).parent(".thisli").index() == 6){
+					$(this).html('');
+					$(this).parent(".thisli").find(".textcont").find(".wortext").hide();
+					$(this).parent(".thisli").css("height","1.6rem");
+					$(this).parent(".thisli").find(".textcont").find(".birthday").show();
+				}
+
+				$(".modify_sex label").on("click",function(){
+					var theval = $(this).prev().val();
+					console.log(theval);
+					if (theval == "secrecy") {
+						$(".sexon").unbind("click").on("click",function(){
+							$(this).parent(".modify_sex").hide();
+							$(this).parent(".modify_sex").parent(".textcont").siblings(".icont").html('<span class="icont"><i class="iconfont icon-xiugai"></i>修改</span>');
+							$(this).parent(".modify_sex").parent(".textcont").parent(".thisli").css("height","0.9rem");
+							console.log($(this).parent(".modify_sex").parent(".thisli"));
+							$(this).parent(".modify_sex").siblings(".wortext").html("保密");
+							$(this).parent(".modify_sex").siblings(".wortext").show();
+						});
+					}
+					if (theval == "boy") {
+						$(".sexon").unbind("click").on("click",function(){
+							$(this).parent(".modify_sex").hide();
+							$(this).parent(".modify_sex").parent(".textcont").siblings(".icont").html('<span class="icont"><i class="iconfont icon-xiugai"></i>修改</span>');
+							$(this).parent(".modify_sex").parent(".textcont").parent(".thisli").css("height","0.9rem");
+							console.log($(this).parent(".modify_sex").parent(".thisli"));
+							$(this).parent(".modify_sex").siblings(".wortext").html("男");
+							$(this).parent(".modify_sex").siblings(".wortext").show();
+						});
+					}
+					if (theval == "girl") {
+						$(".sexon").unbind("click").on("click",function(){
+							$(this).parent(".modify_sex").hide();
+							$(this).parent(".modify_sex").parent(".textcont").siblings(".icont").html('<span class="icont"><i class="iconfont icon-xiugai"></i>修改</span>');
+							$(this).parent(".modify_sex").parent(".textcont").parent(".thisli").css("height","0.9rem");
+							console.log($(this).parent(".modify_sex").parent(".thisli"));
+							$(this).parent(".modify_sex").siblings(".wortext").html("女");
+							$(this).parent(".modify_sex").siblings(".wortext").show();
+						});
+					}	
+
+				});
+				
+				$(".sexoff").on("click",function(){
+						$(this).parent(".modify_sex").hide();
+						$(this).parent(".modify_sex").parent(".textcont").siblings(".icont").html('<span class="icont"><i class="iconfont icon-xiugai"></i>修改</span>');
+						$(this).parent(".modify_sex").parent(".textcont").parent(".thisli").css("height","0.9rem");
+						$(this).parent(".modify_sex").siblings(".wortext").show();
+					});
+				
+				$(this).parent(".thisli").find(".textcont").find(".intext").blur(function(){
+					var inputText = $(this).val();
+					console.log(inputText);
+					$(this).siblings(".wortext").show();
+					$(this).prev(".wortext").html(inputText);
+					$(this).hide();
+					if($(this).parent(".textcont").parent(".thisli").index() == 3){
+							console.log($(this).siblings(".wortext"));
+							$(this).siblings(".wortext").hide();
+							$(this).show();
+						}
+				});
+			});
+			
+			//生日日期
+			$(".dateon").on("click",function(){
+				 var thedate = $(this).prev(".iDate").find("input").val();
+				 console.log(thedate);
+				 $(this).parent(".birthday").prev(".wortext").html(thedate); 
+				 $(this).parent(".birthday").prev(".wortext").show();
+				 $(this).parent(".birthday").hide();
+				 $(this).parent(".birthday").parent(".textcont").next(".icont").html('<i class="iconfont icon-xiugai"></i>修改');
+				 $(this).parent(".birthday").parent(".textcont").parent(".thisli").css("height","0.9rem");
+			});
+			$(".dateoff").on("click",function(){
+				$(this).parent(".birthday").prev(".wortext").show();
+				 $(this).parent(".birthday").hide();
+				 $(this).parent(".birthday").parent(".textcont").next(".icont").html('<i class="iconfont icon-xiugai"></i>修改');
+				 $(this).parent(".birthday").parent(".textcont").parent(".thisli").css("height","0.9rem");
+			});
+		});
+	</script>
+</html>

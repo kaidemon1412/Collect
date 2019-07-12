@@ -1,0 +1,43 @@
+$thiswidth:1200px;
+$thisborder:1px solid #333;
+$thisbgcolor:#00ddaa;
+
+.this_word_text{
+    width: $thiswidth;
+    border: $thisborder;
+    margin: 0 auto;
+    
+    .this_moble{
+        width: $thiswidth/3;
+        margin: 0 100px;
+        float: left;
+        h3{
+           text-align: center; 
+        }
+        p{
+            text-indent: 2em;
+        }
+    }
+    &:after{
+        content: "\0020";
+        display: block;
+        height: 0;
+        clear: both;
+    }
+    
+    .pages{
+        width: 100%;
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        
+        span{
+            flex: 1;
+            height: 100%;
+            text-align: center;
+            line-height: 30px;
+        }
+        
+    }
+    
+}

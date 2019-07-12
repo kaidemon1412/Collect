@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript">
+			
+			
+			onload = function(){
+				var size = document.getElementsByClassName("content")[0];
+				console.log(getStyle(size,"font-size"));
+				
+			}
+			
+			 function getStyle(obj,attr) {
+	            if(typeof getComputedStyle)
+	                return getComputedStyle(obj,null)[attr];
+	            else return obj.currentStyle[attr];
+	        }
+			
+		</script>
+		<style type="text/css">
+			.content{
+				/*换算公式为：在移动端100vw就是屏幕宽度，  
+				 * 更准确的说100vw就是浏览器显示页面的可视宽度，
+				 * PC端则是浏览器的可视区域宽度
+				 * 100vw == innerWidth; 例子:如果在iphone6上 100vw == 375px;
+				 * 但是 1vw = 375*1%px
+				 * 10vw = 375 * 10%px
+				 * */
+				font-size: 1vw; /*这里10vw在iphone6上，字体大小显示为37.5px*/
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			这个是内容的主题部分，内容部分的字体大小是怎么设置的，必须搞明白
+		</div>
+	</body>
+</html>

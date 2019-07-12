@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title></title>
+		<style type="text/css">
+			.text_carrier{
+			    outline: none;
+                width: 66.66667vw;
+                height: 20vw;
+                border: 0.53333vw dashed #00a0e9;
+                border-radius: 5.33333vw;
+                box-sizing: border-box;
+                display: block;
+                margin: 0 auto;
+                padding: 2vw;
+			}
+			#mydate option{
+			    border-radius: 5.33333vw;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<input placeholder="" type='email'/> 限制用户输入email格式，
+		<input type="tel" name="" id="" value="" /> 限制用户输入手机电话格式
+		<input type='url'/> 限制用户输入网址格式；
+		<input type='date'/> 限制用户输入日期格式；
+		<input type='time'/> 限制用户输入时间格式；
+		<input type='month'/> 限制用户输入月份格式；
+		<input type='week'/> 限制用户输入周格式；
+		<input type='number'/> 限制用户输入数字格式；
+		<input type='range'/>     一个滑动条效果；
+		<input type='search' /> 搜索格式results = "n"；
+		<input type='color'/> 选择颜色；-->
+		<input type='text' class="text_carrier" list="mydate" value="" placeholder="请输入自己想说的话！"/>
+		<datalist id="mydate">
+			<option label="1" value="第一行"></option>
+			<option label="2" value="第二行"></option>
+			<option label="3" value="第三行"></option>
+			<option label="4" value="第四行"></option>
+			<option label="5" value="第五行"></option>
+			<option label="6" value="第六行"></option>
+			<option label="7" value="第七行"></option>
+			<option label="8" value="第八行"></option>
+			<option label="9" value="第九行"></option>
+		<datalist>
+		    
+		   
+	</body>
+	
+	<script type="text/javascript">
+	    var h = "";
+		h += " 网页可见区域宽："+ document.body.clientWidth+"\n";
+        h += " 网页可见区域高："+ document.body.clientHeight+"\n";
+        h += " 网页可见区域宽："+ document.body.offsetWidth +" (包括边线和滚动条的宽)"+"\n";
+        h += " 网页可见区域高："+ document.body.offsetHeight +" (包括边线的宽)"+"\n";
+        h += " 网页正文全文宽："+ document.body.scrollWidth+"\n";
+        h += " 网页正文全文高："+ document.body.scrollHeight+"\n";
+        h += " 网页被卷去的上："+ document.body.scrollTop+"\n";
+        h += " 网页被卷去的左："+ document.body.scrollLeft+"\n";
+        h += " 网页正文部分上："+ window.screenTop+"\n";
+        h += " 网页正文部分左："+ window.screenLeft+"\n";
+        h += " 屏幕分辨率的宽："+ window.screen.width+"\n";
+        h += " 屏幕分辨率的高："+ window.screen.height+"\n";
+        h += " 屏幕可用工作区宽度："+ window.screen.availWidth+"\n";
+        h += " 屏幕可用工作区高度："+ window.screen.availHeight+"\n";
+        h += " 你的屏幕设置是 "+ window.screen.colorDepth +" 位彩色"+"\n";
+        h += " 你的屏幕设置 "+ window.screen.deviceXDPI +" 像素/英寸"+"\n";
+        console.log(h);
+        alert(h);
+	</script>
+	
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title>在手机端的vw应用实例</title>
+		<style type="text/css">
+			/*一个可以书写的基准是(pc端) +
+			 * --- 大于1200px的宽度以1200px显示
+			 *还有一个移动端的基准(iphone6) 375px == 100vw
+			 * 一定要加入mate才有这样的效果
+			 */
+			/*下面是实验
+			 *
+			 */
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				width: 100vw;
+				height: 30vh;
+				background-color: #2196F3;
+				margin: 0 auto;
+			}
+			
+			.wordtext{
+				text-align: center;
+				font-size: 4vw;
+				color: #fff;
+			}
+		</style>
+		<script type="text/javascript">
+			onload = function(){
+				var oBox = document.getElementsByClassName("box")[0];
+				console.log(getStyle(oBox,"width"));
+
+				var oText = document.getElementsByClassName("wordtext")[0];
+				console.log(getStyle(oText,"font-size"));
+				
+				
+			}
+			
+			 function getStyle(obj,attr) {
+	            if(typeof getComputedStyle)
+	                return getComputedStyle(obj,null)[attr];
+	            else return obj.currentStyle[attr];
+	        }
+		</script>
+	</head>
+	<body>
+		<div class="box">
+			<p class="wordtext">这是段落文本</p>
+		</div>
+	</body>
+	
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="UTF-8">
+<title>div模仿下拉框</title>
+<style>
+*{
+    padding: 0;
+    margin: 0;
+}
+.select-box{
+    width: 200px;
+    margin: 50px auto;
+    text-align: left;
+    text-indent: 5px;
+    /* border: 1px solid #ccc; */
+    padding: 10px;
+}
+.select-box .select-title{
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    cursor:pointer;
+}
+.select-box .select-title input{
+	width: 100%;
+	height: 100%;
+}
+.select-box ul{
+    border: 1px solid #ccc;
+}
+.select-box ul li{
+    height: 30px;
+    line-height: 30px;
+    list-style: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.select-box ul li.current{
+    background: #ebebeb;
+}
+.select-box ul li:not(:last-of-type){
+    border-bottom: 1px solid #ccc;
+}
+.none{
+    display: none;
+}
+.block{
+    display: block;
+}
+</style>
+</head>
+<body>
+    <div class="select-box">
+        <span class="select-title"><input type="text" placeholder="打分" /></span><!-- 下拉标题 -->
+        <ul class="select-con none">
+            <li>web前端</li>
+            <li>php</li>
+            <li>java</li>
+            <li>ios</li>
+            <li>安卓</li>
+        </ul>
+    </div>
+<script src="js/jquery-3.2.1.min.js"></script>    
+<script>
+    $(document).bind("click",function(e){
+        var clickMe=$(e.target);/*获取点击元素*/
+　　　　　　if(!clickMe.hasClass("select-title")){/*点击元素不是下拉框标题时*/
+　　　　　　　　$(".select-box ul").addClass("none").removeClass("block");
+　　　　　　　　if(clickMe.parent().hasClass("select-con")){/*点击元素是下拉选项时*/
+　　　　　　　　　　var currenLiHtml=clickMe.html();/*获取点击的下拉选项HTML*/
+　　　　　　　　　　clickMe.parent().siblings(".select-title").html(currenLiHtml);/*把点击的下拉选项HTML放到下拉标题*/
+　　　　　　　　　　clickMe.addClass("current").siblings().removeClass("current");/*给点击的下拉选项加背景色*/
+　　　　　　　　}
+　　　　　　}else if(clickMe.siblings(".select-con").hasClass("none")){/*点击下拉标题时如果有none类的话*/
+　　　　　　　　clickMe.parents("body").find(".select-con").addClass("none").removeClass("block");/*点击下拉标题时如果有none类的话,全部下拉关闭，然后在展开当前的下拉*/
+　　　　　　　　clickMe.siblings(".select-con").addClass("block").removeClass("none");
+
+　　　　　　　　}else if(clickMe.siblings(".select-con").hasClass("block")){/*点击下拉标题时如果有block类下拉是展开的话*/
+　　　　　　　　$(".select-box ul").addClass("none").removeClass("block");
+　　　　}
+
+
+    })
+</script>
+</body>
+</html>

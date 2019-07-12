@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document--JQ轮播图</title>
+	<link rel="stylesheet" href="css/style_banner.css">
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<!--1.8.3可以用size()方法-->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<!--3.2.1的size()keneng已经下架了-->
+	<script>
+		$(function(){
+			var i=0;
+			// 克隆第一张图片，加至第四张后面。
+			var clone=$('.img li').first().clone();
+			$('.img').append(clone);
+			//克隆后 图片的个数
+			var size=$('.img li').length; //1.8.3用size()，3.2.1用length; 都是获取个数
+			//页面初始化时，给第一个圆点加hover效果
+			$('.num li').first().addClass('on').siblings().removeClass('on');
+			// 向左滑动 按钮的点击事件
+			$('.btn_l').click(function() {
+//				moveL();
+			});
+			// 向右滑动 按钮的点击事件
+			$('.btn_r').click(function(){
+//				moveR();
+			})
+			function moveL(){
+				i++;
+				if(i==size){
+					$('.img').css({'left':'0px'})
+					i=1;
+				}
+				$('.img').stop().animate({left:-550*i})
+				if(i==size-1){
+					$('.num li').eq(0).addClass('on').siblings().removeClass('on');
+				}else{
+					$('.num li').eq(i).addClass('on').siblings().removeClass('on');
+				}
+			}
+			function moveR(){
+				i--;
+				if(i==-1){
+					$('.img').css({'left':-(size-1)*550});
+					i=size-2;
+				}
+				$('.img').stop().animate({left:-550*i})
+				$('.num li').eq(i).addClass('on').siblings().removeClass('on');
+			}	
+			/*鼠标划入圆点*/
+			$('.num li').hover(function(){
+				i=$(this).index();
+				$('.img').stop().animate({left:-550*i},500);
+				$(this).addClass('on').siblings().removeClass('on');
+			})
+			/*自动轮播*/
+			var t=setInterval(function(){
+//				moveL();
+			},2000)
+			/*对banner定时器的操作*/
+			$('.banner').hover(function(){
+				clearInterval(t);
+			},function(){
+				t=setInterval(function(){
+//					moveL();
+				},2000)
+			})
+		})
+	</script>
+</head>
+<body>
+	<div class="banner">
+		<ul class="img">
+			<li><a href="#"><img src="img/1.jpg" alt=""/></a></li>
+			<li><a href="#"><img src="img/2.jpg" alt=""/></a></li>
+			<li><a href="#"><img src="img/3.jpg" alt=""/></a></li>
+			<li><a href="#"><img src="img/4.jpg" alt=""/></a></li>
+		</ul>
+		<!--<ul class="num">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>-->
+		<div class="btn btn_l">&lt;</div>
+    	<div class="btn btn_r">&gt;</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JQajax数据请求及处理</title>
+		<script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
+		<link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			li{
+				list-style: none;
+			}
+			
+			/*万能清浮动*/
+			
+			
+			.box .the_mytitle:after {
+				content: "\0020";
+				display: block;
+				height: 0;
+				clear: both;
+			}
+			
+			.my_nav:after{
+				content: "\0020";
+				display: block;
+				height: 0;
+				clear: both;
+			}
+			
+			.my_content:after {
+				content: "\0020";
+				display: block;
+				height: 0;
+				clear: both;
+			}
+			
+			.box{
+				width: 80%;
+				min-width: 1000px;
+				margin: 0 auto;
+			}
+			
+			.box .my_nav,.the_mytitle,.my_content{
+				width: 100%;
+				
+			}
+			
+			.box .my_nav{
+				text-align: center;
+				background-color: #ccc;
+				display: flex;
+				flex-direction: row;
+			}
+			
+			.box .my_nav div{
+				flex: 2;
+				color: #757575;
+				text-align: center;
+				height: 26px;
+				line-height: 26px;
+				margin: 7px 2.4px;
+				border-radius: 5px;
+			}
+			.box .my_nav div:nth-of-type(24){
+				flex: 5;
+			}
+			.box .my_nav div:nth-of-type(25){
+				flex: 4;
+			}
+			
+			.box .my_nav div:hover{
+				background-color: red;
+				color: #fff;
+			}
+			
+			.box .the_mytitle div{
+				background-color: #ccc;
+				float: left;
+				color: #757575;
+				text-align: center;
+				height: 30px;
+				line-height: 30px;
+			}
+			.box .the_mytitle div:nth-of-type(1){
+				width: 5%;
+			}
+			.box .the_mytitle div:nth-of-type(2){
+				width: 30%;
+			}
+			.box .the_mytitle div:nth-of-type(3){
+				width: 45%;
+			}
+			.box .the_mytitle div:nth-of-type(4){
+				width: 20%;
+			}
+			
+			.box .mycontent{
+				height: 400px;
+			}
+			
+			.box .mycontent .my_content div{
+				background-color: #f3f3f3;
+				float: left;
+				color: #757575;
+				text-align: center;
+				height: 20px;
+				line-height: 20px;
+			}
+			.box .mycontent .my_content div:nth-of-type(1){
+				width: 5%;
+			}
+			.box .mycontent .my_content div:nth-of-type(2){
+				width: 30%;
+			}
+			.box .mycontent .my_content div:nth-of-type(3){
+				width: 45%;
+				text-align: left;
+			}
+			.box .my_content div:nth-of-type(4){
+				width: 20%;
+				text-align: left;
+			}
+			
+			.box .my_nav div.on{
+				background-color: red;
+				color: #fff;
+			}
+			
+			
+			.box .paging:after{
+				content: "\0020";
+				display: block;
+				height: 0;
+				clear: both;
+			}
+			
+			.box .paging{
+				width: 100%;
+				height: 40px;
+				background-color: #87CEEB;
+			}
+			
+			.box .paging .pre,.next{
+				float: left;
+				height: 100%;
+				width: 10%;
+				text-align: center;
+				line-height: 40px;
+			}
+			
+			.box .paging .the_page{
+				float: left;
+				width: 80%;
+			}
+			
+			.box .paging .the_page ul{
+				display: flex;
+				flex-direction: row;
+				line-height: 40px;
+			}
+			
+			.box .paging .the_page ul li{
+				/*float: left;*/
+				/*width: 24px;*/
+				flex: 1;
+				height: 30px;
+				border: 1px solid #2AC3CB;
+				text-align: center;
+				line-height: 30px;
+				margin: 5px 0 0 10px;
+			}
+			
+			.box .paging .the_page ul li:nth-of-type(1){
+				margin-left: 0;
+			}
+			.box .paging .the_page ul li:hover{
+				background-color: #007AFF;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="my_nav">
+				<div>搞笑</div><div>字谜</div><div>成语</div><div>动物</div><div>爱情</div><div>灯谜</div><div>人名</div><div>地名</div><div>词语</div><div>带格</div><div>用语</div><div>儿童</div><div>物品</div><div>植物</div><div>名迷</div><div>书报</div><div>熟语</div><div>药品</div><div>音乐</div><div>影视</div><div>称谓</div><div>趣味</div><div>精选</div><div>脑筋急转弯</div><div>智力问答</div>
+			</div>
+			<div class="the_mytitle">
+				<div>序号</div><div>谜语类别</div><div>谜面</div><div>谜底</div>
+			</div>
+			<!--<div class="my_content">
+				<div>1</div><div>搞笑谜语</div><div>铁扇公主夸郎君(打一二字常用词)</div><div>吹牛</div>
+			</div>-->
+			
+			<div class="mycontent"></div>
+			
+			<div class="paging">
+				<div class="pre"><i class="iconfont icon-jiantou-copy"></i></div>
+				<div class="the_page">
+					<ul>
+						<li>1</li>
+						<li>2</li>
+						<li>3</li>
+						<li>4</li>
+						<li>5</li>
+						<li>6</li>
+						<li>7</li>
+						<li>8</li>
+						<li>9</li>
+						<li>10</li>
+					</ul>
+				</div>
+				<div class="next"><i class="iconfont icon-arrowRight"></i></div>
+			</div>
+			
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			
+			var label = "cy";
+			
+			var pages = 1;
+			
+			$(".my_nav").find("div").on("click",function(){
+				console.log($(this).index());
+				$(this).addClass("on");
+				$(this).siblings().removeClass("on");
+				
+				
+				switch($(this).index()){
+					case 0:
+					    label="gxmy";
+					    break;
+					case 1:
+					    label="zmmy";
+					    break;
+					case 2:
+					    label="cymy";
+					    break;
+					case 3:
+					    label="dwmy";
+					    break;
+					case 4:
+					    label="aqmy";
+					    break;
+					case 5:
+					    label="dmmy";
+					    break;
+					case 6:
+					    label="rmmy";
+					    break;
+					case 7:
+					    label="dimmy";
+					    break;
+					case 8:
+					    label="cy";
+					    break;
+					case 9:
+					    label="dgmy";
+					    break;
+					case 10:
+					    label="ry";
+					    break;
+					case 11:
+					    label="etmy";
+					    break;
+					case 12:
+					    label="wpmy";
+					    break;
+					case 13:
+					    label="zwmy";
+					    break;
+					case 14:
+					    label="jmmy";
+					    break;
+					case 15:
+					    label="sbmy";
+					    break;
+					case 16:
+					    label="symy";
+					    break;
+					case 17:
+					    label="ypmy";
+					    break;
+					case 18:
+					    label="yymy";
+					    break;
+					case 19:
+					    label="ysmy";
+					    break;
+					case 20:
+					    label="cwmy";
+					    break;
+					case 21:
+					    label="qtmy";
+					    break;
+					case 22:
+					    label="miyujingxuan";
+					    break;
+					case 23:
+					    label="njmy";
+					    break;
+					case 24:
+					    label="zlmy";
+					    break;
+				}
+				
+				$(".the_page ul li").unbind("click").on("click",function(){
+					pages = $(this).index() + 1;
+					$.ajax({
+					    url:'http://route.showapi.com/151-4',//comm/test1.php
+					    type:'POST', //GET
+					    async:true,    //或false,是否异步
+					    data:{
+					    	//下面两条为必传字段
+					        "showapi_appid": 45428, //这里需要改成自己的appid
+					        "showapi_sign": "107f5378a01c4b71a4b3fc090f8eeb62",  //这里需要改成自己的应用的密钥secret，
+							"typeId": label,
+							"page": pages
+					    },
+					    timeout:5000,    //超时时间
+					    dataType:'jsonp',    //返回的数据格式：json/xml/html/script/jsonp/text
+					    jsonp: 'jsonpcallback', //这个方法名很重要，不能改变
+					    beforeSend:function(xhr){
+					        console.log(xhr)
+					        console.log('发送前')
+					    },
+					    success:function(data,textStatus,jqXHR){
+					    	$(".mycontent").html("");
+					    	var  the_data = data.showapi_res_body.pb.contentlist;
+					        console.log(the_data);//打印数据
+					        console.log(typeof(the_data));
+					        for(var i = 0;i<the_data.length;i++){
+					        	console.log(the_data[i].typeName);
+					        	$(".mycontent").append("<div class='my_content'><div>"+(i+1)+"</div><div>"+the_data[i].typeName+"</div><div>"+the_data[i].title+"</div><div>"+the_data[i].answer+"</div></div>");
+					        	
+					        }
+					        
+					        console.log(textStatus)
+					        console.log(jqXHR)
+					    },
+					    error:function(xhr,textStatus){
+					        console.log('错误')
+					        console.log(xhr)
+					        console.log(textStatus)
+					    },
+					    complete:function(){
+					        console.log('结束')
+					    }
+					});
+				});
+					
+				//jq的ajax
+				$.ajax({
+				    url:'http://route.showapi.com/151-4',//comm/test1.php
+				    type:'POST', //GET
+				    async:true,    //或false,是否异步
+				    data:{
+				    	//下面两条为必传字段
+				        "showapi_appid": 45428, //这里需要改成自己的appid
+				        "showapi_sign": "107f5378a01c4b71a4b3fc090f8eeb62",  //这里需要改成自己的应用的密钥secret，
+						"typeId": label,
+						"page": pages
+				    },
+				    timeout:5000,    //超时时间
+				    dataType:'jsonp',    //返回的数据格式：json/xml/html/script/jsonp/text
+				    jsonp: 'jsonpcallback', //这个方法名很重要，不能改变
+				    beforeSend:function(xhr){
+				        console.log(xhr)
+				        console.log('发送前')
+				    },
+				    success:function(data,textStatus,jqXHR){
+				    	$(".mycontent").html("");
+				    	var  the_data = data.showapi_res_body.pb.contentlist;
+				        console.log(the_data);//打印数据
+				        console.log(typeof(the_data));
+				        for(var i = 0;i<the_data.length;i++){
+				        	console.log(the_data[i].typeName);
+				        	$(".mycontent").append("<div class='my_content'><div>"+(i+1)+"</div><div>"+the_data[i].typeName+"</div><div>"+the_data[i].title+"</div><div>"+the_data[i].answer+"</div></div>");
+				        	
+				        }
+				        
+				        console.log(textStatus)
+				        console.log(jqXHR)
+				    },
+				    error:function(xhr,textStatus){
+				        console.log('错误')
+				        console.log(xhr)
+				        console.log(textStatus)
+				    },
+				    complete:function(){
+				        console.log('结束')
+				    }
+				});
+				
+			});
+			
+		//jq的ajax
+				$.ajax({
+				    url:'http://route.showapi.com/151-4',//comm/test1.php
+				    type:'POST', //GET
+				    async:true,    //或false,是否异步
+				    data:{
+				    	//下面两条为必传字段
+				        "showapi_appid": 45428, //这里需要改成自己的appid
+				        "showapi_sign": "107f5378a01c4b71a4b3fc090f8eeb62",  //这里需要改成自己的应用的密钥secret，
+						"typeId": label,
+						"page": pages
+				    },
+				    timeout:5000,    //超时时间
+				    dataType:'jsonp',    //返回的数据格式：json/xml/html/script/jsonp/text
+				    jsonp: 'jsonpcallback', //这个方法名很重要，不能改变
+				    beforeSend:function(xhr){
+				        console.log(xhr)
+				        console.log('发送前')
+				    },
+				    success:function(data,textStatus,jqXHR){
+				    	$(".mycontent").html("");
+				    	var  the_data = data.showapi_res_body.pb.contentlist;
+				        console.log(the_data);//打印数据
+				        console.log(typeof(the_data));
+				        for(var i = 0;i<the_data.length;i++){
+				        	console.log(the_data[i].typeName);
+				        	$(".mycontent").append("<div class='my_content'><div>"+(i+1)+"</div><div>"+the_data[i].typeName+"</div><div>"+the_data[i].title+"</div><div>"+the_data[i].answer+"</div></div>");
+				        	
+				        }
+				        
+				        console.log(textStatus)
+				        console.log(jqXHR)
+				    },
+				    error:function(xhr,textStatus){
+				        console.log('错误')
+				        console.log(xhr)
+				        console.log(textStatus)
+				    },
+				    complete:function(){
+				        console.log('结束')
+				    }
+				});
+			
+			
+			$(".the_page ul li").on("click",function(){
+					pages = $(this).index() + 1;
+					$.ajax({
+					    url:'http://route.showapi.com/151-4',//comm/test1.php
+					    type:'POST', //GET
+					    async:true,    //或false,是否异步
+					    data:{
+					    	//下面两条为必传字段
+					        "showapi_appid": 45428, //这里需要改成自己的appid
+					        "showapi_sign": "107f5378a01c4b71a4b3fc090f8eeb62",  //这里需要改成自己的应用的密钥secret，
+							"typeId": label,
+							"page": pages
+					    },
+					    timeout:5000,    //超时时间
+					    dataType:'jsonp',    //返回的数据格式：json/xml/html/script/jsonp/text
+					    jsonp: 'jsonpcallback', //这个方法名很重要，不能改变
+					    beforeSend:function(xhr){
+					        console.log(xhr)
+					        console.log('发送前')
+					    },
+					    success:function(data,textStatus,jqXHR){
+					    	$(".mycontent").html("");
+					    	var  the_data = data.showapi_res_body.pb.contentlist;
+					        console.log(the_data);//打印数据
+					        console.log(typeof(the_data));
+					        for(var i = 0;i<the_data.length;i++){
+					        	console.log(the_data[i].typeName);
+					        	$(".mycontent").append("<div class='my_content'><div>"+(i+1)+"</div><div>"+the_data[i].typeName+"</div><div>"+the_data[i].title+"</div><div>"+the_data[i].answer+"</div></div>");
+					        	
+					        }
+					        
+					        console.log(textStatus)
+					        console.log(jqXHR)
+					    },
+					    error:function(xhr,textStatus){
+					        console.log('错误')
+					        console.log(xhr)
+					        console.log(textStatus)
+					    },
+					    complete:function(){
+					        console.log('结束')
+					    }
+					});
+				});
+			
+			
+			
+		});
+		
+		
+		
+/*		
+		//原生ajax
+		$('#send').click(function(){
+	    	//请求的5个阶段，对应readyState的值
+	        //0: 未初始化，send方法未调用；
+	        //1: 正在发送请求，send方法已调用；
+	        //2: 请求发送完毕，send方法执行完毕；
+	        //3: 正在解析响应内容；
+	        //4: 响应内容解析完毕；
+
+		    var data = 'name=yang';
+		    var xhr = new XMLHttpRequest();        //创建一个ajax对象
+		    xhr.onreadystatechange = function(event){    //对ajax对象进行监听
+		        if(xhr.readyState == 4){    //4表示解析完毕
+		            if(xhr.status == 200){    //200为正常返回
+		                console.log(xhr)
+		            }
+		        }
+		    };
+		    xhr.open('POST','url',true);    //建立连接，参数一：发送方式，二：请求地址，三：是否异步，true为异步
+		    xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');    //可有可无
+		    xhr.send(data);        //发送
+		});
+		
+*/		
+		
+	</script>
+</html>

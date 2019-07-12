@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+	            margin:0;
+	            padding:0;
+	        }
+	        body{
+	            overflow: hidden;
+	        }
+	        #wrap > div{
+	            width: 10rem;
+	            position: absolute;
+	            left: 0;
+	            top: 0;
+	            background: #fff;
+	            transition: all 0.3s ease;
+	        }
+	        #dots{
+	            position: fixed;
+	            right: 5px;
+	            top: 40%;
+	            z-index: 9;
+	        }
+	        #dots span{
+	            display: block;
+	            height: 0.2rem;
+	            width: 0.2rem;
+	            border: 1px solid #000;
+	            border-radius: 50%;
+	            margin-bottom: 3px;
+	        }
+	        #dots .now{
+	            background: #555;
+	        }
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+		    <div id="page01" class="pages">第一屏</div>
+		    <div id="page02" class="pages">第二屏</div>
+		    <div id="page03" class="pages">第三屏</div>
+		    <div id="page04" class="pages">第四屏</div>
+		</div>
+		<div id="dots">
+		    <span class="now"></span><span class=""></span><span class=""></span><span class=""></span>
+		</div>
+	</body>
+	<script type="text/javascript">
+		window.onload = function(){
+            var oDiv = document.getElementById("wrap");
+            var aPages = oDiv.getElementsByClassName("pages");
+            var aDots = document.getElementById("dots").getElementsByTagName("span");
+            var winH = window.innerHeight;
+            var tTime = 1;
+            
+
+            //设置每页的高度和zindex值
+            for(var i=0; i<aPages.length; i++){
+                aPages[i].style.height = winH + "px";
+                aPages[i].style.zIndex = 1;
+            }
+            aPages[0].style.zIndex = 3;
+            aPages[1].style.zIndex = 2;
+            oDiv.style.height = winH + "px";
+
+            //手指拖动事件（去除默认动作）
+            document.addEventListener("touchmove",function(e){
+                e.preventDefault();
+            });
+
+            var YStart = 0;
+            var iNow = 0;
+            //手指按下
+            oDiv.addEventListener("touchstart",function(e){
+                YStart = e.changedTouches[0].clientY;
+            });
+            //手指移动
+            oDiv.addEventListener("touchmove",function(e){
+
+                disY = e.changedTouches[0].clientY-YStart; //向下滑正，向上滑负
+            });
+
+            //手指离开
+            oDiv.addEventListener("touchend",function(e){
+                
+                disY = e.changedTouches[0].clientY-YStart; //向下滑正，向上滑负
+                if(Math.abs(disY)>winH/20){  //只有当滑动距离大于了一定值得时候，才执行切换
+                    if(disY<0){
+                        iNow++;
+                        if(iNow>=aDots.length){
+                            iNow = 0;
+                        }
+                        aPages[0].style.transform = "translateY("+ -winH +"px)";
+                        doSlide();
+                    }else{
+                        iNow--;
+                        if(iNow<0){
+                            iNow = aDots.length-1;
+                        }
+                        aPages[0].style.transform = "translateY("+ winH +"px)";
+                        doSlide("up");
+                    }
+                }
+            });
+
+            function doSlide(upflag){
+                for(var i=0;i<aDots.length;i++){
+                    aDots[i].className = "";
+                }
+                aDots[iNow].className = "now";
+                if(upflag){
+                        //向上滑
+                        aPages[3].style.zIndex = 2;
+                        aPages[1].style.zIndex = 1;
+                        oDiv.insertBefore(aPages[3],aPages[1]);
+                        setTimeout(function(){
+                            aPages[1].style.transform = "translateY(0px)";
+                            aPages[1].style.zIndex = 2;
+                            aPages[0].style.zIndex = 3;
+                        },300)
+                }else{
+                    setTimeout(function(){
+                        aPages[0].style.transform = "translateY(0px)";
+                        aPages[0].style.zIndex = 1;
+                        aPages[1].style.zIndex = 3;
+                        aPages[2].style.zIndex = 2;
+                        oDiv.appendChild(aPages[0]);
+                    },300)
+                }
+                
+            }
+
+
+        }
+	</script>
+</html>

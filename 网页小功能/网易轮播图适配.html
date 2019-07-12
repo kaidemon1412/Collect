@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			#phone_carousel{
+				width: 100vw;
+				height: 72vw;
+				/*background-color: #FF0000;*/
+				margin: 10vw auto;
+			}
+			
+			#phone_imglist ul li{
+				position: absolute;
+				list-style: none;
+				width: 36vw;
+				height: 65vw;
+				transition: all 0.5s;
+			}
+			
+			#phone_imglist ul li img{
+				width: 36vw;
+				height: 65vw;
+			}
+			
+			#phone_imglist{
+				width: 90vw;
+				height: 49.333vw;
+				margin: 0 auto;
+				/*background-color: #6600ff;*/
+			}
+			
+			#phone_imglist ul{
+				position: relative;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.#phone_imglist ul a{
+				    width: 6.25vw;
+				    height: 4.66667vw;
+				    text-decoration: none;
+				    position: absolute;
+				    z-index: 20;
+				    top: 50%;
+				    transform: translateY(-50%);
+			}
+			
+			.#phone_imglist ul .banner_prev{
+				right: 0;
+			    background: url(../img/PJ_left.png) no-repeat center;
+				background-position: 50% 50%;
+			}
+			
+			.#phone_imglist ul .banner_next{
+				left: 0;
+				 background: url(../img/PJ_right.png) no-repeat center;
+				background-position: 50% 50%;
+			}
+			
+			#phone_imglist ul .phone_list1{
+				transform: translate(0,0) scale(0.81);
+				z-index: 2;
+			}
+			#phone_imglist ul .phone_list2{
+				transform: translate(26vw,0);
+				z-index: 3;
+			}
+			#phone_imglist ul .phone_list3{
+				transform: translate(52vw,0) scale(0.81);
+				z-index: 2;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="phone_carousel">
+			<div id="phone_imglist">
+				<ul>
+					<li class="phone_list1"><a href="javascript:;"><img src="images/风光.jpg"/></a></li>
+					<li class="phone_list2"><a href="javascript:;"><img src="images/风光2.jpg"/></a></li>
+					<li class="phone_list3"><a href="javascript:;"><img src="images/风光3.jpg"/></a></li>
+				</ul>
+				<a href="javascript:;" class="banner_prev"></a>
+				<a href="javascript:;" class="banner_next"></a>
+			</div>
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		//获取线型按钮
+
+		var Index = 0;
+		var imgArray = ["phone_list1","phone_list2","phone_list3"];
+		var lilist = document.getElementById("phone_imglist").getElementsByTagName("li");
+
+		function nextPic(){
+			imgArray.unshift(imgArray[2]);
+			imgArray.pop();
+			for(var n = 0;n<lilist.length;n++){
+				lilist[n].setAttribute("class",imgArray[n]);
+			}
+			Index++;
+			
+			if(Index > 2){
+				
+				Index = 0;
+			}
+		}
+		
+		function proPic(){
+			imgArray.push(imgArray[0]);
+			imgArray.shift();
+			for(var n = 0;n<lilist.length;n++){
+				lilist[n].setAttribute("class",imgArray[n]);
+			}
+			Index--;
+			if(Index < 0){
+				Index = 2;
+			}
+		}
+		
+		//绑定事件
+		document.addEventListener("click",function(){
+			var el = event.target.parentNode.parentNode;
+			if(el.getAttribute("class") === "phone_list3"){
+				nextPic();
+			}else if(el.getAttribute("class") === "phone_list1"){
+				proPic();
+			}
+			
+		});
+		
+		timer = setInterval(nextPic,2000);
+		document.getElementById("phone_carousel").onmouseover = function(){
+			clearInterval(timer);
+		}
+		document.getElementById("phone_carousel").onmouseout = function(){
+			timer = setInterval(nextPic,2000);
+		}
+	</script>
+</html>
+<!--
+	作者：wild_boy
+	时间：2017-10-30
+	描述：逻辑思维
+	逻辑思维：设计图;
+	程序逻辑：
+		1：设置线型按钮图标的颜色
+			1.1：获取线型按钮
+			1.2：获取当前按钮索引值
+			1.3：给当前按钮设置颜色
+		2：定义向下翻页按钮
+			2.1：
+-->
+	
+
+<!--
+	作者：简介
+	时间：2017-10-31
+	描述：这个轮播图的方法很奇妙，可以弥补很多的漏洞，试着理解一下吧
+-->
+
+

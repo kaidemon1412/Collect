@@ -1,0 +1,97 @@
+<div class="content_mobile">
+					
+	<div class="htext">
+		<p>11大编程语言薪资排行榜，再不学Python就晚了！</p>
+		<span>杰克·斯帕洛啦啦啦啦</span>&nbsp;&nbsp;&nbsp;<span>黑珍珠号</span>&nbsp;&nbsp;&nbsp;<span>五周前</span><br>
+		<i class="iconfont icon-clock"></i>
+		<span>4253</span>
+		&nbsp;&nbsp;&nbsp;
+		<i class="iconfont icon-liulanliang"></i>
+		<span>453</span>
+		&nbsp;&nbsp;&nbsp;
+		<i class="iconfont icon-liulanliang"></i>
+		<span>45</span>
+	</div>
+	<div class="left"><img src="img/imgnew.png"/></div>
+</div>
+
+
+
+移动端兼容
+  .content .content_mobile .left{
+				   	height: 55px;
+				    border-radius: 50%;
+				    border: 1px solid #9db2ca;
+				}
+			
+			.content .content_mobile .left img{
+				height: 100%;
+			}
+				   
+			.content .content_mobile .htext{
+				   	flex: 6;
+				    text-align: left;
+				    font-size: 0.8rem;
+				    padding-left: 10px;
+				}
+			 
+			 .content .content_mobile .htext p{
+			 	margin-bottom: 0.5rem;
+			 	/*font-weight: bold;*/
+			 	font-size: 1.1rem;
+			 }
+			 
+			  
+
+
+
+
+
+
+
+css样式
+/*模块模板*/
+		.content .content_mobile{
+		   		border-bottom: 1px solid #6DE7EC;
+			    padding: 10px;
+			    display: flex;
+			    flex-direction: row;
+		   }
+		   
+		.content .content_mobile .left{
+		   	    height: 70px;
+			    flex: 0.1rem;
+			    border-radius: 50%;
+			    overflow: hidden;
+			    
+		}
+		   
+		.content .content_mobile .htext{
+			flex: 10;
+			text-align: left;
+		}
+		
+		.content .content_mobile .htext p{
+			font-size: 20px;
+			
+			margin-bottom: 10px;
+		}
+		
+		.content .content_mobile .htext span{
+			  color: #ccc;
+		 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

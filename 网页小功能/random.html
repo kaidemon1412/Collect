@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>随机数相加</title>
+		<link rel="stylesheet" type="text/css" href="css/echart.css"/>
+		<style type="text/css">
+			.echart_cont{
+			    width: 1500px;
+			    height: 2000px;
+			    margin: 50px auto;
+			}
+		</style>
+	</head>
+	<body>
+	    
+	    <div class="echart_cont" id="main"></div>
+	    
+	</body>
+	<script type="text/javascript" src="js/echarts.min.js">
+		
+	</script>
+	<script type="text/javascript">
+		var myChart = echarts.init(document.getElementById('main'));
+        
+        var data = [];
+		
+		function find28(){
+		    var a = Math.floor(Math.random()*10);
+		    var b = Math.floor(Math.random()*10);
+		    var c = Math.floor(Math.random()*10);
+		    var sun = a + b + c;
+//		    console.log(a+" + "+b+" + "+c+" = "+sun);
+		    if(sun >= 14){
+//		        console.log("大");
+		        if(sun%2 == 0){
+//		            console.log("大双");
+		        }else{
+//		            console.log("大单");
+		        }
+		    }
+		    if(sun <= 13){
+//              console.log("大");
+                if(sun%2 == 0){
+//                  console.log("小双");
+                }else{
+//                  console.log("小单");
+                }
+            }
+		    
+		    return sun;
+		    
+		}
+		
+		
+
+        var dateList = data.map(function (item) {
+//          return item[0];
+        });
+        var valueList = data.map(function (item) {
+//          return item[1];
+        });
+        
+        var option = {
+        
+        
+            title: [{
+                left: 'center',
+                text: '整体'
+            }, {
+                top: '55%',
+                left: 'center',
+                text: '单个'
+            }],
+            tooltip: {
+                trigger: 'axis'
+            },
+            xAxis: [{
+                data: dateList
+            }, {
+                data: dateList,
+                gridIndex: 1
+            }],
+            yAxis: [{
+                max: 27,
+                minInterval: 1,
+                interval: 1,
+                splitLine: {
+                    show: true
+                }
+            }, {
+                max: 27,
+                minInterval: 1,
+                interval: 1,
+                gridIndex: 1,
+                splitLine: {
+                    show: true
+                }
+            }],
+            grid: [{
+                bottom: '60%'
+            }, {
+                top: '60%'
+            }],
+
+        };
+        myChart.setOption(option);
+		
+		window.onload = function(){
+            var i = 0;
+            var list_index = [];
+            setInterval(function(){
+                let total = find28();
+                let tiem_numb = [i++ , total];
+                list_index.push(i);
+                data.push(tiem_numb);
+//              console.log(data.length);
+                
+                 myChart.setOption({
+                     
+                         xAxis: [{
+                            data: list_index,
+                        }, {
+                            data: list_index,
+                            gridIndex: 1
+                        }],
+                        
+                        series: [{
+                            type: 'line',
+                            showSymbol: true,
+                            data: data,
+                            markLine: {
+                                
+                                data: [{
+                                    yAxis: 10
+                                }, {
+                                    yAxis: 15
+                                }]
+                            }
+                        }, {
+                            type: 'line',
+                            showSymbol: true,
+                            data: data,
+                            xAxisIndex: 1,
+                            yAxisIndex: 1,
+                            markLine: {
+                                data: [{
+                                    yAxis: 10
+                                }, {
+                                    yAxis: 15
+                                }]
+                            }
+                        }]
+                    });
+            },3000)
+        }
+	</script>
+</html>

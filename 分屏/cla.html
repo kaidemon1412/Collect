@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>CSS背景动画</title>
+		<meta name="description" content="纯CSS背景图版渐变切换效果">
+		<meta name="keywords" content="CSS，背景动画">
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="renderer" content="webkit">
+		<!--<link rel="Shortcut icon" href="http://www.jq22.com/favicon.ico">-->
+		<!-- Bootstrap -->
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+		<!--<link href="//cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" media="screen">
+		<script src="//hm.baidu.com/hm.js?b3a3fc356d0af38b811a0ef8d50716b8"></script>-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/m.js" charset="gbk"></script>
+		<!--[if lt IE 9]>
+ 	<script src="/js/respond.min.js"></script> 
+	<script src="/js/html5shiv.min.js"></script>    
+<![endif]-->
+		<link href="css/my.css" rel="stylesheet" media="screen">
+		<link rel="stylesheet" type="text/css" href="css/codepf.css">
+		<link rel="stylesheet" href="css/docs.css">
+		<script>
+			var n = 1;
+			$(function() {
+				$('[data-toggle="tooltip"]').tooltip()
+				$('[data-toggle="popover"]').popover({
+					trigger: 'hover'
+				})
+				$('[data-spy="scroll"]').each(function() {
+					var $spy = $(this).scrollspy('refresh')
+				})
+			})
+		</script>
+		<!--<script src="http://cdn.bootcss.com/codemirror/5.23.0/codemirror.min.js"></script>-->
+		<script src="js/codjs.js"></script>
+		<script src="js/f.js"></script>
+		<style>
+			textarea {
+				color: #ffffff;
+			}
+			
+			.dmdown {
+				width: 100px;
+				height: 34px;
+				background-color: rgba(0, 0, 0, 0.6);
+				line-height: 34px;
+				text-align: center;
+				color: #fff;
+				font-size: 13px;
+				position: fixed;
+				top: 50px;
+				right: 0px;
+				z-index: 99;
+				cursor: pointer
+			}
+			
+			.dmdown:hover {
+				background-color: #1568ff;
+			}
+			
+			.modal {
+				font-family: "微软雅黑"
+			}
+			
+			.modal-body {
+				text-align: center;
+				font-size: 16px;
+				line-height: 30px
+			}
+			
+			.ktts,
+			.kttserr,
+			.ktts2 {
+				color: #00ca3c;
+				display: none
+			}
+			
+			.kttserr {
+				color: #ff0000
+			}
+			
+			.foot {
+				font-weight: normal
+			}
+			
+			.dfx-z {
+				display: none;
+				position: absolute;
+				top: 153px;
+				left: 40px;
+				background-color: #fff;
+				height: 35px;
+				width: 285px;
+				z-index: 999;
+				padding-left: 5px;
+				border-top-right-radius: 5px;
+				border-bottom-right-radius: 5px;
+			}
+			
+			.dfx:hover .dfx-z {
+				display: block;
+			}
+			
+			.CodeMirror-scrollbar-filler {
+				background: #2c2e2f;
+			}
+		</style>
+		<!--<script src="http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=421326"></script>
+		<link rel="stylesheet" href="http://bdimg.share.baidu.com/static/api/css/share_style0_24.css">-->
+	</head>
+
+	<body data-spy="scroll" data-target=".navbar-example" style="">
+
+		<div id="wrap" class="mm">
+
+			<div style="width:100%; height:100%">
+				<div id="editor_pane" class="editor_pane" style="width: 797px;">
+					<div id="tz" class="handler"></div>
+					<div class="dmdown"><i class="fa fa-cloud-download" aria-hidden="true"></i> 下载代码</div>
+					<div class="codebut">
+						<li id="b1" style="background-color: rgb(47, 47, 47); color: rgb(255, 255, 255);">html</li>
+						<li id="b2" style="background-color: rgb(48, 48, 48); color: rgb(72, 72, 72);">css</li>
+						<li id="b3" style="background-color: rgb(48, 48, 48); color: rgb(72, 72, 72);">js</li>
+						<li onclick="dmsc()" style="background-color:#793030; margin-top:10px" title="收藏"><i class="fa fa-heart-o"></i></li>
+						<li class="dfx" title="分享"><i class="fa fa-share-alt" aria-hidden="true"></i>
+							<div class="dfx-z">
+								<div class="bdsharebuttonbox bdshare-button-style0-24" data-tag="share_1" data-bd-bind="1516779874111">
+									<a class="ttqq" data-cmd="sqq" title="分享到QQ好友"></a>
+									<a class="ttwx" data-cmd="weixin" href="#" title="分享到微信"></a>
+									<a class="ttqzone" data-cmd="qzone" title="分享到QQ空间"></a>
+									<a class="ttsina" data-cmd="tsina" title="分享到新浪微博"></a>
+									<a class="ttbdhome" data-cmd="bdhome" title="分享到百度新首页"></a>
+									<a class="tttqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+									<a class="tthuaban" data-cmd="huaban" title="分享到花瓣"></a>
+									<a class="ttfbook" data-cmd="fbook" title="分享到Facebook"></a>
+									<a class="ttmore" data-cmd="more"></a>
+								</div>
+							</div>
+						</li>
+					</div>
+					<ul id="a0" style="height: 100%; display: block;">
+						<div class="codets">html</div>
+						<textarea id="testcode" name="testcode" style="display: none;">&lt;div id="CrossFade"&gt;
+    &lt;img src="//unsplash.it/1600/900?image=1043" alt="img" /&gt;
+    &lt;img src="//unsplash.it/1600/900?image=1039" alt="img" /&gt;
+    &lt;img src="//unsplash.it/1600/900?image=1017" alt="img" /&gt;
+    &lt;img src="//unsplash.it/1600/900?image=929" alt="img" /&gt;
+    &lt;div class="intro"&gt;
+        &lt;h1&gt;Lorem ipsum dolor sit amet&lt;/h1&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis impedit facilis nesciunt quam vitae voluptatibus ullam vero.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</textarea>
+						<div class="CodeMirror cm-s-ambiance">
+							<div class="CodeMirror-vscrollbar" cm-not-content="true" style="bottom: 14px;">
+								<div style="min-width: 1px; height: 0px;"></div>
+							</div>
+							<div class="CodeMirror-hscrollbar" cm-not-content="true" style="display: block; right: 0px; left: 32px;">
+								<div style="height: 100%; min-height: 1px; width: 1022px;"></div>
+							</div>
+							<div class="CodeMirror-scrollbar-filler" cm-not-content="true" style="height: 14px; width: 14px;"></div>
+							<div class="CodeMirror-gutter-filler" cm-not-content="true"></div>
+							<div class="CodeMirror-scroll" tabindex="-1">
+								<div class="CodeMirror-sizer" style="margin-left: 32px; margin-bottom: -14px; border-right-width: 16px; min-height: 198px; min-width: 1022px; padding-right: 0px; padding-bottom: 14px;">
+									<div style="position: relative; top: 0px;">
+										<div class="CodeMirror-lines">
+											<div style="position: relative; outline: none;">
+												<div class="CodeMirror-measure"></div>
+												<div class="CodeMirror-measure"></div>
+												<div style="position: relative; z-index: 1;"></div>
+												<div class="CodeMirror-cursors"></div>
+												<div class="CodeMirror-code" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" tabindex="0" style="">
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -32px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">id</span>=<span class="cm-string">"CrossFade"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -32px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">2</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">src</span>=<span class="cm-string">"//unsplash.it/1600/900?image=1043"</span> <span class="cm-attribute">alt</span>=<span class="cm-string">"img"</span> <span class="cm-tag cm-bracket">/&gt;</span></span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -32px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">3</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">src</span>=<span class="cm-string">"//unsplash.it/1600/900?image=1039"</span> <span class="cm-attribute">alt</span>=<span class="cm-string">"img"</span> <span class="cm-tag cm-bracket">/&gt;</span></span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -32px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">4</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">src</span>=<span class="cm-string">"//unsplash.it/1600/900?image=1017"</span> <span class="cm-attribute">alt</span>=<span class="cm-string">"img"</span> <span class="cm-tag cm-bracket">/&gt;</span></span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -32px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">5</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">img</span> <span class="cm-attribute">src</span>=<span class="cm-string">"//unsplash.it/1600/900?image=929"</span> <span class="cm-attribute">alt</span>=<span class="cm-string">"img"</span> <span class="cm-tag cm-bracket">/&gt;</span></span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -32px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">6</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">div</span> <span class="cm-attribute">class</span>=<span class="cm-string">"intro"</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -32px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">7</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">h1</span><span class="cm-tag cm-bracket">&gt;</span>Lorem ipsum dolor sit amet<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">h1</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -32px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">8</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">        <span class="cm-tag cm-bracket">&lt;</span><span class="cm-tag">p</span><span class="cm-tag cm-bracket">&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis impedit facilis nesciunt quam vitae voluptatibus ullam vero.<span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">p</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -32px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">9</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">    <span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -32px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">10</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag cm-bracket">&lt;/</span><span class="cm-tag">div</span><span class="cm-tag cm-bracket">&gt;</span></span></pre></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div style="position: absolute; height: 16px; width: 1px; border-bottom: 14px solid transparent; top: 198px;"></div>
+								<div class="CodeMirror-gutters" style="height: 228px;">
+									<div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 31px;"></div>
+								</div>
+							</div>
+						</div>
+						<script>
+							var htmleditor = CodeMirror.fromTextArea($('#testcode')[0], {
+								lineNumbers: true,
+								mode: 'text/html',
+								theme: 'monokai',
+								theme: 'ambiance'
+							});
+						</script>
+					</ul>
+
+					<ul id="a1" style="height: 100%; display: none;">
+						<div class="codets">css</div>
+						<textarea id="csscode" name="csscode" style="display: none;">* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+:root {
+  font-size: calc(0.5vw + 1vh + 0.5vmin);
+}
+body {
+  font: 100 50%/1.5 'Roboto', sans-serif;
+}
+.intro {
+  position: relative;
+  margin: 2em;
+  padding: 0.2em 0.6em;
+  cursor: pointer;
+  color: #fff;
+  font-size: 2em;
+  max-width: 26em;
+}
+.intro h1 {
+  margin-bottom: 0.5em;
+  line-height: 1;
+  font-weight: 100;
+}
+#CrossFade {
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+#CrossFade img {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  height: auto;
+  background: #000;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  opacity: 0;
+  -webkit-transform: scale(1.4) rotate(12deg);
+          transform: scale(1.4) rotate(12deg);
+  -webkit-animation: CrossFade 24s infinite;
+          animation: CrossFade 24s infinite;
+}
+#CrossFade img:nth-child(3) {
+  -webkit-animation-delay: 6s;
+          animation-delay: 6s;
+}
+#CrossFade img:nth-child(2) {
+  -webkit-animation-delay: 12s;
+          animation-delay: 12s;
+}
+#CrossFade img:nth-child(1) {
+  -webkit-animation-delay: 18s;
+          animation-delay: 18s;
+}
+/* 
+
+$duration = 12
+$slides = 4
+$step = $duration/$slides
+setDelayRevers($duration, $slides)
+  
+  for index in (2..$slides)
+    &amp;:nth-child({index -1}) 
+      animation-delay ($step*index)s
+
+#CrossFade
+  height 100vh
+  overflow hidden
+  position relative
+  
+  display flex
+  img
+    align-self center
+    position absolute
+    
+    min-width 100%
+    min-height 100%
+    height auto
+    
+    backface-visibility hidden
+    opacity 0
+  
+    transform scale(1.4) rotate(12deg)
+    animation CrossFade ($duration)s infinite 
+    setDelayRevers($duration, $slides)   
+@keyframes CrossFade
+  25%
+    opacity 1
+    transform scale(1) rotate(0)
+  40%
+    opacity 0
+    
+*/
+@-webkit-keyframes CrossFade {
+  25% {
+    opacity: 1;
+    -webkit-transform: scale(1) rotate(0);
+            transform: scale(1) rotate(0);
+  }
+  40% {
+    opacity: 0;
+  }
+}
+@keyframes CrossFade {
+  25% {
+    opacity: 1;
+    -webkit-transform: scale(1) rotate(0);
+            transform: scale(1) rotate(0);
+  }
+  40% {
+    opacity: 0;
+  }
+}
+</textarea>
+						<div class="CodeMirror cm-s-ambiance">
+							<div class="CodeMirror-vscrollbar" cm-not-content="true" style="display: block; bottom: 14px;">
+								<div style="min-width: 1px; height: 2364px;"></div>
+							</div>
+							<div class="CodeMirror-hscrollbar" cm-not-content="true" style="display: block; right: 14px; left: 33px;">
+								<div style="height: 100%; min-height: 1px; width: 329px;"></div>
+							</div>
+							<div class="CodeMirror-scrollbar-filler" cm-not-content="true" style="display: block; height: 14px; width: 14px;"></div>
+							<div class="CodeMirror-gutter-filler" cm-not-content="true"></div>
+							<div class="CodeMirror-scroll" tabindex="-1">
+								<div class="CodeMirror-sizer" style="margin-left: 33px; margin-bottom: -14px; border-right-width: 16px; min-height: 2364px; min-width: 329px; padding-right: 14px; padding-bottom: 14px;">
+									<div style="position: relative; top: 0px;">
+										<div class="CodeMirror-lines">
+											<div style="position: relative; outline: none;">
+												<div class="CodeMirror-measure">
+													<div class="CodeMirror-linenumber CodeMirror-gutter-elt">
+														<div>124</div>
+													</div>
+												</div>
+												<div class="CodeMirror-measure"><pre class="CodeMirror-line" role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-meta">-webkit-</span><span class="cm-property">transform</span>: <span class="cm-atom">scale</span>(<span class="cm-number">1.4</span>) <span class="cm-atom">rotate</span>(<span class="cm-number">12deg</span>);</span></pre></div>
+												<div style="position: relative; z-index: 1;"></div>
+												<div class="CodeMirror-cursors"></div>
+												<div class="CodeMirror-code" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" tabindex="0" style="">
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">1</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">* {</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">2</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-property">margin</span>: <span class="cm-number">0</span>;</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">3</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-property">padding</span>: <span class="cm-number">0</span>;</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">4</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-meta">-webkit-</span><span class="cm-property">box-sizing</span>: <span class="cm-atom">border-box</span>;</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">5</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">          <span class="cm-property">box-sizing</span>: <span class="cm-atom">border-box</span>;</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">6</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">7</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">:<span class="cm-variable-3">root</span> {</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">8</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-property">font-size</span>: <span class="cm-atom">calc</span>(<span class="cm-number">0.5vw</span> + <span class="cm-number">1vh</span> + <span class="cm-number">0.5vmin</span>);</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">9</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">10</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tag">body</span> {</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">11</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-property">font</span>: <span class="cm-number">100</span> <span class="cm-number">50%</span>/<span class="cm-number">1.5</span> <span class="cm-string">'Roboto'</span>, <span class="cm-atom">sans-serif</span>;</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">12</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">13</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-qualifier">.intro</span> {</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">14</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-property">position</span>: <span class="cm-atom">relative</span>;</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">15</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-property">margin</span>: <span class="cm-number">2em</span>;</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">16</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-property">padding</span>: <span class="cm-number">0.2em</span> <span class="cm-number">0.6em</span>;</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">17</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-property">cursor</span>: <span class="cm-atom">pointer</span>;</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">18</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-property">color</span>: <span class="cm-atom">#fff</span>;</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">19</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-property">font-size</span>: <span class="cm-number">2em</span>;</span></pre></div>
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -33px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 22px;">20</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  <span class="cm-property">max-width</span>: <span class="cm-number">26em</span>;</span></pre></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div style="position: absolute; height: 16px; width: 1px; border-bottom: 14px solid transparent; top: 2364px;"></div>
+								<div class="CodeMirror-gutters" style="height: 2394px;">
+									<div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 32px;"></div>
+								</div>
+							</div>
+						</div>
+						<script>
+							var csseditor = CodeMirror.fromTextArea($('#csscode')[0], {
+								lineNumbers: true,
+								mode: 'css',
+								theme: 'monokai',
+								theme: 'ambiance'
+							});
+						</script>
+					</ul>
+
+					<ul id="a2" style="height: 100%; display: none;">
+						<div class="codets">JavaScript</div>
+						<textarea id="jscode" name="jscode" style="display: none;"></textarea>
+						<div class="CodeMirror cm-s-ambiance">
+							<div class="CodeMirror-vscrollbar" cm-not-content="true">
+								<div style="min-width: 1px; height: 0px;"></div>
+							</div>
+							<div class="CodeMirror-hscrollbar" cm-not-content="true">
+								<div style="height: 100%; min-height: 1px; width: 0px;"></div>
+							</div>
+							<div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div>
+							<div class="CodeMirror-gutter-filler" cm-not-content="true"></div>
+							<div class="CodeMirror-scroll" tabindex="-1">
+								<div class="CodeMirror-sizer" style="margin-left: 32px; margin-bottom: -14px; border-right-width: 16px; min-height: 27px; min-width: 7px; padding-right: 0px; padding-bottom: 0px;">
+									<div style="position: relative; top: 0px;">
+										<div class="CodeMirror-lines">
+											<div style="position: relative; outline: none;">
+												<div class="CodeMirror-measure"><span><span>&#8203;</span>x</span>
+												</div>
+												<div class="CodeMirror-measure"></div>
+												<div style="position: relative; z-index: 1;"></div>
+												<div class="CodeMirror-cursors"></div>
+												<div class="CodeMirror-code" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" tabindex="0">
+													<div style="position: relative;">
+														<div class="CodeMirror-gutter-wrapper" contenteditable="false" style="left: -32px;">
+															<div class="CodeMirror-linenumber CodeMirror-gutter-elt" style="left: 0px; width: 21px;">1</div>
+														</div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="">&#8203;</span></span></pre></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div style="position: absolute; height: 16px; width: 1px; border-bottom: 0px solid transparent; top: 27px;"></div>
+								<div class="CodeMirror-gutters" style="height: 43px;">
+									<div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 31px;"></div>
+								</div>
+							</div>
+						</div>
+						<script>
+							var jseditor = CodeMirror.fromTextArea($('#jscode')[0], {
+								lineNumbers: true,
+								mode: 'javascript',
+								theme: 'monokai',
+								theme: 'ambiance'
+							});
+						</script>
+					</ul>
+				</div>
+				<div class="output">
+					<div class="zz" style="display: none;"></div>
+					
+
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="dmts" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title" id="myModalLabel"><i class="fa fa-code"></i> 在线代码下载提示</h4>
+					</div>
+					<div class="modal-body">
+						<i class="fa fa-lightbulb-o"></i> 开通在线代码永久免费下载，需支付20jQ币<br>
+						<b>开通后，在线代码模块中所有代码可终身免费下！</b>
+						<p class="ktts"><b><i class="fa fa-check-circle" aria-hidden="true"></i> 您已开通在线代码永久免费下载,关闭提示框后，点下载代码可直接下载！<b></b></b>
+						</p><b><b>
+          <p class="ktts2"><b><i class="fa fa-check-circle" aria-hidden="true"></i> 您已经开通过在线代码永久免费下载<b></b></b>
+						</p><b><b>
+           <p class="kttserr"><b><i class="fa fa-check-circle" aria-hidden="true"></i> 对不起，您的jQ币不足！可通过发布资源 或<a href="http://www.jq22.com/zxzf.aspx" target="_blank">直接充值获取jQ币</a><b></b></b>
+						</p><b><b>
+      </b></b>
+						</b>
+						</b>
+						</b>
+						</b>
+					</div><b><b><b>
+      <div id="ktbut" class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" id="kt" class="btn btn-primary">开通下载</button>
+      </div>
+    </b></b>
+					</b>
+				</div><b><b><b>
+  </b></b>
+				</b>
+			</div><b><b><b>
+</b></b>
+			</b>
+		</div><b><b><b>
+
+
+
+<textarea id="head" style="display: none">&lt;!doctype html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset="utf-8"&gt;
+&lt;title&gt;CSS背景动画-jq22.com&lt;/title&gt;
+&lt;script src="http://www.jq22.com/jquery/jquery-1.10.2.js"&gt;&lt;/script&gt;
+&lt;style&gt;
+</textarea>
+<textarea id="jw">&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+</textarea>
+<textarea id="jw1" style="display: none">&lt;script&gt;
+</textarea>
+<textarea id="jw2" style="display: none">&lt;/script&gt;
+</textarea>
+<textarea id="food" style="display: none">&lt;/body&gt;
+&lt;/html&gt;
+</textarea>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var hh = "\n\n";
+        var hh1 = "\n";
+        $("\x2e\x64\x6d\x64\x6f\x77\x6e")["\x63\x6c\x69\x63\x6b"](function () { var hiwoRzQ1 = $("\x23\x68\x65\x61\x64")["\x76\x61\x6c"]() + csseditor["\x67\x65\x74\x56\x61\x6c\x75\x65"]() + $("\x23\x6a\x77")["\x76\x61\x6c"]() + htmleditor["\x67\x65\x74\x56\x61\x6c\x75\x65"]() + hh + $("\x23\x6a\x77\x31")["\x76\x61\x6c"]() + jseditor["\x67\x65\x74\x56\x61\x6c\x75\x65"]() + $("\x23\x6a\x77\x32")["\x76\x61\x6c"]() + hh1 + $("\x23\x66\x6f\x6f\x64")["\x76\x61\x6c"](); var SefNh2 = new Blob([hiwoRzQ1], { type: "\x74\x65\x78\x74\x2f\x70\x6c\x61\x69\x6e\x3b\x63\x68\x61\x72\x73\x65\x74\x3d\x75\x74\x66\x2d\x38" }); $["\x70\x6f\x73\x74"]("\x63\x44\x6f\x77\x6e\x2e\x61\x73\x70\x78", function (QB$Vuyn3) { if (QB$Vuyn3 == "\x79") { var NCCEtTWHl4 = window["\x4d\x61\x74\x68"]["\x72\x61\x6e\x64\x6f\x6d"](); NCCEtTWHl4 = window["\x4d\x61\x74\x68"]["\x63\x65\x69\x6c"](NCCEtTWHl4 * 10000); saveAs(SefNh2, "\x6a\x71\x32\x32" + NCCEtTWHl4 + "\x2e\x68\x74\x6d\x6c"); } else if (QB$Vuyn3 == "\x6e\x6e") { $('\x23\x6d\x79\x4d\x6f\x64\x61\x6c')["\x6d\x6f\x64\x61\x6c"]('\x73\x68\x6f\x77'); } else { $('\x23\x64\x6d\x74\x73')["\x6d\x6f\x64\x61\x6c"]('\x73\x68\x6f\x77'); } }); });
+        $("#kt").click(function () {
+            $.post("cDownzf.aspx", function (data) {
+                if (data == "y") {
+                   $(".ktts").fadeIn();
+                   $("#ktbut").fadeOut();
+                }
+                else if (data == "yy") {
+                    $(".ktts2").fadeIn();
+                }
+                else {
+                    $(".kttserr").fadeIn();
+                }
+            });
+        });
+    });
+    
+	jqbb = "http://www.jq22.com/jquery/jquery-1.10.2.js";
+	function Run() {
+	    var codehtml = htmleditor.getValue();
+	    var codecss = '<style>' + csseditor.getValue() + '</style>';
+	    var codejs = '<scr' + 'ipt>' + jseditor.getValue() + '</scr' + 'ipt>';
+	    var codebb = '<scr' + 'ipt src='+jqbb+'>' + '</scr' + 'ipt>';
+	    var oLdvu_e1 = window["\x64\x6f\x63\x75\x6d\x65\x6e\x74"]["\x67\x65\x74\x45\x6c\x65\x6d\x65\x6e\x74\x42\x79\x49\x64"]('\x69\x66')["\x63\x6f\x6e\x74\x65\x6e\x74\x57\x69\x6e\x64\x6f\x77"]["\x64\x6f\x63\x75\x6d\x65\x6e\x74"]; oLdvu_e1["\x6f\x70\x65\x6e"](); oLdvu_e1["\x77\x72\x69\x74\x65"](codecss + codebb + codehtml + codejs); oLdvu_e1["\x63\x6c\x6f\x73\x65"]();
+	} Run();
+
+	var NocOLUAPh1 = 1; var bLv2; $("\x74\x65\x78\x74\x61\x72\x65\x61")["\x62\x69\x6e\x64"]("\x69\x6e\x70\x75\x74 \x70\x72\x6f\x70\x65\x72\x74\x79\x63\x68\x61\x6e\x67\x65", function () { NocOLUAPh1 = 1; clearInterval(bLv2); bLv2 = setInterval(Codeshow, 1000); }); function Codeshow() { NocOLUAPh1++; if (NocOLUAPh1 > 2) { clearInterval(bLv2); NocOLUAPh1 = 1; Run(); } }
+
+    var a = "1470";
+	function dmsc() {
+	    var yz = $.ajax({
+	        type: 'post',
+	        url: 'shou-daima.aspx',
+	        data: { wz: a },
+	        cache: false,
+	        dataType: 'text',
+	        success: function (data) {
+	            if (data == "m") {
+	                $("#myModal").modal();
+	            } else {
+	                window.location.href = window.location;
+	                lytjbut.disabled = false;
+	            }
+	        },
+	        error: function () { }
+	    });
+	}
+</script>
+
+
+
+<script type="text/javascript">
+		var j=3;
+		var bb1=0;
+		var arr=['0','0','0'];	
+		$(".codebut li").click(function(){	
+		 	var djz =$(this).index();						
+			if(arr[djz]=='0'){
+				if(j>1)
+				{
+					j=j-1;
+					if(j==2){
+					    $(".editor_pane ul").css("height", "50%");
+					}else if(j==3){
+					    $(".editor_pane ul").css("height", "33.333%");
+					}else if(j==1){
+						$(".editor_pane ul").css("height","100%");
+					}					
+					$("#a"+$(this).index()).css("display","none");
+					$(this).css("background-color", "#303030");
+					$(this).css("color", "#484848");
+					arr[djz]='1';
+				}
+			}
+			else if(arr[djz]=='1') 
+			{
+				j=j+1;
+				if(j==2){
+					$(".editor_pane ul").css("height","50%");	
+				}else if(j==3){
+					$(".editor_pane ul").css("height","33%");	
+				}else if(j==1){
+					$(".editor_pane ul").css("height","100%");
+				}
+				$("#a"+$(this).index()).css("display","block");
+				$(this).css("background-color", "#2f2f2f");
+				$(this).css("color", "#fff");
+				arr[djz] = '0';	
+			}
+			
+		});
+        $(function ()
+        {
+            bindResize(document.getElementById('editor_pane'));
+        });
+        function bindResize(el)
+        {
+            var els = el.style,
+            x = y = 0;
+            $("#tz").mousedown(function (e)
+            {
+				$(".zz").css("display","block");
+                x = e.clientX - el.offsetWidth,
+                el.setCapture ? (
+                    el.setCapture(),
+                    el.onmousemove = function (ev)
+                    {
+                        mouseMove(ev || event);
+                    },
+                    el.onmouseup = mouseUp
+                ) : (
+                    $(document).bind("mousemove", mouseMove).bind("mouseup", mouseUp)
+                );
+                e.preventDefault();
+            });
+			$("#tz").mouseup(function(){
+			  $(".zz").css("display","none");
+			});
+            function mouseMove(e)
+            {				
+				$(".editor_pane").width(e.clientX - x + 'px');
+											     
+            }
+            function mouseUp()
+            {
+                el.releaseCapture ? (
+                    el.releaseCapture(),
+                    el.onmousemove = el.onmouseup = null
+                ) : (
+                    $(document).unbind("mousemove", mouseMove).unbind("mouseup", mouseUp)
+                );
+            }
+        }		
+    </script>
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?b3a3fc356d0af38b811a0ef8d50716b8";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+ 	
+<!--end底部-->
+<script>
+	window._bd_share_config = {
+		common : {
+			bdText : 'CSS背景动画',	
+		},
+		share : [{
+			"bdSize" : 24
+		}],				
+	}
+	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+
+
+
+
+</b></b>
+		</b>
+	</body>
+
+</html>

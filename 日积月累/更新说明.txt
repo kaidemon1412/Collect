@@ -1,0 +1,10 @@
+处理swiper高度自适应的方法
+.swiper-slide{
+      	background-color: #ecf0f1;
+        padding-bottom: 10rem;
+        height: 80vh;
+}
+.swiper-slide-active{
+       	height: auto;
+}
+       	

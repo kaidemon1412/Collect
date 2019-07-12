@@ -1,0 +1,37 @@
+$color:red; //全局变量
+$thewidth:100px; //全局变量
+$thebg-color:#ccc; //全局变量
+
+.this_is_fristbox{
+    
+    color: $color;
+    width: $thewidth*2;
+    background-color: $thebg-color;
+    height: $thewidth*5;
+    
+    $color:yellow; //变量可以重复命名，但是局部的有作用域，并且只作用于他之后的区域
+    
+    .inchiaodbox{
+        font-size: $thewidth/10;
+        background-color: $color;
+        color: $thebg-color;
+        height: $thewidth*3;
+        width: $thewidth;
+    }
+    
+    &:after,&:before{
+        content: "";
+        display: table;
+    }
+    &:before{
+        height: 0;
+        clear: both;
+    }
+    
+    body & {
+        background-color: $color;
+    }
+}
+
+
+

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>历史上的今天，今天果然有来头</title>
+		<script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
+		<style type="text/css">
+			.text_box{
+				width: 1200px;
+				margin: 10px auto; 
+				border-left: 1px solid #ccc;
+				border-right: 1px solid #ccc;
+				
+			}
+			.wb,.xq{
+				width: 100%;
+			}
+			.wb .noimg{
+				text-indent: 2em;
+				width: 100%;
+			}
+			
+			.xq:after{
+				content: "\0020";
+				display: block;
+				height: 0;
+				clear: both;
+			}
+			
+			.xq .content{
+				text-align: center;
+				width: 50%;
+				float: left;
+			}
+			.xq .content img{
+				margin: 0 auto;
+				width: 80%;
+				height: 200px;
+			}
+			
+			.text_box .date{
+				width: 180px;
+				position: absolute;
+				right: 0;
+				top: 0;
+				border: 1px solid #ccc;
+				border-right: none;
+				background-color: #fff;
+				
+			}
+			
+			.text_box .date table{
+				width: 180px;
+				height: 160px;
+				
+				
+			}
+			.text_box .date table tr td{
+				cursor: pointer;
+				text-align: center;
+			}
+			.text_box .date .title{
+				display: flex;
+				flex-direction: row;
+				text-align: center;
+			}
+			.text_box .date .title .pvre{
+				flex: 1;
+				cursor: pointer;
+			}
+			.text_box .date .title .text{
+				flex: 3;
+				
+			}
+			.text_box .date .title .next{
+				flex: 1;
+				cursor: pointer;
+			}
+			
+			.on{
+				background-color: #0066FF;
+				color: #fff;
+				border-radius: 3px;
+			}
+			
+		</style>
+		<script type="text/javascript" src="js/move.js" ></script>
+		<script type="text/javascript">
+			onload = onscroll = onresize  = function(){
+				
+				var oBox = document.getElementsByClassName("date")[0];
+				//获取浏览器内容高度
+				var clienHeight = document.documentElement.clientHeight
+				|| document.body.clientHeight;
+				//广告栏的高度
+				var boxHeight = oBox.clientHeight;
+				//滚动条距离顶部的高度
+				var scrollTop = document.documentElement.scrollTop ||
+				document.body.scrollTop;
+				
+				//目标位置
+				var iTarget = (clienHeight - boxHeight) / 2 + scrollTop;
+				
+				//开始运动
+				startMove(oBox,{top:parseInt(iTarget)});
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div class="text_box">
+			<div class="date">
+				<div class="title"><span class="pvre">&#9668;</span><span class="text">1</span><span class="next">&#9658;</span></div>
+				<hr>
+				<table border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td>01</td>
+						<td>02</td>
+						<td>03</td>
+						<td>04</td>
+						<td>05</td>
+						<td>06</td>
+					</tr>
+					<tr>
+						<td>07</td>
+						<td>08</td>
+						<td>09</td>
+						<td>10</td>
+						<td>11</td>
+						<td>12</td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>14</td>
+						<td>15</td>
+						<td>16</td>
+						<td>17</td>
+						<td>18</td>
+					</tr>
+					<tr>
+						<td>19</td>
+						<td>20</td>
+						<td>21</td>
+						<td>22</td>
+						<td>23</td>
+						<td>24</td>
+					</tr>
+					<tr>
+						<td>25</td>
+						<td>26</td>
+						<td>27</td>
+						<td>28</td>
+						<td>29</td>
+						<td>30</td>
+					</tr>
+					<tr>
+						<td>31</td>
+					</tr>
+				</table>
+			</div>
+			<div class="xq">
+				
+			</div><hr>
+			<div class="wb">
+				
+			</div>
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		$(function(){
+			//定义请求的哪天数据
+			var ondate = '';
+			
+			//jq的ajax
+			$.ajax({
+			    url:'http://route.showapi.com/119-42',//comm/test1.php
+			    type:'POST', //GET
+			    async:true,    //或false,是否异步
+			    data:{
+			    	//下面两条为必传字段
+			        "showapi_appid": 45428, //这里需要改成自己的appid
+			        "showapi_sign": "107f5378a01c4b71a4b3fc090f8eeb62",  //这里需要改成自己的应用的密钥secret，
+					"date": ondate //这个格式是字符串，如果为空默认今天
+			    },
+			    timeout:5000,    //超时时间
+			    dataType:'jsonp',    //返回的数据格式：json/xml/html/script/jsonp/text
+			    jsonp: 'jsonpcallback', //这个方法名很重要，不能改变
+			    beforeSend:function(xhr){
+			        console.log(xhr)
+			        console.log('发送前')
+			    },
+			    success:function(data,textStatus,jqXHR){
+			    	
+			    	console.log(data);
+			    	var thisdata = data.showapi_res_body.list;
+			    	console.log(thisdata);
+			        for(var i = 0 ; i <= thisdata.length ; i++){
+//			        	console.log(thisdata[i]);
+			        	if(thisdata[i].img === undefined){
+			        		$(".wb").append("<div class='noimg'><h3>"+thisdata[i].title+"</h3><p>"+thisdata[i].year+"年"+thisdata[i].month+"月"+thisdata[i].day+"日</p></div><hr>");
+			        	}else{
+			        		$(".xq").append("<div class='content'><img src= "+thisdata[i].img+"><h3>"+thisdata[i].title+"</h3><p>"+thisdata[i].year+"年"+thisdata[i].month+"月"+thisdata[i].day+"日</p></div>");
+			        	}
+			        	
+			        }			       
+
+			        console.log(textStatus)
+			        console.log(jqXHR)
+			    },
+			    error:function(xhr,textStatus){
+			        console.log('错误')
+			        console.log(xhr)
+			        console.log(textStatus)
+			    },
+			    complete:function(){
+			        console.log('结束')
+			    }
+			});
+			
+			$(".pvre").click(function(){
+				if(parseInt($(".text").html()) == "01"){
+					$(this).next(".text").html("1");
+				}else{
+					$(this).next(".text").html(parseInt($(".text").html())-1);
+					
+				}
+				
+			});
+			
+			$(".next").click(function(){
+				if(parseInt($(".text").html()) == "12"){
+					$(this).prev(".text").html("12");
+				}else{
+					console.log($(".text").html());
+					console.log(parseInt($(".text").html())+1);				
+					$(this).prev(".text").html(parseInt($(".text").html())+1);
+				}
+				
+			});
+			
+			$(".date table tr td").on("click",function(){
+				console.log($(this).html());
+				console.log(typeof($(this).html()));
+				$(this).addClass("on").parent("tr").siblings().find("td").removeClass("on");
+				$(this).siblings().removeClass("on");
+				
+				if(parseInt($(".text").html()) < 10){
+					ondate = "0" + $(".text").html()+$(this).html();
+				}else{
+					ondate = $(".text").html()+$(this).html();
+				}
+				
+				$.ajax({
+				    url:'http://route.showapi.com/119-42',//comm/test1.php
+				    type:'POST', //GET
+				    async:true,    //或false,是否异步
+				    data:{
+				    	//下面两条为必传字段
+				        "showapi_appid": 45428, //这里需要改成自己的appid
+				        "showapi_sign": "107f5378a01c4b71a4b3fc090f8eeb62",  //这里需要改成自己的应用的密钥secret，
+						"date": ondate //这个格式是字符串
+				    },
+				    timeout:5000,    //超时时间
+				    dataType:'jsonp',    //返回的数据格式：json/xml/html/script/jsonp/text
+				    jsonp: 'jsonpcallback', //这个方法名很重要，不能改变
+				    beforeSend:function(xhr){
+				        console.log(xhr)
+				        console.log('发送前')
+				    },
+				    success:function(data,textStatus,jqXHR){
+				    	$(".wb").html("");$(".xq").html("");
+				    	console.log(data);
+				    	var thisdata = data.showapi_res_body.list;
+				    	console.log(thisdata);
+				        for(var i = 0 ; i <= thisdata.length ; i++){
+	//			        	console.log(thisdata[i]);
+				        	if(!thisdata[i].img){
+				        		$(".wb").append("<div class='noimg'><h3>"+thisdata[i].title+"</h3><p>"+thisdata[i].year+"年"+thisdata[i].month+"月"+thisdata[i].day+"日</p></div><hr>");
+				        	}else{
+				        		$(".xq").append("<div class='content'><img src= "+thisdata[i].img+"><h3>"+thisdata[i].title+"</h3><p>"+thisdata[i].year+"年"+thisdata[i].month+"月"+thisdata[i].day+"日</p></div>");
+				        	}
+				        	
+				        }			       
+	
+				        console.log(textStatus)
+				        console.log(jqXHR)
+				    },
+				    error:function(xhr,textStatus){
+				        console.log('错误')
+				        console.log(xhr)
+				        console.log(textStatus)
+				    },
+				    complete:function(){
+				        console.log('结束')
+				    }
+				});
+				
+				
+			});
+			
+			
+		});
+	
+	</script>
+</html>

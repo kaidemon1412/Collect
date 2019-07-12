@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后代子代选择器</title>
+    <style>
+        div{
+            background-color: #ffffff;
+        }
+        /*  主DIV样式 */
+        .mainDiv{
+            height: 200px;
+            width: 200px;
+            background-color: #ffff00;
+            padding: 20px;;
+        }
+         .mainDiv > div{
+         	color: white;
+            background-color: green;
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="mainDiv">
+        我是主DIV
+        <div>
+            儿子
+            <div>
+                孙子
+            </div>
+        </div>
+        <div>
+        	儿子
+        </div>
+    </div>
+</body>
+</html>

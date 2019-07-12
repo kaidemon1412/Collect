@@ -1,0 +1,37 @@
+$thiswidth:1200px;
+$theauto:0 auto;
+$theboder:1px solid #000;
+$thiscenter:center;
+
+.this_word_text{
+    width: $thiswidth;
+    margin: $theauto;
+    border: $theboder;
+    text-align: $thiscenter;
+    .text_content{
+        width: $thiswidth/2;
+        float: left;
+        h3{
+            line-height: 3em;
+        }
+        img{
+            width: $thiswidth/3;
+            margin: $theauto;
+            display: block;
+        }
+        a{
+            text-decoration: none;
+            color: red;
+            font-weight: bold;
+        }
+        
+    }
+    
+    &:after{
+        content: "\0020";
+        display: block;
+        height: 0;
+        clear: both;
+    }
+    
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/guigushi.css"/>
+		<script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
+	</head>
+	<body>
+		<div class="this_word_text">
+			<div class="pages">
+				<span>1</span><span>2</span><span>3</span>
+				<span>4</span><span>5</span><span>6</span>
+				<span>7</span><span>8</span><span>9</span>
+				<span>10</span><span>11</span><span>12</span>
+			</div>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		
+		$(function(){
+			
+			var thispage = 
+			
+			//jq的ajax
+			$.ajax({
+			    url:'http://route.showapi.com/955-1',//comm/test1.php
+			    type:'POST', //GET
+			    async:true,    //或false,是否异步
+			    data:{
+			    	//下面两条为必传字段
+			        "showapi_appid": 45428, //这里需要改成自己的appid
+			        "showapi_sign": "107f5378a01c4b71a4b3fc090f8eeb62",  //这里需要改成自己的应用的密钥secret，
+					"type": "xy" ,
+					"page": "1"
+			    },
+			    timeout:5000,    //超时时间
+			    dataType:'jsonp',    //返回的数据格式：json/xml/html/script/jsonp/text
+			    jsonp: 'jsonpcallback', //这个方法名很重要，不能改变
+			    beforeSend:function(xhr){
+			        console.log(xhr)
+			        console.log('发送前')
+			    },
+			    success:function(data,textStatus,jqXHR){
+			    	
+			    	console.log(data.showapi_res_body.pagebean.contentlist);
+			    	var thistextlist = data.showapi_res_body.pagebean.contentlist;
+			    	
+			    	for(var i = 0 ; i < thistextlist.length ; i++){
+			    		console.log(thistextlist[i].title);
+			    		$(".this_word_text").append('<div class="this_moble"><h3>'+thistextlist[i].title+'</h3><p>'+thistextlist[i].desc+'</p><a href='+thistextlist[i].link+'>原文链接</a></div>')
+			    	}
+			    	
+			        console.log(textStatus)
+			        console.log(jqXHR)
+			    },
+			    error:function(xhr,textStatus){
+			        console.log('错误')
+			        console.log(xhr)
+			        console.log(textStatus)
+			    },
+			    complete:function(){
+			        console.log('结束')
+			    }
+			});
+		});
+	
+	</script>
+</html>

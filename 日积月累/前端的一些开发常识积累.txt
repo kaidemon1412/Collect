@@ -1,0 +1,225 @@
+前端难点速记——我的总结。下面是样式的积累
+:after{
+	content: "\0020";
+	display: block;
+	height: 0;
+	clear: both;
+}
+
+清除button的默认样式  {
+	border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+自定义滚动条样式{
+	face-color：滑块颜色 
+	hightlight-color：高亮颜色 
+	3dlight-color：三维光线颜色 
+	darkshadow-color：暗影颜色 
+	shadow-color：阴影颜色 
+	arrow-color：箭头颜色 
+	track-color：滑道颜色 
+	base-color：DIV滚动条的主要颜色，其中包含滚动按钮和滚动滑块 
+	::-webkit-scrollbar        滚动条整体部分，其中的属性有width,height,background,border（就和一个块级元素一样）等。
+	::-webkit-scrollbar-button      滚动条两端的按钮。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。
+	::-webkit-scrollbar-track         外层轨道。可以用display:none让其不显示，也可以添加背景图片，颜色改变显示效果。
+	::-webkit-scrollbar-track-piece        内层轨道，滚动条中间部分（除去）。
+	::-webkit-scrollbar-thumb               滚动条里面可以拖动的那部分
+	::-webkit-scrollbar-corner               边角
+	::-webkit-resizer                       定义右下角拖动块的样式
+	
+	滚动条两端的箭头自定义（背景图片）
+	::-webkit-scrollbar-button:start{background:url(shangjiantou.png) no-repet;}
+	::-webkit-scrollbar-button:end{background:url(xiajiantou.png) no-repet;}
+}
+
+	
+段落文字的溢出控制，分两种情况
+	(1)、强制一行显示，溢出显示省略号，css控制是这个样子的
+		{
+			white-space: nowrap;  
+			overflow: hidden;  
+			text-overflow: ellipsis;  
+		}
+	(2)、强制多行显示(两行以上等情况)
+		{
+			text-overflow: -o-ellipsis-lastline;  
+			overflow: hidden;  
+			text-overflow: ellipsis;  
+			display: -webkit-box;  
+			-webkit-line-clamp: 2;  //控制这个数值就可以强制任何行数的显示
+			-webkit-box-orient: vertical;  
+		}
+
+
+css3新增加的多列布局其样式和属性控制
+	column-count：数值(正整数);//定义多列布局的列数
+	column-width：列宽（auto浏览器自动分配/长度值px、em、百分比等）;//定义每列的宽度
+	column-gap: 列间距（normal浏览器默认长度值/长度值、px、em、百分比）;//定义每列的间隔
+	column-rule：列边框（跟边框的样式一样）;//定义列之间的边框样式
+	column-span：准确的说是标题跨列（两个值none/all）;//标题的跨列
+
+弹性盒布局
+	新版本 display：flex;
+	
+	
+文本框字体样式（颜色），控制修改自定义 placeholder="hello word" 的默认属性
+&::-webkit-input-placeholder {/*Chrome/Safari*/
+    color:rgb(111,192,255);
+    font-size: (30/7.5)+vw;
+}
+&::-moz-placeholder {/*Firefox*/
+    color:rgb(111,192,255);
+    font-size: (30/7.5)+vw;
+}
+&::-ms-input-placeholder {/*IE*/
+    color:rgb(111,192,255);
+    font-size: (30/7.5)+vw;
+} 	
+
+弄清iphone的文本框bug是为什么出现焦点太粗的问题,首先父元素或者本身不能设置line-height,
+如果还是焦点太大,那就是设置text-indent;
+
+关于iphone键盘固定定位的光标不对其的处理办法；如果用的是bootstrap模态框，就会和苹果手机的flex定位有冲突。(这个属于新的bug，ios11才有的，暂时的解决办法是将固定定位改成绝对定位，目前还在更新中。。。。)
+
+
+关于移动端的开发指南：首先在头部引入下面的js代码，
+<script type="text/javascript">
+	//designWidth:设计稿的实际宽度值，需要根据实际设置
+	//maxWidth:制作稿的最大宽度值，需要根据实际设置
+	//这段js的最后面有两个参数记得要设置，一个为设计稿实际宽度，一个为制作稿最大宽度，例如设计稿为750，最大宽度为750，则为(750,750);
+	(function(designWidth, maxWidth) {
+		var doc = document,
+		win = window,
+		docEl = doc.documentElement,
+		remStyle = document.createElement("style"),
+		tid;
+	
+		function refreshRem() {
+			var width = docEl.getBoundingClientRect().width;
+			maxWidth = maxWidth || 540;
+			width>maxWidth && (width=maxWidth);
+			//这里的20倍是实际设计稿的倍数，即设计稿的20px==1rem；如果是100则是100px == 1rem
+			var rem = width * 20 / designWidth;   
+			remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+		}
+	
+		if (docEl.firstElementChild) {
+			docEl.firstElementChild.appendChild(remStyle);
+		} else {
+			var wrap = doc.createElement("div");
+			wrap.appendChild(remStyle);
+			doc.write(wrap.innerHTML);
+			wrap = null;
+		}
+		//要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+		refreshRem();
+	
+		win.addEventListener("resize", function() {
+			clearTimeout(tid); //防止执行两次
+			tid = setTimeout(refreshRem, 300);
+		}, false);
+	
+		win.addEventListener("pageshow", function(e) {
+			if (e.persisted) { // 浏览器后退的时候重新计算
+				clearTimeout(tid);
+				tid = setTimeout(refreshRem, 300);
+			}
+		}, false);
+	
+		if (doc.readyState === "complete") {
+			doc.html.style.fontSize = "16px";
+		} else {
+			doc.addEventListener("DOMContentLoaded", function(e) {
+				doc.html.style.fontSize = "16px";
+			}, false);
+		}
+	})(750, 750);
+</script>
+
+然后就是goole浏览器的最小识别字体大小为12px;需要打开goole的字体设置将最小字体设置为10px;(主要是为了方便计算尺寸)设置路径为：chrome://settings/fonts
+上面这段js代码是检测屏幕像素来定义html字体大小的,这样移动端的开发用的rem单位就容易计算一点
+
+关于移动端的开发后面都是用vw，移动端的屏幕宽度结合设计稿进行计算单位，100vw = 750px(这是实际像素)，375是pt
+
+table栏切换的效果方法不止一种，
+	1、js有控制显示隐藏的，
+	2、有锚点链接的（这种比较常用），
+	3、有jq load加载的，
+	4、有Ajax渲染的
+根据情况不同而选择不同的方式处理。
+
+
+新的一年，新的起点，努力奋斗，拿出激情，我~，没有极限，哈哈（我不一样，生活的意义是不断地奋斗下去，其实就是开心的生活，有规律有节奏的生活）
+	让自己和家人安心，时间飞逝，珍惜时间，一刻也放松不得，专注力还是很重要的。唤醒内心的青春吧，我还有用不尽的激情~~~~
+
+
+
+背台词时间（搞笑时间到，什么都略懂一点生活会多彩一些），
+	小品《主角与配角》，表演者陈佩斯、朱时茂。
+	
+
+下面是js逻辑的积累
+
+今天实现数据的传输；数据的额处理；
+
+主要用到jq的一些字符串的操作；解析url
+
+获取浏览器地址栏中的url字符串
+var urlStr = window.location.href;
+
+字符串的分割 str.split();
+var urlData = urlStr.split("?")[1];
+
+取出字符串中的某段字符，一般有两种方法；首先要获得字符串从哪里开始切割，一般是动态获取某个符号的下标。
+
+第一种方法就是
+
+1、获取："?"所在位置，就是其下标
+var strIndex = str.IndexOf("?");//如果存在重复的字符，只返回第一个出现的下标，
+
+2、分割字符串(准确的说这里不是分割，这里是截取)
+var mstr = str.substr(strIndex,length);//两个参数的类型都是number类型。
+解释一下，这里的strIndex是第一步获取到的某个分割符号的下标位置，
+str.substr();方法里面接受两个参数一个是切割字符串的起始下标，
+另一个就是截取长度(不写就算从起始位置到最后)，返回类型是一个字符串，如果之间存在空格也算一个字符占一个位置。
+
+第二种方法就是直接了当
+var urlDate = str.split("?")[1];
+解释一下就是，分割获取的url地址字符串以"?"分割成为一个数组，然后获取下标为1的那一个数组元素，这个元素就是要处理的字符串。
+
+其实indexOf("?"),不止可以用来返回下标，还可以判断字符串存不存在；放在判断条件中；
+如果indexOf("?"),返回-1则代表这个字符不存在，那么存在某个字符的判断条件是
+例如： if(str.indexOf("?") != -1){  //如果存在"?"就会返回下标，不存在就会返回-1
+    
+}
+
+本来要删掉一些元素，比如数组中的对应元素，字符串的某个或者某段字符等，思路有不同，关键是，每种方法都要懂；
+这有利于经验的积累，开发时选择最优的解法。(ps：其实每条路都走得通关键在于自己对道路是否熟悉)。
+
+一、首先是字符串的删除
+首先是字符串，字符串的话就是replace("被替换字符/或者替换规则","新的替换内容");
+str.replace("a","");//比如定义str="abcdefg";用空格替换str中的a;
+
+还有就是字符串的分割和拼接。
+比如：var str = "1a2a3a4a5a6a7a8a9";
+
+str.split("a").join("");//先以某个值分割，再拼接字符串。所以这里返回的是"123456789";
+
+二、接着是数组的删除元素splice()。
+
+var arr = [1,2,3,4,5,7,8,1,5,4,6,9];
+
+arrayObject.splice(index,howmany,element1,.....,elementX)
+
+运用splice();方法，index参数必须，指定到要删除元素的下标；howmany参数，指定删除几个从该下标开始往后几个(大多数情况下只要删除1个)；
+其他俩个参数则是再删除的地方插入新的元素可以连续插入其元素之间用逗号隔开；
+
+
+
+//调查提交的数据
+?q=23148153&JoinID=101512865530&jidx=42&s=&hjfb=1&rname=杨尚枝
+
+
+

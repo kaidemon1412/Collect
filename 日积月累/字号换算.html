@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer;}
+			button[disabled],input[disabled]{cursor:default;}
+			input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0;}
+			input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}
+			input[type="search"]::-webkit-search-decoration{-webkit-appearance:none;}
+			input:focus{outline:none;}
+			.lable{
+				width: 500px;
+				margin: 0 auto;
+			}
+			.open{
+				width: 100%;
+				height: 20px;
+				border: 1px solid #2AC3CB;
+			}
+		</style>
+		<script type="text/javascript">
+			onload = function(){
+				var n = 96/72;
+				
+				var oText = document.getElementsByClassName("text")[0];
+				var oBtn = document.getElementsByClassName("button")[0];
+				var oPen = document.getElementsByClassName("open")[0];
+				
+				oBtn.onclick = function(){
+					var the_value = oText.value;
+					oPen.innerHTML = parseInt(the_value)*n;
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div class="lable">
+			<input class="text" type="text" placeholder="请输入数字"/>
+			<input class="button" type="button" value="换算" />
+			<div class="open">
+				
+			</div>
+		</div>
+		
+	</body>
+</html>

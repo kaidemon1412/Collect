@@ -1,0 +1,222 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>me</title>
+    <style>
+        /*清除手机的一些基本样式*/  
+		html {  
+		    font-size:100%;  
+		    width:100%;  
+		    height:100%;  
+		    -webkit-font-smoothing:antialiased;  
+		}  
+		body {  
+		    text-align:center;  
+		    -webkit-user-select:none;  
+		    width:100%;  
+		    height:100%;  
+		    /*background:#fff;*/   /*默认背景颜色*/  
+		    /*font-size:1.2rem;*/   /*默认字体大小*/  
+		    /*color: #000;*/   /*默认字体颜色*/  
+		    font-family:"Microsoft YaHei","Helvetica Neue",Helvetica,STHeiTi,sans-serif;  
+		    -webkit-text-size-adjust:none;  
+		}  
+		* {  
+		    margin:0;  
+		    padding:0;  
+		    list-style:none;  
+		}  
+		i, em, b {  
+		    font-style:normal;  
+		    font-weight:normal;  
+		}  
+		:-moz-placeholder {color:#ccc;}  
+		::-moz-placeholder {color:#ccc;}  
+		::-webkit-textarea-placeholder {color:#ccc;}  
+		:-ms-textarea-placeholder {color:#ccc;}  
+		  
+		/*img{  
+		    width:100%;  
+		    vertical-align:top;  
+		}  */
+		input,textarea,select{  
+		    -webkit-appearance:none;  
+		    font-size:1.2rem;  
+		    border:0;  
+		    background:transparent;  
+		    font-family:"黑体","Microsoft YaHei","Helvetica Neue",Helvetica,STHeiTi,sans-serif;  
+		    outline:none;  
+		}  
+		input,a,span{  
+		    -webkit-tap-highlight-color: rgba(0,0,0,0);  
+		}  
+		
+		/*-----------------------------------------------------------------------------------去除a标签的默认样式*/
+		a{
+			color: black;
+			text-decoration: none;
+		}
+				  
+		/*------------------------------------------------------------------------------------flex最外框*/  
+		.page{  
+		    display:-webkit-box;  
+		    -webkit-box-orient:vertical;  
+		    height:100%;  
+		}  
+		/*---------------------------------------------------------------------------------------flex内容区*/  
+		.page .content{  
+		    position:relative;  
+		    -webkit-box-flex:1;  
+		    -webkit-flex:1;  
+		    flex:1;  
+		    overflow:auto;  
+		    -webkit-overflow-scrolling:touch;  
+		  
+		    /*background-color:#ccc;  */
+		}  
+		/*----------------------------------------------------------------------------------------flex头部*/  
+		.header{  
+		    /*display: -webkit-box;*/
+		    /*font-size: 2rem;*/
+		    height: 20rem;
+		    background: url(img/banner.png) no-repeat;
+		    background-size: 100% 100%;
+		} 
+		/*.header *{  
+		    display: block;  
+		}*/
+		
+		
+		/*------------------------------------------------------------------------------------------------flex底部，按钮平均分布*/  
+		.footer{ 
+			
+		    overflow: hidden;  
+		    background:#fff;
+		    font-size: 2rem;
+		    height: 7rem;  
+		}  
+		.foot-nav{
+			display: flex;
+			 flex-direction: row;
+			 flex: 1;  
+		    display:-webkit-box;  
+		    height: 100%;  
+		    line-height: 2rem;
+		    text-align: center;  
+		}  
+		.foot-nav *{  
+		    display: block;  
+		    -webkit-box-flex: 1;  
+		    -webkit-flex:1;  
+		    flex:1;  
+		}
+		
+		.foot-nav dl{
+			flex: 1;
+			height: 100%;
+		}
+		
+		.foot-nav dl dt{
+			margin-top: 2px;
+			
+		}
+		
+		.foot-nav dl dd{
+			margin-top: 7px;
+		}
+				
+		.foot-nav dl dt img{
+			margin: 0 auto;
+		}
+		/*----------------------------------------------------------------------------------------尾部结束*/
+		
+		/*----------------------------------------------------------------------------------------content样式开始*/
+		/*----------------------------------------------------------------------------------------swiper手机轮播图插件*/
+		/*成就栏*/
+		
+		
+		/*模块模板*/
+		
+		
+		/*---------------------------------------------------------------------------------------------适配开始*/
+		 @media only screen and (max-width: 500px) {
+		 	
+		 	.header{
+		 		height: 10rem;
+		 	}
+		 	
+		 	
+		 	
+		 	
+		 	.footer{
+		 		height: 4rem;
+		 		font-size: 1rem;
+		 		
+		 	}
+		 	
+		 	.foot-nav dl dt img{
+		 		width: 2rem;
+		 		height: 2rem;
+		 	}
+		 	
+		 	.foot-nav dl dd{
+				margin-top: 0;
+			}
+		 	
+		 	
+		 }
+		
+		
+		
+		  
+    </style>
+</head>
+<body>
+ <div class="page">  
+        <header class="header">
+        	<h3>设置</h3>
+        </header>  
+        <section class="content">
+        	
+            
+        </section>  
+        <footer class="footer">  
+            <nav class="foot-nav">  
+                <a href="###">
+                	<dl>
+	                	<dt><img src="img/homes.png"/></dt>
+	                	<dd>首页</dd>
+	                </dl>
+                </a>
+                <a href="###">
+	                 <dl>
+	                	<dt><img src="img/task.png"/></dt>
+	                	<dd>部落</dd>
+	                </dl>
+	            </a>
+	            <a href="###">
+	                 <dl>
+	                	<dt><img src="img/me.png"/></dt>
+	                	<dd>个人中心</dd>
+	                </dl>
+	            </a>
+	            <a href="###">
+	            	<dl>
+	                	<dt><img src="img/activity.png"/></dt>
+	                	<dd>活动</dd>
+	                </dl> 
+	            </a>
+	            <a href="###">     
+	                 <dl>
+	                	<dt><img src="img/list.png"/></dt>
+	                	<dd>天才榜</dd>
+	                </dl>
+	            </a>    
+            </nav>  
+        </footer>  
+    </div>  
+	
+</body>
+</html>

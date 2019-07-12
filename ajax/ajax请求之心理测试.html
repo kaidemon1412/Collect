@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
+		<style type="text/css">
+			.text_box{
+				width: 1200px;
+				margin: 10px auto; 
+				border-left: 1px solid #ccc;
+				border-right: 1px solid #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="text_box">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		$(function(){
+			//jq的ajax
+			$.ajax({
+			    url:'http://route.showapi.com/970-1',//comm/test1.php
+			    type:'POST', //GET
+			    async:true,    //或false,是否异步
+			    data:{
+			    	//下面两条为必传字段
+			        "showapi_appid": 45428, //这里需要改成自己的appid
+			        "showapi_sign": "107f5378a01c4b71a4b3fc090f8eeb62",  //这里需要改成自己的应用的密钥secret，
+					"page": "3"
+			    },
+			    timeout:5000,    //超时时间
+			    dataType:'jsonp',    //返回的数据格式：json/xml/html/script/jsonp/text
+			    jsonp: 'jsonpcallback', //这个方法名很重要，不能改变
+			    beforeSend:function(xhr){
+			        console.log(xhr)
+			        console.log('发送前')
+			    },
+			    success:function(data,textStatus,jqXHR){
+			    	
+			    	console.log(data);
+			    	var thisdata = data.showapi_res_body.pagebean.contentlist;
+			    	console.log(thisdata);
+			        for(var i = 0 ; i <= thisdata.length ; i++){
+			        	console.log(thisdata[i]);
+			        	$(".text_box").append("<div><img src="+thisdata[i].img+"><p>"+thisdata[i].title+"</p></div>");
+			        }
+//			       
+			      
+			        
+			        console.log(textStatus)
+			        console.log(jqXHR)
+			    },
+			    error:function(xhr,textStatus){
+			        console.log('错误')
+			        console.log(xhr)
+			        console.log(textStatus)
+			    },
+			    complete:function(){
+			        console.log('结束')
+			    }
+			});
+		});
+	
+	</script>
+</html>

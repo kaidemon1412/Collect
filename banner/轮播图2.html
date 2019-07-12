@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/style_banner.css">
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<style type="text/css">
+			
+			.box{
+				width: 880px;
+				height: 300px;
+				margin: 100px auto;
+			}
+			
+			.banner .img li{
+				width: 880px;
+				height: 225px;
+			}
+			
+			.banner .img li:nth-of-type(1){
+				background: url(img/banner1.jpg) no-repeat 0px 0px;
+				background-size: 880px 140px;
+			}
+			
+			.banner .img li:nth-of-type(2){
+				background: url(img/banner2.png) no-repeat 0px 0px;
+				background-size: 880px 140px;
+			}
+			.banner .img li:nth-of-type(3){
+				background: url(img/banner3.jpg) no-repeat 0px 0px;
+				background-size: 880px 140px;
+			}
+			.banner .img li:nth-of-type(4){
+				background: url(img/banner4.jpg) no-repeat 0px 0px;
+				background-size: 880px 140px;
+			}
+			
+			
+			.banner .img li .banner_img{
+				position: absolute;
+				top: 12px;
+				left: 75px;
+			}
+			
+			.banner .img li .banner_img img{
+				width: 110px;
+				height: 115px;
+			}
+			
+			.banner .img .message{
+				position: absolute;
+				bottom: 0px;
+				width: 880px;
+				height: 85px;
+				padding-top: 5px;
+				background-color: #FFFFFF;
+			}
+			
+			.banner .img .message div{
+				height: 28px;
+				line-height: 28px;
+				width: 780px;
+				margin: 0 auto;
+				text-align: left;
+				font-size: 13px;
+			}
+			
+			.banner .img .message div span{
+				display: inline-block;
+			}
+			
+			.banner .img .message .message_top{
+				display: flex;
+				flex-direction: row;
+			}
+			.banner .img .message .message_top div{
+				flex: 1;
+			}
+			
+			.banner .img .message .message_top div span:nth-of-type(2){
+				margin-left: 20px;
+			}
+			.banner .img .message .message_text span:nth-of-type(2){
+				margin-left: 20px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="banner">
+				<ul class="img">
+					<li>
+						<a href="#">
+							<div class="banner_img">
+								<img src="img/banner_img.jpg"/>
+							</div>
+							<div class="message">
+								<div class="message_top"><div><span>部落名称</span>:<span>编程猫的小窝编程猫的小窝做窝</span></div><div><span>部落分类</span>:<span>治愈小程序</span></div></div>
+								<div class="message_text"><span>部落简介</span>:<span>我们是一个有爱的部落，无论男女老少，高矮胖瘦，让世界充满爱吧！</span></div>
+							</div>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<div class="banner_img">
+								<img src="img/banner_img.jpg"/>
+							</div>
+							<div class="message">
+								<div class="message_top"><div><span>部落名称</span>:<span>编程猫的小窝编程猫的小窝做窝</span></div><div><span>部落分类</span>:<span>治愈小程序</span></div></div>
+								<div class="message_text"><span>部落简介</span>:<span>我们是一个有爱的部落，无论男女老少，高矮胖瘦，让世界充满爱吧！</span></div>
+							</div>
+						</a>
+					</li>
+					<li><a href="#">
+						<div class="message">
+								<div class="message_top"><div><span>部落名称</span>:<span>编程猫的小窝编程猫的小窝做窝</span></div><div><span>部落分类</span>:<span>治愈小程序</span></div></div>
+								<div class="message_text"><span>部落简介</span>:<span>我们是一个有爱的部落，无论男女老少，高矮胖瘦，让世界充满爱吧！</span></div>
+							</div>
+					</a></li>
+					<li><a href="#">
+						<div class="message">
+								<div class="message_top"><div><span>部落名称</span>:<span>编程猫的小窝编程猫的小窝做窝</span></div><div><span>部落分类</span>:<span>治愈小程序</span></div></div>
+								<div class="message_text"><span>部落简介</span>:<span>我们是一个有爱的部落，无论男女老少，高矮胖瘦，让世界充满爱吧！</span></div>
+							</div>
+					</a></li>
+				</ul>
+				<ul class="num">
+					<li></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<div class="btn btn_l"></div>
+		    	<div class="btn btn_r"></div>
+			</div>
+		</div>
+		
+	</body>
+	
+	<script>
+		
+		onload = function(){
+				var the_width = document.getElementsByTagName("guan_banner_plate")[0];
+				console.log(getStyle(the_width,"width"));
+				console.log(1);
+				
+			}
+			
+			 function getStyle(obj,attr) {
+	            if(typeof getComputedStyle)
+	                return getComputedStyle(obj,null)[attr];
+	            else return obj.currentStyle[attr];
+	        }
+		$(function(){
+			
+			var i=0;
+			// 克隆第一张图片，加至第四张后面。
+			var clone=$('.img li').first().clone();
+			$('.img').append(clone);
+			//克隆后 图片的个数
+			var size=$('.img li').length;
+			$(".img li:last").css({
+				"background":"url(img/banner1.jpg) no-repeat 0px 0px"
+			});
+			
+			
+			//页面初始化时，给第一个圆点加hover效果
+			$('.num li').first().addClass('on').siblings().removeClass('on');
+			// 向左滑动 按钮的点击事件
+			$('.btn_l').click(function() {
+				moveL();
+			});
+			// 向右滑动 按钮的点击事件
+			$('.btn_r').click(function(){
+				moveR();
+			})
+			function moveL(){
+				i++;
+				if(i==size){
+					$('.img').css({'left':'0px'})
+					i=1;
+				}
+				$('.img').stop().animate({left:-880*i})
+				if(i==size-1){
+					$('.num li').eq(0).addClass('on').siblings().removeClass('on');
+				}else{
+					$('.num li').eq(i).addClass('on').siblings().removeClass('on');
+				}
+			}
+			function moveR(){
+				i--;
+				if(i==-1){
+					$('.img').css({'left':-(size-1)*880});
+					i=size-2;
+				}
+				$('.img').stop().animate({left:-880*i})
+				$('.num li').eq(i).addClass('on').siblings().removeClass('on');
+			}	
+			/*鼠标划入圆点*/
+			$('.num li').hover(function(){
+				i=$(this).index();
+				$('.img').stop().animate({left:-880*i},600);
+				$(this).addClass('on').siblings().removeClass('on');
+			})
+			/*自动轮播*/
+			var t=setInterval(function(){
+				moveL();
+			},3000);
+			/*对banner定时器的操作*/
+			$('.banner').hover(function(){
+				clearInterval(t);
+			},function(){
+				t=setInterval(function(){
+					moveL();
+				},3000)
+			})
+		})
+	</script>
+	
+</html>

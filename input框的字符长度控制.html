@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input id="ceshi" type="text" placeholder="输入字符" value=""/>
+		<script>
+		var theinput = document.getElementById("ceshi");
+			
+		theinput.onkeyup = function(){
+			CutStr("ceshi",10);
+		}
+					
+		//判断字符串所占的字节数
+        function GetCharLength(str){
+            var iLength = 0;  //记录字符的字节数
+            for(var i = 0; i < str.length ; i++){//遍历字符串中的每个字符
+                if(str.charCodeAt(i) >255){  //如果当前字符的编码大于255
+                    iLength += 2;    //所占字节数加2
+                }else{
+                    iLength += 1;   //否则所占字节数加1
+                }
+            }
+            return iLength;   //返回字符所占字节数
+        }
+        //若字符串长度超过要求，截掉多余部分
+        function CutStr(elementID,len){ //elementID表示要进行处理的对象ID,len表示设置的限制字节数
+            var str = document.getElementById(elementID).value;//获取要处理的字符串
+            var curStr = "";  //用于实时存储字符串
+
+            for(var i = 0; i < str.length ; i++){//遍历整个字符串
+               curStr += str.charAt(i);  //记录当前遍历过的所有字符
+                if(GetCharLength(curStr )>len){//如果当前字符串超过限制长度
+                	
+                    document.getElementById(elementID).value = str.substring(0,i);  //截取多余的字符,并把剩余字符串赋给要进行处理的对象
+                    return;  //结束函数
+               }
+            }
+        }
+        
+		</script>
+		
+	</body>
+</html>

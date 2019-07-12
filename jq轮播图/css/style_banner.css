@@ -1,0 +1,59 @@
+*{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.banner{
+	width: 550px;
+	height: 300px;
+	margin:100px auto;
+	border: 5px solid #000;
+	position: relative;
+	overflow: hidden;
+}
+.banner .img{
+	width: 5000px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.banner .img li{
+	float: left;
+}
+
+.banner .num{
+	width: 100%;
+	position: absolute;
+	bottom:10px;
+	left:0;
+	text-align: center;
+	font-size: 0px;
+}
+.banner .num li{
+	width: 10px;
+	height: 10px;
+	background: #888;
+	border-radius: 50%;
+	display: inline-block;
+	cursor: pointer;
+	margin:0 3px;
+}
+.banner .num li.on{
+	background:#F60;
+}
+.banner .btn{
+	width:30px
+	height: 50px;
+	line-height: 50px;
+	color: #fff;
+	background: rgba(0,0,0,0.5);
+	position: absolute;
+	top:50%;
+	margin-top: -25px;
+	cursor: pointer;
+	text-align: center;
+	font-size: 40px;
+	/*display: none;*/
+}
+.banner .btn_l{ left:0;}
+.banner .btn_r{ right:0;}

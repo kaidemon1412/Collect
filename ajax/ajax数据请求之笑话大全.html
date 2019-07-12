@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="../js/jquery-3.2.1.min.js" ></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				
+			}
+			
+			html,body{
+				width: 100%;
+				height: 100%;
+				
+			}
+			
+			.mycontent{
+				min-width: 1000px;
+				width: 80%;
+				margin: 0 auto;
+			}
+			
+			.mycontent h4{
+				margin-top: 10px;
+			}
+			.mycontent p{
+				margin: 10px 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mycontent">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			//jq的ajax
+			$.ajax({
+			    url:'http://route.showapi.com/341-1',//comm/test1.php
+			    type:'POST', //GET
+			    async:true,    //或false,是否异步
+			    data:{
+			    	//下面两条为必传字段
+			        "showapi_appid": 45428, //这里需要改成自己的appid
+			        "showapi_sign": "107f5378a01c4b71a4b3fc090f8eeb62",  //这里需要改成自己的应用的密钥secret，
+					"maxResult": 20,
+					"page": 1
+			    },
+			    timeout:5000,    //超时时间
+			    dataType:'jsonp',    //返回的数据格式：json/xml/html/script/jsonp/text
+			    jsonp: 'jsonpcallback', //这个方法名很重要，不能改变
+			    beforeSend:function(xhr){
+			        console.log(xhr)
+			        console.log('发送前')
+			    },
+			    success:function(data,textStatus,jqXHR){
+			    	$(".mycontent").html("");
+			    	console.log(data);
+			    	var  the_data = data.showapi_res_body.contentlist;
+			        console.log(the_data);//打印数据
+			        //console.log(typeof(the_data));
+			        for(var i = 0;i<the_data.length;i++){
+//			        	console.log(the_data[i].title);
+//			        	console.log(the_data[i].text);
+			        	$(".mycontent").append("<div><h4>"+the_data[i].title+"</h4><p>"+the_data[i].text+"</p></div><hr/>");
+			        	
+			        	
+			        }
+			        
+			        console.log(textStatus)
+			        console.log(jqXHR)
+			    },
+			    error:function(xhr,textStatus){
+			        console.log('错误')
+			        console.log(xhr)
+			        console.log(textStatus)
+			    },
+			    complete:function(){
+			        console.log('结束')
+			    }
+			});
+		});
+	</script>
+</html>

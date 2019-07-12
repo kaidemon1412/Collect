@@ -1,0 +1,39 @@
+ES6（ECMAScript2015）的出现，无疑给前端开发人员带来了新的惊喜，
+它包含了一些新的很棒的特性，可以更加方便的实现很多复杂的操作，提高开发人员效率。
+
+ES6就是新的一种javascript规范。
+最新一代javascript的新特性
+
+1、Default Parametes （默认参数） in ES6
+2、Templete Literals （模板文本） in ES6
+3、Multi-line Strings （多行字符串） in ES6
+4、Destructuring Assignment （解构赋值） in ES6
+5、Enhanced Object Literals （增强的对象文本） in ES6
+6、Arrow Function （箭头函数） in ES6
+7、Promises in ES6
+8、Block-Scoped Constructs let and Const （块作用域构造Let and Const）
+9、Classes（类） in ES6
+10、Modules （模块） in ES6
+
+以上十条新特性（代表性并不是全部）详解：
+1、以前在js中定义参数是这个样子的
+	var link = function（height，color，url）{
+		var height = height || 50;
+		var color = color || 'red';
+		var url = url || 'http//azat.com';
+		...
+	}
+	
+	为什么要这么麻烦？因为js中的0，0表示falsy，它是默认被hard-coded的值，
+	而不能变成本身参数的值。
+	但是在ES6中我们可以直接把默认值放在函数声明里，例如
+	var link = function（height='50',color = 'red',url = 'http//codepku.com'）{
+		
+	}
+2、模板对象
+	在ES5中，字符串拼接，即字符串与变量拼接，用的是'引号'和+号，
+	但是在ES6中变量包含在${}的大括号里，所以+和''去掉，将全部的内容放在``(反双引号中)，即可完成拼接。
+
+3、多行字符串，就跟模板对象处理方法一样，文本太多又要拼接，去掉+和各自的''，将全部的文本内容放在``里就行了。
+
+4、

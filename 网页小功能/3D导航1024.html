@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="keywords" content="关键词1，关键词2"/>
+		<meta name="description" content="描述"/>
+		<title>3D导航</title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.nav{
+				perspective: 1000px;/*z轴的值*/
+				display: flex;/*弹性盒模型*/
+				width: 507px;
+				height: 300px;
+				/*background-color: #2AC3CB;*/
+				margin: 100px auto;
+			}
+			.nav .table{
+				/*float: left;
+				display: inline-block;*/
+				width: 200px;
+				height: 300px;
+				/*background-color: #007AFF;*/
+				margin-right: 7px;
+			}
+			
+			.nav .content{
+				/*float: left;
+				display: inline-block;*/
+				width: 300px;
+				height: 300px;
+				/*background-color: #757575;*/
+				position: relative;
+				top: 20px;
+				left: 7px;
+				transform-style: preserve-3d; /*立体的转*/
+				/*transform: rotateX(30deg);*/
+				transition:transform 0.5s; /*过渡效果（过渡属性 过渡时间）*/
+				
+			}
+			
+			.nav .table div{
+				width: 200px;
+				height: 100px;
+				color: #FFFFFF;
+				font-size: 18px;
+				text-align: center;
+				line-height: 100px;
+				font-weight: bold;
+				font-style: italic;/*字体倾斜*/
+				
+			}
+			
+			.nav .table div:nth-of-type(1){
+				background-color: #00ff99;
+			}
+			.nav .table div:nth-of-type(2){
+				background-color: #888888;
+			}
+			.nav .table div:nth-of-type(3){
+				background-color: #ff0088;
+			}
+			
+			.nav .content div{
+				/*position: absolute;*/ /*后飘起来的，飘得最高*/
+				width: 260px;
+				height: 260px;
+				color: #FFFFFF;
+				font-size: 18px;
+				text-align: center;
+				line-height: 260px;
+				font-weight: bold;
+			}
+			
+			.nav .content div:nth-of-type(1){
+				position: absolute;
+				background-color: #00ff99;
+				transform: translateY(-130px) /*translateZ(-150px)*/ rotateX(90deg); /*变化角度*/
+			}
+			
+			.nav .content div:nth-of-type(2){
+				position: absolute;
+				background-color: #888888;
+				transform: translateZ(130px);
+			}
+			.nav .content div:nth-of-type(3){
+				position: absolute;
+				background-color: #ff0088;
+				transform: translateY(130px) /*translateZ(-150px)*/ rotateX(-90deg); /*变化角度*/
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+			<div class="table">
+				<div class="table1">TOP</div>
+				<div class="table2">FRONT</div>
+				<div class="table3">BOTTOM</div>
+			</div>
+			<div class="content">
+				<div class="content1">TOP CONTENT</div>
+				<div class="content2">FRONT CONTENT</div>
+				<div class="content3">BOTTOM CONTENT</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			$(function(){
+				
+				$(".table div").on("click",function(){
+					if($(this).index() == 0){
+						$(".content").css({
+							"top": 0+"px",
+							"transform": "rotateX(-90deg)"
+						});
+					}else if($(this).index() == 1){
+						$(".content").css({
+							"top": 20+"px",
+							"transform": "rotateX(0deg)"
+						});
+					}else if($(this).index() == 2){
+						$(".content").css({
+							"top": 0+"px",
+							"transform": "rotateX(90deg)"
+						});
+					}
+				});
+				
+			});
+		</script>
+	</body>
+	
+</html>

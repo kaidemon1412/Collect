@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="banner/js/jquery-3.2.1.min.js" ></script>
+	</head>
+	<body>
+	    <div class="main">  
+      <form action="" id="add_cen">  
+        <p>
+            <span>
+                <select name="" id="" class="add_c"></select>
+                <select name="" id=""></select>
+            </span>  
+            <span class="main1">
+                <select name="" id="" class="add_c"></select>
+                <select name="" id=""></select>
+            </span>
+        </p>  
+        
+      </form>  
+    </div>  
+	</body>
+	<script type="text/javascript">
+		$(document).ready(function(){
+              $('.add_c').ready(function(){
+              var se=['我的主页','我的客户','我的业务','我的项目','审核模块','我的展会','我的部门'];
+              
+              var cc='';
+              for(var i=0;i<se.length;i++){
+                var cc=cc+'<option value="">'+se[i]+'</option>' }
+                $('.add_c').append(cc);
+                $('.add_c').siblings().append('<option value="">我的主页</option>')
+              })
+              $('.add_c').change(function(){
+                var set=[
+                ['我的主页'],
+                ['我的关联客户','我的联系客户','我的新加客户','我的可选客户'],
+                ['我的订单','我的货架'],
+                ['当前项目','历史项目'],
+                ['我的审核','我的申请'],
+                ['我的展会'],
+                ['行政部','IT部','项目一组','项目二组','项目三组','项目四组','项目五组']
+              ]
+                var aa=$(this).index('.add_c');
+                console.log(aa);
+                var bb=$('.add_c').eq(aa).find('option:selected').index();
+                console.log(bb);
+                var dd=''
+                for(var j=0;j<set[bb].length;j++){
+                  if(set[bb].length<2){dd='<option value="">'+set[bb][0]+'</option>'}
+                    else{dd=dd+'<option value="">'+set[bb][j]+'</option>'}
+                }
+                $('.add_c').eq(aa).siblings().empty().append(dd);
+              })
+            })
+	</script>
+	
+</html>

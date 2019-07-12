@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style>
+    .trans_cont{
+        position: relative;
+        height: 350px;
+        width:  350px;
+    }
+    .circle {
+        /*background:#ccc;*/
+        position: absolute;
+        height: 350px;
+        width:  350px;
+        display:inline-block;
+        border-radius: 350px;
+        text-align: center;
+        background: url(img/DIPAN@2x.png) no-repeat 0 0;
+        background-size: 100% 100%;
+    }
+    .play {
+        animation: mymove 3s forwards ease-in-out;          //3s动画
+    }
+    #btn {
+        display:inline-block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        line-height: 100px;
+        text-align:center;
+    }
+    #btn img {
+        display:inline-block;
+        position: absolute;
+        left: 50%;
+        top: 43%;
+        transform: translate(-50%,-50%);
+        height: 80px;
+        
+    }
+</style>
+<style id="animation">
+    /*动态添加动画*/
+</style>
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<body>
+    <div class="trans_cont">
+    	<div class="circle"></div>
+        <div id="btn">
+            <img src="img/Pointer.png" alt="">
+        </div>
+    </div>
+    
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $(function(){
+            
+            var start = $('#btn');         //开始按钮
+            var circle = $('.circle');          //转盘
+            var flag = 0;           //判断有没有点击过按钮
+            var animation = $('#animation');
+            var sta = 0;   //开始的角度
+            start.on("click",function() {
+                if(flag == 1) {
+                    return ;
+                }
+                 circle.attr("class","play circle");
+                flag = 1;
+                var rand = Math.floor(Math.random() * 360 );       //1000随机数
+                console.log(rand);
+                var res = 0;                                //最后停留的角度，
+                
+                if(rand >=0 && rand < 90) {                  //把圆分成了七分，自己看情况算角度
+                    res = 90;//免费赠课
+                }
+                if(rand >= 90 && rand < 180) {
+                    res = 90;//免费试听
+                }
+                if(rand >= 180 && rand < 270) {
+                    res = 90;//一元
+                }
+                if(rand >= 270 && rand < 360) {
+                    res = 90;//500元优惠
+                }
+                
+                console.log(res);
+                if(res == 0){
+                    $("#myModalLabel").html("免费赠课");
+                }
+                if(res == 90){
+                    $("#myModalLabel").html("免费试听");
+                }
+                if(res == 180){
+                    $("#myModalLabel").html("一元换购订单头");
+                }
+                if(res == 270){
+                    $("#myModalLabel").html("500元优惠");
+                }
+                
+                res += 1800;  //转5圈
+                var the_animation = "@keyframes mymove{0% {transform:rotate("+sta+"deg)} 100%{transform:rotate(" + res + "deg)}}";
+                animation.html(the_animation); 
+                sta = res - 1800;
+                setTimeout(function() {
+                    flag = 0;
+                    circle.attr("class","circle");
+                    circle.css({"transform":"rotate("+sta+"deg)"});//停留在最后的位置
+                    
+                    $("#myModal").modal("show");
+                    
+                },3000);            //初始化，，根据自己的动画时间，设置
+                
+                
+            })
+            
+        });
+        
+    </script>
+</body>
+</html>

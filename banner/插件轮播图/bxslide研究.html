@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        
+        <link href="css/jquery.bxslider.css" rel="stylesheet" type="text/css">
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <style type="text/css">
+        	.topic_pop .opposite {
+              min-width: 100vw;
+              min-height: 100vh;
+              margin: 0;
+              position: relative;
+              border: none;
+            }
+            
+            .topic_pop .opposite .compared {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 560px;
+            }
+            
+            .topic_pop .opposite .compared .topic_title {
+              height: 58px;
+              background-color: #4381e6;
+              color: #fff;
+              border: none;
+              position: relative;
+            }
+            
+            .topic_pop .opposite .compared .topic_title .close_btn {
+              font-size: 20px;
+              font-family: serif;
+              color: #fff;
+              position: absolute;
+              top: 50%;
+              right: 16px;
+              outline: none;
+              transform: translateY(-80%);
+              font-weight: 100;
+              opacity: 1;
+            }
+            
+            .topic_pop .opposite .compared .topic_cont {
+              background-color: #fff;
+              padding: 53px;
+            }
+            
+            .topic_pop .opposite .compared .topic_cont .bx-wrapper {
+              box-shadow: none;
+            }
+            
+            .topic_pop .opposite .compared .topic_cont .bx-wrapper .bx-viewport {
+              border: none;
+              box-shadow: none;
+            }
+            
+            .topic_pop .opposite .compared .topic_cont .slide_card {
+              
+              /*height: 300px;*/
+              margin: 0 auto;
+              overflow: hidden;
+            }
+            
+            .topic_pop .opposite .compared .topic_cont .slide_card .test_card {
+              width: 450px !important;
+              text-align: center;
+            }
+            
+            .topic_pop .opposite .compared .topic_cont .slide_card .test_card .topic_item_title {
+              color: #333;
+              font-size: 16px;
+              font-family: "微软雅黑";
+              text-align: left;
+            }
+            
+            .topic_pop .opposite .compared .topic_cont .slide_card .test_card .exhibited_img {
+              width: 440px;
+              margin-right: 10px;
+            }
+            
+            .topic_pop .opposite .compared .topic_cont .slide_card .test_card .choices_row {
+              margin: 5px;
+              text-align: left;
+              padding-right: 20px;
+              color: #333;
+            }
+            
+            .topic_pop .opposite .compared .topic_cont .slide_card .test_card .choices_row .probability {
+              color: #666;
+              float: right;
+            }
+            
+            .topic_pop .opposite .compared .topic_cont .slide_card .test_card .choices_row:after {
+              content: "\0020";
+              display: block;
+              height: 0;
+              clear: both;
+            }
+            
+            .topic_pop .opposite .compared .topic_cont .slide_card .test_card .choices_right .choices {
+              color: #f42828;
+            }
+            
+            .topic_pop .opposite .compared .topic_cont .slide_card .test_card .choices_flexi .choices {
+              color: #07c059;
+            }
+            
+            .topic_pop .opposite .compared .topic_bottom {
+              border: none;
+              text-align: center;
+              padding: 30px;
+              display: flex;
+              flex-direction: row;
+              justify-content: space-between;
+            }
+            
+            .topic_pop .opposite .compared .topic_bottom .btn {
+              outline: none;
+              color: #fff;
+              background-color: #4381e6;
+              font-size: 14px;
+              font-family: "微软雅黑";
+            }
+            
+            .topic_pop .opposite .compared .topic_bottom .btn + .btn {
+              margin: 0;
+            }
+        </style>
+	</head>
+	<body>
+	    <div class="slider8">
+
+          <div class="slide">
+              <!--<img src="http://placehold.it/600x200&text=FooBar1">-->
+              这是第一块的内容<br />
+              换行就行了
+          </div>
+    
+          <div class="slide">
+              <!--<img src="http://placehold.it/600x300&text=FooBar2">-->
+              这是第二块的内容<br /><br /><br />这是第二块的内容
+          </div>
+    
+          <div class="slide">
+              
+          <!--<img src="http://placehold.it/600x150&text=FooBar3">-->
+          三
+          </div>
+    
+          <div class="slide">
+              <!--<img src="http://placehold.it/600x250&text=FooBar4">-->
+                  第<br />四<br />块
+          </div> 
+    
+        </div>
+        <!--data-toggle="modal" data-target="#myModal"-->
+        <button class="view_detail" >查看评测详情</button>
+        
+        <!-- Modal -->
+        <div class="modal fade topic_pop" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog opposite" role="document">
+            <div class="modal-content compared">
+              <div class="modal-header topic_title">
+                <button type="button" class="close close_btn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">乐乐1（Scratch Level1 第一节）</h4>
+              </div>
+              <div class="modal-body topic_cont">
+                  <div class="slide_card">
+                     <div class="test_card slide">
+                        <h4 class="topic_item_title">1、 以下指令方块能不能解决Steve抖动的问题？</h4>
+                        <img class="exhibited_img" src="img/code7.jpg"/>
+                        <p class="choices_row "><span class="choices">A、能</span><span class="probability">（25.3%）</span></p>
+                        <p class="choices_row choices_right"><span class="choices">B、不能</span><span class="probability">（25.5%）</span></p>
+                        <p class="choices_row choices_flexi"><span class="choices">C、不知道</span><span class="probability">（24.6%）</span></p>
+                        <p class="choices_row "><span class="choices">D、你猜</span><span class="probability">（23.5%）</span></p>
+                     </div>
+                      <div class="test_card slide">
+                        <h4 class="topic_item_title">2、 以下指令方块能不能解决Steve抖动的问题？</h4>
+                        <img class="exhibited_img" src="img/code7.jpg"/>
+                        <p class="choices_row "><span class="choices">A、能</span><span class="probability">（25.3%）</span></p>
+                        <p class="choices_row choices_right"><span class="choices">B、不能</span><span class="probability">（25.5%）</span></p>
+                        <p class="choices_row choices_flexi"><span class="choices">C、不知道</span><span class="probability">（24.6%）</span></p>
+                        <p class="choices_row "><span class="choices">D、你猜</span><span class="probability">（23.5%）</span></p>
+                     </div>
+                      <div class="test_card">
+                        <h4 class="topic_item_title">3、 以下指令方块能不能解决Steve抖动的问题？</h4>
+                        <img class="exhibited_img" src="img/code7.jpg"/>
+                        <p class="choices_row "><span class="choices">A、能</span><span class="probability">（25.3%）</span></p>
+                        <p class="choices_row choices_right"><span class="choices">B、不能</span><span class="probability">（25.5%）</span></p>
+                        <p class="choices_row choices_flexi"><span class="choices">C、不知道</span><span class="probability">（24.6%）</span></p>
+                        <p class="choices_row "><span class="choices">D、你猜</span><span class="probability">（23.5%）</span></p>
+                     </div>
+                      <div class="test_card">
+                        <h4 class="topic_item_title">4、 以下指令方块能不能解决Steve抖动的问题？</h4>
+                        
+                        <p class="choices_row "><span class="choices">A、能</span><span class="probability">（25.3%）</span></p>
+                        <p class="choices_row choices_right"><span class="choices">B、不能</span><span class="probability">（25.5%）</span></p>
+                        <p class="choices_row choices_flexi"><span class="choices">C、不知道</span><span class="probability">（24.6%）</span></p>
+                        <p class="choices_row "><span class="choices">D、你猜</span><span class="probability">（23.5%）</span></p>
+                        <p class="choices_row "><span class="choices">A、能</span><span class="probability">（25.3%）</span></p>
+                        <p class="choices_row choices_right"><span class="choices">B、不能</span><span class="probability">（25.5%）</span></p>
+                        <p class="choices_row choices_flexi"><span class="choices">C、不知道</span><span class="probability">（24.6%）</span></p>
+                        <p class="choices_row "><span class="choices">D、你猜</span><span class="probability">（23.5%）</span></p>
+                        <p class="choices_row "><span class="choices">A、能</span><span class="probability">（25.3%）</span></p>
+                        <p class="choices_row choices_right"><span class="choices">B、不能</span><span class="probability">（25.5%）</span></p>
+                        <p class="choices_row choices_flexi"><span class="choices">C、不知道</span><span class="probability">（24.6%）</span></p>
+                        <p class="choices_row "><span class="choices">D、你猜</span><span class="probability">（23.5%）</span></p>
+                        <p class="choices_row "><span class="choices">A、能</span><span class="probability">（25.3%）</span></p>
+                        <p class="choices_row choices_right"><span class="choices">B、不能</span><span class="probability">（25.5%）</span></p>
+                        <p class="choices_row choices_flexi"><span class="choices">C、不知道</span><span class="probability">（24.6%）</span></p>
+                        <p class="choices_row "><span class="choices">D、你猜</span><span class="probability">（23.5%）</span></p>
+                     </div>
+                  </div> 
+
+              </div>
+              <div class="modal-footer topic_bottom">
+                <!--<button type="button" class="btn topic_prev">上一题</button>
+                <button type="button" class="btn topic_next">下一题</button>-->
+              </div>
+            </div>
+          </div>
+        </div>
+        
+	</body>
+	<script type="text/javascript" src="js/jquery.bxslider.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<script type="text/javascript">
+    
+            $(function(){
+    
+              $('.slider8').bxSlider({ 
+    
+                slideWidth: 600, 
+    
+                adaptiveHeight: true,
+                
+                infiniteLoop: false,
+                
+//              hideControlOnEnd: true,
+    
+                startSlides: 0, 
+    
+                slideMargin: 10,
+                
+              });
+              
+              
+              $(".slide_card").bxSlider({
+                   
+                    slideWidth: 600, 
+        
+                    adaptiveHeight: true,
+                    
+                    infiniteLoop: false,
+                    
+                    hideControlOnEnd: true,
+        
+                    startSlides: 0, 
+        
+                    slideMargin: 10,
+                    
+                    pager: false
+                    
+                  
+                  });
+                  
+    
+            $(".view_detail").on("click",function(){
+                
+                $("#myModal").modal("show");
+                $(".bx-viewport")
+            });
+            
+            
+    
+            });
+    
+        </script>
+</html>

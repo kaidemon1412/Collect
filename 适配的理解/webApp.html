@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<!--<link rel="stylesheet" type="text/css" href="css/base.css"/>-->
+		<script type="text/javascript">
+			//designWidth:设计稿的实际宽度值，需要根据实际设置
+			//maxWidth:制作稿的最大宽度值，需要根据实际设置
+			//这段js的最后面有两个参数记得要设置，一个为设计稿实际宽度，一个为制作稿最大宽度，例如设计稿为750，最大宽度为750，则为(750,750);
+			(function(designWidth, maxWidth) {
+				var doc = document,
+				win = window,
+				docEl = doc.documentElement,
+				remStyle = document.createElement("style"),
+				tid;
+			
+				function refreshRem() {
+					var width = docEl.getBoundingClientRect().width;
+					maxWidth = maxWidth || 540;
+					width>maxWidth && (width=maxWidth);
+					//这里的20倍是实际设计稿的倍数，即设计稿的20px==1rem；如果是100则是100px == 1rem
+					var rem = width * 20 / designWidth;   
+					remStyle.innerHTML = 'html{font-size:' + rem + 'px;}';
+				}
+			
+				if (docEl.firstElementChild) {
+					docEl.firstElementChild.appendChild(remStyle);
+				} else {
+					var wrap = doc.createElement("div");
+					wrap.appendChild(remStyle);
+					doc.write(wrap.innerHTML);
+					wrap = null;
+				}
+				//要等 wiewport 设置好后才能执行 refreshRem，不然 refreshRem 会执行2次；
+				refreshRem();
+			
+				win.addEventListener("resize", function() {
+					clearTimeout(tid); //防止执行两次
+					tid = setTimeout(refreshRem, 300);
+				}, false);
+			
+				win.addEventListener("pageshow", function(e) {
+					if (e.persisted) { // 浏览器后退的时候重新计算
+						clearTimeout(tid);
+						tid = setTimeout(refreshRem, 300);
+					}
+				}, false);
+			
+				if (doc.readyState === "complete") {
+					doc.body.style.fontSize = "16px";
+				} else {
+					doc.addEventListener("DOMContentLoaded", function(e) {
+						doc.body.style.fontSize = "16px";
+					}, false);
+				}
+			})(750, 750);
+		</script>
+		<style type="text/css">
+			#text p:nth-of-type(1){
+				font-size: 3rem;
+			}
+			#text p:nth-of-type(2){
+				font-size: 2.9rem;
+			}
+			#text p:nth-of-type(3){
+				font-size: 2.8rem;
+			}
+			#text p:nth-of-type(4){
+				font-size: 2.7rem;
+			}
+			#text p:nth-of-type(5){
+				font-size: 2.6rem;
+			}
+			#text p:nth-of-type(6){
+				font-size: 2.5rem;
+			}
+			#text p:nth-of-type(7){
+				font-size: 2.4rem;
+			}
+			#text p:nth-of-type(8){
+				font-size: 2.3rem;
+			}
+			#text p:nth-of-type(9){
+				font-size: 2.2rem;
+			}
+			#text p:nth-of-type(10){
+				font-size: 2.1rem;
+			}
+			#text p:nth-of-type(11){
+				font-size: 2rem;
+			}
+			#text p:nth-of-type(12){
+				font-size: 1.9rem;
+			}
+			#text p:nth-of-type(13){
+				font-size: 1.8rem;
+			}
+			#text p:nth-of-type(14){
+				font-size: 1.7rem;
+			}
+			
+			#text p:nth-of-type(15){
+				font-size: 1.6rem;
+			}
+			#text p:nth-of-type(16){
+				font-size: 1.5rem;
+			}
+			#text p:nth-of-type(17){
+				font-size: 1.4rem;
+			}
+			#text p:nth-of-type(18){
+				font-size: 1.3rem;
+			}
+			#text p:nth-of-type(19){
+				font-size: 1.2rem;
+			}
+			#text p:nth-of-type(20){
+				font-size: 1.1rem;
+			}
+			#text p:nth-of-type(21){
+				font-size: 1rem;
+			}
+			#text p:nth-of-type(22){
+				font-size: 0.9rem;
+			}
+			#text p:nth-of-type(23){
+				font-size: 0.8rem;
+			}
+			#text p:nth-of-type(24){
+				font-size: 0.7rem;
+			}
+			#text p:nth-of-type(25){
+				font-size: 0.6rem;
+			}
+			#text p:nth-of-type(26){
+				font-size: 0.5rem;
+			}
+			#text p:nth-of-type(27){
+				font-size: 0.4rem;
+			}
+			#text p:nth-of-type(28){
+				font-size: 0.3rem;
+			}
+			#text p:nth-of-type(29){
+				font-size: 0.2rem;
+			}
+			#text p:nth-of-type(30){
+				font-size: 0.1rem;
+			}
+			
+		</style>
+		
+		<script type="text/javascript">
+			onload = function(){
+		    	
+				var size = document.getElementById("text").getElementsByTagName("p");
+				for(let i = 0 ; i < size.length ; i++){
+					size[i].onclick = function(){
+						var text_size = getStyle(this,"font-size");
+						console.log(text_size);
+					}
+				}
+				
+			}
+			
+			 function getStyle(obj,attr) {
+	            if(typeof getComputedStyle)
+	                return getComputedStyle(obj,null)[attr];
+	            else return obj.currentStyle[attr];
+	        }
+		</script>
+	</head>
+	<body>
+		<div id="text">
+			<p>第一行字</p>
+			<p>第二行字</p>
+			<p>第三行字</p>
+			<p>第四行字</p>
+			<p>第五行字</p>
+			<p>第六行字</p>
+			<p>第七行字</p>
+			<p>第八行字</p>
+			<p>第九行字</p>
+			<p>第十行字</p>
+			<p>第十一行字</p>
+			<p>第十二行字</p>
+			<p>第十三行字</p>
+			<p>第十四行字</p>
+			<p>第十五行字</p>
+			<p>第十六行字</p>
+			<p>第十七行字</p>
+			<p>第十八行字</p>
+			<p>第十九行字</p>
+			<p>第二十行字</p>
+			<p>第二十一行字</p>
+			<p>第二十二行字</p>
+			<p>第二十三行字</p>
+			<p>第二十四行字</p>
+			<p>第二十五行字</p>
+			<p>第二十六行字</p>
+			<p>第二十七行字</p>
+			<p>第二十八行字</p>
+			<p>第二十九行字</p>
+			<p>第三十行字</p>
+			
+		</div>
+	</body>
+</html>

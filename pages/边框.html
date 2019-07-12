@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.toothbg{
+				width:20px;
+				height:100px;
+				background:#41B61A;
+			    background-image:-webkit-gradient(
+				linear,/*表示渐变的为直线 另外一个值是radial*/
+					100% 50%,/*直线型渐变的起点位置 后边有一个属性background-size规定背景的大小，30 X 15px  50% 0 都是乘以父元素的宽高。*/ 
+					0 0,/*结束点的位置 和上类似*/
+					from(transparent),/*起点的颜色*/
+					color-stop(.5,transparent),/*中间某一个点必须达到这个颜色，表示变化过程  .5b表示这个渐变范围长度的总长的50%*/
+					color-stop(.5,#000),/*同上*/
+					to(#000)),/*结束段的颜色*/
+					/*一个背景块的分为两个15X 15  组成。*/
+					-webkit-gradient(linear,100% 50%,0 100%,from(transparent), 
+					color-stop(.5,transparent),
+					color-stop(.5,#000),
+					to(#000));
+					background-size:15px 30px;
+					background-repeat:repeat-y;
+					background-position:0 100%;  
+					                
+			}
+		</style>
+	</head>
+	<body>
+		<div class="toothbg"></div>
+	</body>
+</html>

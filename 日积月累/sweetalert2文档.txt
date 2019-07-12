@@ -1,0 +1,5 @@
+swal(...)会返回一个Promise对象，该Promise对象中then方法中的isConfirm参数的含义如下：
+
+true：代表Confirm（确认）按钮。
+false：代表Cancel（取消）按钮。
+undefined：代表按下Esc键，点击取消按钮或在对话框之外点击。

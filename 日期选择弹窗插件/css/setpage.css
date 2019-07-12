@@ -1,0 +1,295 @@
+.setting_center{
+	width: 100%;
+	overflow: hidden;
+	background-color: #ecf0f1;
+}
+
+.setting_center .user_img{
+	width: 7.12rem;
+	height: 1.9rem;
+	margin: 0 auto;
+	border-bottom: 0.01rem solid #e2e2e2;
+	overflow: hidden;
+}
+
+.setting_center .user_img .portrait{
+	width: 1.2rem;
+	height: 1.2rem;
+	margin: 0.34rem 0 0 0.46rem;
+	overflow: hidden;
+	border-radius: 1.2rem;
+	
+}
+.setting_center .user_img .portrait img{
+	height: 100%;
+	width: 100%;
+}
+
+.setting_center .admin_list{
+	width: 7.12rem;
+	margin: 0 auto;
+	
+}
+
+.setting_center .admin_list .thisli{
+	width: 100%;
+	height: 0.9rem;
+	text-align: left;
+	line-height: 0.9rem;
+	display: flex;
+	flex-direction: row;
+}
+
+.setting_center .admin_list .thisli .fristcont{
+	flex: 1;
+	color: #666;
+	text-align: left;
+	text-indent: 0.5rem;
+	font-size: 0.21rem;
+}
+
+.setting_center .admin_list .thisli .textcont{
+	width: 50%;
+	color: #333;
+	font-size: 0.21rem;
+}
+
+.setting_center .admin_list .thisli .icont{
+	flex: 1;
+	color: #2758b9;
+	text-align: center;
+	font-size: 0.21rem;
+}
+
+.setting_center .admin_list .thisli .icont .smbtn{
+	display: none;
+}
+
+.setting_center .admin_list .thisli .datebtn>button:after{
+	content: '';
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    margin-top: -7px;
+    background: url(../img/dateimg.svg) no-repeat 50% 50%;
+    background-size: auto 100%;
+}
+.setting_center .admin_list .thisli .textcont .wortext{
+	display: block;
+}
+
+.setting_center .admin_list .thisli .textcont .intext{
+	display: none;
+	width: 3.56rem;
+    height: 0.46rem;
+    border-radius: 0.12rem;
+    border: 0.01rem solid #d1d1d1;
+    text-indent: 0.1rem;
+    outline:none;
+}
+
+.setting_center .admin_list .modify_code{
+	width: 4.1rem;
+    margin-left: 5.5em;
+    margin-bottom: 0.2rem;
+    display: none;
+}
+
+.setting_center .admin_list .modify_code .fristInput{
+	width: 100%;
+	height: 0.46rem;
+    border-radius: 0.12rem;
+    border: 0.01rem solid #d1d1d1;
+    text-indent: 0.1rem;
+    outline:none;
+    margin-bottom: 0.2rem;
+}
+.setting_center .admin_list .modify_code .towInput{
+	width: 50%;
+	height: 0.46rem;
+    border-radius: 0.12rem;
+    border: 0.01rem solid #d1d1d1;
+    text-indent: 0.1rem;
+    margin-bottom: 0.2rem;
+    outline:none;
+}
+.setting_center .admin_list .modify_code .btnpass{
+	width: 45%;
+	height: 0.48rem;
+    border-radius: 0.12rem;
+    border: 0.01rem solid #2758b9;
+    color: #333;
+    margin-left: 0.16rem;
+    font-size: 0.23rem;
+    margin-bottom: 0.2rem;
+    /*清除button的默认样式*/
+    background:none;
+    outline:none;
+}
+
+.setting_center .admin_list .modify_code .hold{
+	display: inline-block;
+	height: 0.5rem;
+	width: 1.22rem;
+	border: 0.01rem solid #416cc0;
+	border-radius: 0.61rem;
+	text-align: center;
+	line-height: 0.5rem;
+	color: #416cc0;
+	font-size: 0.3rem;
+}
+
+.setting_center .admin_list .modify_code .cancel{
+	display: inline-block;
+	height: 0.5rem;
+	width: 1.22rem;
+	border: 0.01rem solid #416cc0;
+	border-radius: 0.61rem;
+	text-align: center;
+	line-height: 0.5rem;
+	color: #fff;
+	background-color: #416cc0;
+	margin-left: 0.38rem;
+	font-size: 0.3rem;
+}
+
+/*性别选择*/
+.setting_center .admin_list .thisli .modify_sex input[type='radio'].radio {
+	opacity:0;
+	display:inline-block; 
+	height:0.2rem; 
+}
+.setting_center .admin_list .thisli .modify_sex label.radio {
+	background:url(../img/checkout2.png) no-repeat; 
+	background-size: 0.28rem 0.28rem;
+	height:0.22rem; 
+	padding-left:0.4rem;
+}
+
+.setting_center .admin_list .thisli .modify_sex input[type='radio'].radio:checked + .radio {
+	background:url(../img/checkout.png) no-repeat;
+	background-size: 0.28rem 0.28rem;
+}
+#a{
+	width: 0;
+	margin: 0;
+}
+
+.setting_center .admin_list .thisli .modify_sex .sexon{
+	display: inline-block;
+	height: 0.5rem;
+	width: 1.22rem;
+	border: 0.01rem solid #416cc0;
+	border-radius: 0.61rem;
+	text-align: center;
+	line-height: 0.5rem;
+	color: #416cc0;
+	font-size: 0.3rem;
+	position: relative;
+    top: -0.2rem;
+}
+
+.setting_center .admin_list .thisli .modify_sex .sexoff{
+	display: inline-block;
+	height: 0.5rem;
+	width: 1.22rem;
+	border: 0.01rem solid #416cc0;
+	border-radius: 0.61rem;
+	text-align: center;
+	line-height: 0.5rem;
+	color: #fff;
+	background-color: #416cc0;
+	margin-left: 0.38rem;
+	font-size: 0.3rem;
+	position: relative;
+    top: -0.2rem;
+}
+
+/*生日选择*/
+.setting_center .admin_list .thisli .textcont .birthday{
+	display: none;
+	height: 100%;
+}
+.setting_center .admin_list .thisli .textcont .birthday .dateon{
+	display: inline-block;
+	height: 0.5rem;
+	width: 1.22rem;
+	border: 0.01rem solid #416cc0;
+	border-radius: 0.61rem;
+	text-align: center;
+	line-height: 0.5rem;
+	color: #416cc0;
+	font-size: 0.3rem;
+	position: relative;
+    top: -0.2rem;
+    margin-top: 0.3rem;
+}
+.setting_center .admin_list .thisli .textcont .birthday .dateoff{
+	display: inline-block;
+	height: 0.5rem;
+	width: 1.22rem;
+	border: 0.01rem solid #416cc0;
+	border-radius: 0.61rem;
+	text-align: center;
+	line-height: 0.5rem;
+	color: #fff;
+	background-color: #416cc0;
+	margin-left: 0.38rem;
+	font-size: 0.3rem;
+	position: relative;
+    top: -0.2rem;
+    margin-top: 0.3rem;
+}
+
+
+
+.setting_center .bound{
+	width: 7.12rem;
+	margin: 0 auto;
+	display: flex;
+	font-size: 0.21rem;
+	flex-direction: row;
+}
+
+.setting_center .bound .bound_title{
+	flex: 1;
+	text-indent: 0.5rem;
+	line-height: 0.9rem;
+	color: #666666;
+}
+.setting_center .bound .bound_list{
+	width: 5.34rem;
+	color: #333;
+}
+
+.setting_center .bound .bound_list .bound{
+	height: 0.9rem;
+	line-height: 0.9rem;
+	letter-spacing: 0.02rem;
+}
+
+.setting_center .bound .bound_list .qq{
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript">
+			window.onresize = function(){
+			    resize();
+			}
+			
+			function resize(){
+			    //html:20px: 16rem 320px
+			    //html:40px: 16rem 640px
+			    var base = 16;//rem
+			
+			    var wid = $(window).width();
+			    var hei = $(window).height();
+			    if(hei < 460){//适应个别高度较矮的设备
+			        $('html').css('font-size', '18px');
+			        return;
+			    }
+			    if(wid < 320){
+			    	console.log(wid);
+			        $('html').css('font-size', '20px');
+			        return;
+			    }
+			    if(wid > 640){
+			    	console.log(wid);
+			        $('html').css('font-size', '40px');
+			        return;
+			    }
+			    $('html').css('font-size', wid/16 + 'px');//在320和640之间，除以16的基数，来算font-size
+			}
+			resize();
+			
+			onload = function(){
+				var size = document.getElementsByClassName("content")[0];
+				console.log(getStyle(size,"font-size"));
+				
+			}
+			
+			 function getStyle(obj,attr) {
+	            if(typeof getComputedStyle)
+	                return getComputedStyle(obj,null)[attr];
+	            else return obj.currentStyle[attr];
+	        }
+			
+		</script>
+		<style type="text/css">
+			.content{
+				font-size: 1rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			这个是内容的主题部分，内容部分的字体大小是怎么设置的，必须搞明白
+		</div>
+	</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,
+	        body {
+	            padding: 0;
+	            margin: 0;
+	            font-family: 'lucida grande', 'lucida sans unicode', lucida, helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif;
+	            font-size: 16px;
+	            color: #000000;
+	        }
+	
+	        body {
+	            /* background-image: url(images/bg.jpg); */
+	            background-repeat: no-repeat;
+	            background-size: cover;
+	            background-attachment: fixed;
+	        }
+	
+	        @keyframes animtran {
+	            from {
+	                transform: rotateZ(0deg);
+	            }
+	            to {
+	                transform: rotateZ(360deg);
+	            }
+	        }
+	
+	        @keyframes animtrans {
+	            from {
+	                transform: rotateZ(360deg);
+	            }
+	            to {
+	                transform: rotateZ(0deg);
+	            }
+	        }
+	
+	        @-webkit-keyframes animtran {
+	            from {
+	                transform: rotateZ(0deg);
+	            }
+	            to {
+	                transform: rotateZ(360deg);
+	            }
+	        }
+	
+	        @-webkit-keyframes animtrans {
+	            from {
+	                transform: rotateZ(360deg);
+	            }
+	            to {
+	                transform: rotateZ(0deg);
+	            }
+	        }
+	
+	        #advert {
+	            width: 300px;
+	            height: 300px;
+	            margin: 10% auto;
+	            position: relative;
+	        }
+	
+	        #advert .bg1 {
+	            width: 260px;
+	            height: 260px;
+	            position: absolute;
+	            top: 20px;
+	            left: 20px;
+	            z-index: 10;
+	        }
+	
+	        #advert .bg1 div {
+	            width: 260px;
+	            height: 260px;
+	            /*background-color: #ccc;*/
+	            border: #ccc 1px solid;
+	            /*border-radius: 15em;*/
+	           border-radius: 50%;
+	            position: relative;
+	            
+	        }
+	        
+	        
+	
+	        #advert .bg1 img {
+	            width: 50px;
+	            position: absolute;
+	            
+	        }
+	        
+	        #advert .bg1 div:hover{
+	        	animation: animtran 16s linear infinite;
+	            -webkit-animation: animtran 16s linear infinite;
+	            
+	        }
+	        
+	        #advert .bg1 div:hover >img{
+	        	animation: animtrans 16s linear infinite;
+	            -webkit-animation: animtrans 16s linear infinite;
+	        }
+	
+	        #advert .bg1 .icon01 {
+	            bottom: 0;
+	            left: 44px;
+	        }
+	
+	        #advert .bg1 .icon02 {
+	            top: 105px;
+	            left: -24px;
+	        }
+	
+	        #advert .bg1 .icon03 {
+	            top: 0;
+	            left: 44px;
+	        }
+	
+	        #advert .bg1 .icon04 {
+	            top: 0;
+	            right: 44px;
+	        }
+	
+	        #advert .bg1 .icon05 {
+	            top: 105px;
+	            right: -24px;
+	        }
+	
+	        #advert .bg1 .icon06 {
+	            bottom: 0;
+	            right: 44px;
+	        }
+		</style>
+	</head>
+	<body>
+		<div id="advert">
+	        <div class="bg1">
+	            <div>
+	                <img src="icons/1_1.png" alt="" class="icon01">
+	                <img src="icons/2_1.png" alt="" class="icon02">
+	                <img src="icons/3_1.png" alt="" class="icon03">
+	                <img src="icons/4_1.png" alt="" class="icon04">
+	                <img src="icons/5_1.png" alt="" class="icon05">
+	                <img src="icons/6_1.png" alt="" class="icon06">
+	                <!--<img src="icons/arrow.png" alt="" class="icon07">-->
+	            </div>
+	        </div>
+	    </div>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html >
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>更换单选按钮显示样式</title>
+    <style>
+        input[type='radio'].radio {opacity:0; display:inline-block; height:20px; }
+        label.radio {background:url(img/checkout2.png) no-repeat; height:20px; padding-left:25px;}
+        input[type='radio'].radio:checked + .radio {background:url(img/checkout.png) no-repeat;}
+    </style>
+</head>
+<body>
+    
+    <input type="radio" name="gender" id="x" value="X"><label for="x">我要保密</label><br>
+    <input type="radio" name="gender" id="y" value="M"><label for="y">我是帅哥</label><br>
+    <input type="radio" name="gender" id="z" value="F"><label for="z">我是美女</label><br>
+    
+    <input type="radio" name="sex" id="a" value="X" class="radio"><label for="a" class="radio">我要保密</label>
+    <input type="radio" name="sex" id="b" value="M" class="radio"><label for="b" class="radio" >我是帅哥</label>
+    <input type="radio" name="sex" id="c" value="F" class="radio"><label for="c" class="radio" >我是美女</label>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+
+<title>Document</title>
+<style type="text/css">
+	/*Android*/
+	.tab-box-fixed {
+	  position: fixed;
+	  z-index: 5;
+	}
+		
+	/*iOS*/
+	.tab-box-sticky {
+	  position: -webkit-sticky;
+	  position: sticky;
+	  top: 0;
+	  left: 0;
+	  z-index: 5;
+	}
+</style>
+</head>
+<body>
+<script>
+  var isMobile = {
+    Android : function() {
+      return navigator.userAgent.match(/Android/i) ? true : false;
+    },
+    BlackBerry : function() {
+      return navigator.userAgent.match(/BlackBerry/i) ? true : false;
+    },
+    iOS : function() {
+      return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;
+    },
+    Windows : function() {
+      return navigator.userAgent.match(/IEMobile/i) ? true : false;
+    },
+    any : function() {
+      return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());
+    }
+  };
+  
+  if (isMobile.iOS()) {
+    console.log("apple"); 
+  } else if(isMobile.Android()){
+    console.log("Android");
+  };
+  
+</script>
+</body>
+</html>

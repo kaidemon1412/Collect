@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			.center_content:after{
+				content: "\0020";
+				display: block;
+				clear: both;
+				width: 0;
+			}
+			.external_box{
+				width: 170px;
+				overflow: hidden;
+				transform: rotate(-60deg) skewY(30deg);
+				margin: 20px;
+				cursor: pointer;
+				float: left;
+			}
+			.internal_box{
+				width: 100%;
+				height: 200px;
+				overflow: hidden;
+				transform: skewY(-30deg) rotate(60deg);
+			}
+			
+			.bgimg{
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<div class="center_content">
+			<div class="external_box">
+				<div class="internal_box">
+					<img class="bgimg" src="网页小功能/images/风光3.jpg"/>
+				</div>
+			</div>
+			
+			<div class="external_box">
+				<div class="internal_box">
+					<img class="bgimg" src="网页小功能/images/风光3.jpg"/>
+				</div>
+			</div>
+			<div class="external_box">
+				<div class="internal_box">
+					<img class="bgimg" src="网页小功能/images/风光3.jpg"/>
+				</div>
+			</div>
+		</div>
+		
+	</body>
+</html>

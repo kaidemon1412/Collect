@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>CSS3 Drop-shadow阴影</title>
+<style type="text/css">
+.drop-shadow {
+    width: 500px;
+    height: 300px;
+    position: relative;
+    background: #ccc;       
+}
+.drop-shadow:before,
+.drop-shadow:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    bottom: 15px;
+    width: 30%;
+    height: 20%;
+    /*add box-shadow*/
+    -webkit-box-shadow: 0 15px 10px rgba(125,125,125,0.8);
+    -moz-box-shadow: 0 15px 10px rgba(125,125,125,0.8);
+    box-shadow: 0 15px 10px rgba(125,125,125,0.8);
+  }
+/*.drop-shadow:before{
+    left:5px;      
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    -o-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+  }*/
+.drop-shadow:after {
+    right:5px;
+    -webkit-transform:rotate(3deg);
+    -moz-transform:rotate(3deg);
+    -o-transform:rotate(3deg);
+    transform:rotate(3deg);
+ }
+</style>
+</head>
+<body>
+<div class="drop-shadow">sadsadasd</div>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			
+			div{
+				width: 100px;
+				height: 100px;
+				border: 1px solid #ccc;
+			}
+			
+			ul{
+				width: 200px;
+				height: 50px;
+				background-color: #ccc;
+			}
+			ul li{
+				list-style: none;
+				width: 25%;
+				height: 100%;
+				line-height: 50px;
+				text-align: center;
+				float: left;
+			}
+			/*ul:after{
+				content: "";
+				clear: both;
+			}
+			*/
+		</style>
+		<script type="text/javascript">
+			onload = function(){
+				var liArr = document.getElementsByTagName("li");
+				
+				
+				
+				for(var i = 0;i < liArr.length ;i++ ){
+					liArr[i].onclick = function(){
+						var n = this.parentNode.getAttribute("href");
+						
+						console.log(n);
+						if( n == "#abox"){
+							document.getElementById("abox").style.display = "block";
+							document.getElementById("bbox").style.display = "none";
+							document.getElementById("cbox").style.display = "none";
+							document.getElementById("dbox").style.display = "none";
+						}else if( n == "#bbox" ){
+							document.getElementById("abox").style.display = "none";
+							document.getElementById("bbox").style.display = "block";
+							document.getElementById("cbox").style.display = "none";
+							document.getElementById("dbox").style.display = "none";
+						}else if( n == "#cbox" ){
+							document.getElementById("abox").style.display = "none";
+							document.getElementById("bbox").style.display = "none";
+							document.getElementById("cbox").style.display = "block";
+							document.getElementById("dbox").style.display = "none";
+						}else if( n == "#dbox" ){
+							document.getElementById("abox").style.display = "none";
+							document.getElementById("bbox").style.display = "none";
+							document.getElementById("cbox").style.display = "none";
+							document.getElementById("dbox").style.display = "block";
+						}
+					}
+				}
+				
+			}
+			
+			
+			
+			
+			
+			
+		</script>
+		
+	</head>
+	<body>
+		<ul>
+			<a href="#abox"><li>1</li></a>
+			<a href="#bbox"><li>2</li></a>
+			<a href="#cbox"><li>3</li></a>
+			<a href="#dbox"><li>4</li></a>
+		</ul>
+		<div id="abox">
+			第一个
+		</div>
+		<div id="bbox">
+			第二个
+		</div>
+		<div id="cbox">
+			第三个
+		</div>
+		<div id="dbox">
+			第四个
+		</div>
+	</body>
+</html>

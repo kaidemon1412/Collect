@@ -1,0 +1,182 @@
+/*--------yang---线索管理->线索列表页面样式调整---------------*/
+/*filters*/
+这是模态框基本样式
+.leads_cont {
+  position: relative;
+
+  .modal {
+    .modal-dialog {
+      .modal-content {
+
+        background-color: #ffffff;
+        border-radius: 4px;
+        overflow: hidden;
+        border: none !important;
+        .modal-header {
+          display: block;
+          color: #fff;
+          font-size: 20px !important;
+          height: 54px;
+          width: 100%;
+          border-bottom: none !important;
+          background-image: linear-gradient(90deg, #2284f1 26%, #25b8e8 100%);
+          color: #fff;
+          font-size: 20px;
+          padding: 0 !important;
+          position: relative;
+          .modal-title {
+            text-align: center;
+            height: 54px;
+            line-height: 54px;
+          }
+          .close {
+            position: absolute;
+            top: -5px;
+            right: 0px;
+            color: #fff;
+            margin: 0;
+            font-size: 28px;
+            font-weight: normal;
+            outline: none;
+          }
+        }
+        .modal-footer {
+          border: none;
+        }
+        .modal-body {
+
+          .form-group {
+            .form-row {
+              justify-content: center;
+              .col-sm-3 {
+                flex: none;
+                max-width: none;
+                width: auto;
+                padding: 0 !important;
+                color: #2284f1;
+                font-size: 14px;
+                text-align: right;
+                height: 30px;
+                line-height: 30px;
+              }
+              .col-sm-9 {
+                flex: none;
+                max-width: none;
+                width: auto;
+                padding: 0 !important;
+                .form-control {
+                  width: 190px;
+                  height: 30px;
+                  box-shadow: inset 0px 2px 4px 0px rgba(153, 153, 153, 0.05);
+                  border-radius: 4px;
+                  border: solid 1px #c6c6c6;
+                  padding: 0 0 0 5px !important;
+                  line-height: 30px;
+                }
+              }
+            }
+          }
+
+          .container .row {
+            justify-content: center;
+
+            .custom-file {
+              width: 60%;
+              margin: 0 auto 20px;
+              text-align: left;
+            }
+
+          }
+          .btn-primary {
+            width: 230px;
+            height: 32px;
+            background: none;
+            padding: 0 10px;
+            text-align: left;
+            color: #ccc;
+            box-shadow: inset 0px 2px 4px 0px rgba(153, 153, 153, 0.05);
+            border-radius: 4px;
+            border: solid 1px #c6c6c6;
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+
+
+
+
+
+tabs 切换模板
+
+<b-card no-body>
+  <b-tabs pills card vertical>
+    <b-tab title="Tab 1" active>
+      Tab Contents 1
+    </b-tab>
+    <b-tab title="Tab 2">
+      Tab Contents 2
+    </b-tab>
+    <b-tab title="Tab 3">
+      Tab Contents 3
+    </b-tab>
+  </b-tabs>
+</b-card>
+
+
+内容板块
+
+<b-container class="bv-example-row">
+    <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+    <b-row>
+        <b-col cols="12" md="8">cols="12" md="8"</b-col>
+        <b-col cols="6" md="4">cols="6" md="4"</b-col>
+    </b-row>
+
+    <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+    <b-row>
+        <b-col cols="6" md="4">cols="6" md="4"</b-col>
+        <b-col cols="6" md="4">cols="6" md="4"</b-col>
+        <b-col cols="6" md="4">cols="6" md="4"</b-col>
+    </b-row>
+
+    <!-- Columns are always 50% wide, on mobile and desktop -->
+    <b-row>
+        <b-col cols="6">cols="6"</b-col>
+        <b-col cols="6">cols="6"</b-col>
+    </b-row>
+</b-container>
+
+
+b-container.bv-example-row
+                            b-row(align-v="center")
+                                b-col(cols="6")
+                                    b-form-group.department(label="销售部门:" :label-cols="5" horizontal variant="primary")
+                                        b-form-select#department(size="sm" v-model="selected_department"
+                                                :options="department_opts" value-field="id" text-field="name")
+                                
+                                b-col(cols="6")
+                                    b-form-group.principal(label="来源负责人:" :label-cols="4" horizontal variant="primary")
+                                        b-form-select#principal(size="sm" v-model="selected_principal"
+                                                :options="principal_opts" value-field="id" text-field="realname")
+                            b-row(align-v="center")
+                                b-col(cols="6")
+                                    b-form-group.department(label="销售部门:" :label-cols="5" horizontal variant="primary")
+                                        b-form-select#department(size="sm" v-model="selected_department"
+                                                :options="department_opts" value-field="id" text-field="name")
+            
+                                b-col(cols="6")
+                                    b-form-group.principal(label="来源负责人:" :label-cols="4" horizontal variant="primary")
+                                        b-form-select#principal(size="sm" v-model="selected_principal"
+                                                :options="principal_opts" value-field="id" text-field="realname")
+                            b-row(align-v="center")
+                                b-col(cols="6")
+                                    b-form-group.department(label="销售部门:" :label-cols="5" horizontal variant="primary")
+                                        b-form-select#department(size="sm" v-model="selected_department"
+                                                :options="department_opts" value-field="id" text-field="name")
+                        
+

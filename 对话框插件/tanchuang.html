@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<title></title>
+		<link rel="stylesheet" href="css/x0popup.min.css">
+	</head>
+	<body>
+		<a class="button bg-color-3" href="javascript:exec();">弹出对话框</a>
+		
+	</body>
+	<script src="js/x0popup.min.js"></script>
+	<script type="text/javascript">
+		function exec() {
+			eval(x0p({
+				title: '',
+				text: '确认删除订单？',
+				animationType: 'slideUp',
+				icon: 'custom',
+				iconURL: 'img/remuver.jpg',
+				buttons: [
+					{
+						type: 'error',
+						text: '确认'
+					},
+					{
+						type: 'info',
+						text: '取消'
+					}
+				]
+				}, function(button) {
+					console.log(button);
+					if(button == "error"){
+						x0p({
+							title: '删除提示', 
+							text: '订单删除成功',
+							overlayAnimation: false
+						});
+					}else if(button == "info"){
+						
+						overlayAnimation: false
+					}
+				
+			}));
+		}
+	</script>
+</html>

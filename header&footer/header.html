@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+		<style type="text/css">
+			.codepku_header{
+			    background-color: rgba(0,0,0,0.5);
+			    
+			}
+			.nav_tab{
+			    width: 1200px;
+			    margin: 0 auto;
+			    height: 80px;
+			    display: flex;
+			}
+			.tab_item{
+			    flex: 1;
+			    text-align: center;
+			    color: #fff;
+			}
+			.tab_item:nth-of-type(1){
+			    background-color: red;
+			}
+			.tab_item:nth-of-type(2){
+			    background-color: orange;
+			}
+			.tab_item:nth-of-type(3){
+			    background-color: yellow;
+			}
+			.tab_item:nth-of-type(4){
+			    background-color: green;
+			}
+			.tab_item:nth-of-type(5){
+			    background-color: aqua;
+			}
+			.tab_item:nth-of-type(6){
+			    background-color: blue;
+			}
+			.tab_item:nth-of-type(7){
+			    background-color: purple;
+			}
+			
+			div.select_on{
+			    font-size: 30px;
+			}
+		</style>
+	</head>
+	<body>
+	    <div class="codepku_header">
+	        <div class="nav_tab">
+	            <div class="tab_item">1</div>
+	            <div class="tab_item">2</div>
+	            <div class="tab_item">3</div>
+	            <div class="tab_item">4</div>
+	            <div class="tab_item">5</div>
+	            <div class="tab_item">6</div>
+	            <div class="tab_item">7</div>
+	            
+	        </div>
+	    </div>
+	</body>
+	<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+		    $('.tab_item').on('click',function(){
+		        
+		        $(this).addClass('select_on').siblings().removeClass('select_on');
+		        
+		    });
+		})
+	</script>
+</html>

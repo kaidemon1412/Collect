@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>假的时钟</title>
+		<style type="text/css">
+			
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<b>关于周期</b>
+			<p><span class="h">00</span>&nbsp;:&nbsp;<span id="m">00</span>&nbsp;:&nbsp;<span id="s">00</span></p>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		var n = 0;
+		var i = 0;
+		var k = 0;
+		var oS = document.getElementById("s");
+		var oM = document.getElementById("m");
+		var oH = document.getElementById("h");
+		var the_intval = setInterval(function(){
+			n++;
+			oS.innerText = n%60;
+			if(n%60 == 0){
+				i++;
+				oM.innerText = i%60;
+				
+				if(i%60 == 0){
+					k++;
+					oH.innerText = k%24;
+//					return k;
+				}
+				if(i == 59){
+					i = 0;
+				}
+			}
+			
+			if(k == 24){
+				k = 0;
+			}
+			
+		},1000);
+		
+		
+	</script>
+	
+</html>

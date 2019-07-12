@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.flex_box{
+				width: 100%;
+				height: 300px;
+				border-top: 1px solid #2AC3CB;
+				border-bottom: 1px solid #2AC3CB;
+				display: flex;
+				flex-direction: row;
+				/*关于order的值，必要的说明，首先order值用在弹性盒模型中，调整弹性盒的排列顺序，
+				 * 数值越小就越排在前面，可以为负值，值是数值型的
+				 * */
+				/*order: 1;*/
+			}
+			
+			.box1{
+				height: 100%;
+				flex: 1;
+				text-align: center;
+				background-color: gold;
+			}
+			.box2{
+				height: 100%;
+				width: 50%;
+				text-align: center;
+				background-color: deepskyblue;
+			}
+			.box3{
+				height: 100%;
+				flex: 1;
+				text-align: center;
+				background-color: hotpink;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="flex_box">
+			<div class="box1">
+				第一栏
+			</div>
+			<div class="box2">
+				第二栏
+			</div>
+			<div class="box3">
+				第三栏
+			</div>
+		</div>
+	</body>
+</html>

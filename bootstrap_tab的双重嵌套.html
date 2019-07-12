@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Document</title>
+        <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+        <script src="https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <ul class="nav nav-pills" id="myTab">
+            <li class="active"><a href="#divstyle" data-toggle="tab">风格设置</a></li>
+            <li><a href="#divmystyle" data-toggle="tab">自定义风格</a></li>
+            <li><a href="#divbanshi" data-toggle="tab">版式设置</a></li>
+        </ul>
+        <div class="tab-content">
+          <!--1-->
+          <div class="tab-pane active" id="divstyle">
+              <div class="tabbable" style="margin: 3px;">
+                  <ul class="nav nav-pills" id="divstyletab">
+                      <li class="active"><a href="#tab11" data-toggle="tab">最近</a></li>
+                      <li><a href="#tab12" data-toggle="tab">人文</a></li>
+                      <li><a href="#tab13" data-toggle="tab">人文</a></li>
+                  </ul>
+                  <div class="tab-content">
+                      <!-- 第一个tab -->
+                      <div class="tab-pane fade active in" id="tab11">
+                          a
+                      </div>
+                      <!-- 第二个tab -->
+                      <div class="tab-pane fade" id="tab12">
+                          b
+                      </div>
+                      <!-- 第三个tab -->
+                      <div class="tab-pane fade" id="tab13">
+                          c
+                      </div>
+                      <!-- 中间图表结束 -->
+                  </div>
+              </div>
+          </div>
+          <!-- 2 -->
+          <div class="tab-pane" id="divmystyle">
+              <div class="tabbable" style="margin: 3px;">
+                  <ul class="nav nav-pills" id="divstyletab">
+                      <li class="active"><a href="#tab21" data-toggle="tab">最近</a></li>
+                      <li><a href="#tab22" data-toggle="tab">人文</a></li>
+                      <li><a href="#tab23" data-toggle="tab">人文</a></li>
+                  </ul>
+                  <div class="tab-content">
+                      <!-- 第一个tab -->
+                      <div class="tab-pane fade active in" id="tab21">
+                          aa
+                      </div>
+                      <!-- 第二个tab -->
+                      <div class="tab-pane fade" id="tab22">
+                          bb
+                      </div>
+                      <!-- 第三个tab -->
+                      <div class="tab-pane fade" id="tab23">
+                          cc
+                      </div>
+                      <!-- 中间图表结束 -->
+                  </div>
+              </div>
+          </div>
+          <!-- 3 -->
+          <div class="tab-pane" id="divbanshi">
+              <div class="tabbable" style="margin: 3px;">
+                  <ul class="nav nav-pills" id="divstyletab">
+                      <li class="active"><a href="#tab31" data-toggle="tab">最近</a></li>
+                      <li><a href="#tab32" data-toggle="tab">人文</a></li>
+                      <li><a href="#tab33" data-toggle="tab">人文</a></li>
+                  </ul>
+                  <div class="tab-content">
+                      <!-- 第一个tab -->
+                      <div class="tab-pane fade active in" id="tab31">
+                          aaa
+                      </div>
+                      <!-- 第二个tab -->
+                      <div class="tab-pane fade" id="tab32">
+                          bbb
+                      </div>
+                      <!-- 第三个tab -->
+                      <div class="tab-pane fade" id="tab33">
+                          ccc
+                      </div>
+                      <!-- 中间图表结束 -->
+                  </div>
+              </div>
+          </div>
+          <!-- tab end -->
+      </div>
+      <script type="text/javascript">
+//        $(function() {
+//          $('#myTab a').click(function(e) {
+//              e.preventDefault();
+//              $(this).tab('show');
+//          });
+//          $('#divstyletab a').click(function(e) {
+//              e.preventDefault();
+//              $(this).tab('show');
+//          });
+      </script>
+    </body>
+</html>

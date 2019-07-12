@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#left{
+				display: inline-block;
+				width: 50px;
+				height: 30px;
+			}
+			#right{
+				display: inline-block;
+				width: 50px;
+				height: 30px;
+			}
+			
+			.books{
+				width: 500px;
+				height: 500px;
+				margin: 30px auto;
+				border: 1px solid #007AFF;
+				position: relative;
+				perspective: 500;
+				-webkit-perspective: 500;
+			}
+			.books div{
+				position: absolute;
+				top: 0;
+				left: 0;
+				transform: rotate(0deg);
+				transition: all 0.5s;
+				width: 100%;
+				height: 100%;
+				transform-origin: left;
+			}
+			
+			.books .one{
+				
+				background-color: #2AC3CB;
+				z-index: 10;
+			}
+			.books .tow{
+				background-color: #00FF99;
+				z-index: 8;
+			}
+			.books .tree{
+				background-color: #2AC3CB;
+				z-index: 6;
+			}
+			.books .four{
+				background-color: #00FF99;
+				z-index: 4;
+			}
+			
+			
+		</style>
+	</head>
+	<body>
+		<span id="left">
+			前一页
+		</span>
+		<span id="right">
+			后一页
+		</span>
+		<div class="books">
+			<div class="one">
+				1
+			</div>
+			<div class="tow">
+				2
+			</div>
+			<div class="tree">
+				3
+			</div>
+			<div class="four">
+				4
+			</div>
+		</div>
+	</body>
+	
+	<script type="text/javascript">
+		$(function(){
+			var oT = 0;
+			$("#left").on("click",function(){
+				oT--;
+				if(oT <= 0){
+					oT=1;
+				}
+				console.log(oT);
+				if(oT == 1){
+					$(".books .one").css({
+						"transform-origin":"left center",
+						"transform":"rotateY(0deg)",
+						
+					})
+				}else if(oT == 2){
+					$(".books .tow").css({
+						"transform-origin":"left center",
+						"transform":"rotateY(0deg)",
+					})
+				}else if(oT == 3){
+					$(".books .tree").css({
+						"transform-origin":"left center",
+						"transform":"rotateY(0deg)",
+					})
+				}else if(oT == 4){
+					$(".books .four").css({
+						"transform-origin":"left center",
+						"transform":"rotateY(0deg)",
+				})
+					
+					
+					
+				}
+//				$(".books .one").css({
+//					"transform-origin":"left center",
+//					"transform":"rotateY(0deg)",
+//				})
+			});
+			$("#right").on("click",function(){
+				oT++;
+				console.log(oT);
+				if(oT == 1){
+					$(".books .one").css({
+						"transform-origin":"left center",
+						"transform":"rotateY(-180deg)",
+					})
+					return oT = 1;
+				}else if(oT == 2){
+					$(".books .tow").css({
+						"transform-origin":"left center",
+						"transform":"rotateY(-180deg)",
+					})
+					return oT = 2;
+				}else if(oT == 3){
+					$(".books .tree").css({
+						"transform-origin":"left center",
+						"transform":"rotateY(-180deg)",
+					})
+					return oT = 3;
+				}else if(oT == 4){
+					$(".books .four").css({
+						"transform-origin":"left center",
+						"transform":"rotateY(-180deg)",
+					})
+					
+					return oT = 4;
+					
+				}
+			});
+			
+			
+			
+			
+			
+		});
+		
+	</script>
+	
+</html>

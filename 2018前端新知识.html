@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.center_content{
+				width: 1200px;
+				margin: 0 auto;
+			}
+			.wrapper{
+				text-align: center;
+			    display:grid;
+			    /*下面这两个行和列的属性规定行和列所占的宽度和高度*/
+			    /*grid-template-columns:100px 100px 100px;
+			    grid-template-rows:50px 50px 50px;*/
+			     grid-template-columns: 1fr 2fr 1fr;/*这里是分配一行的栅格*/
+    			/*grid-template-rows: auto 200px auto;*/
+    			grid-gap: 5px;
+			}
+			.item1 {
+			    /*这是列，这里占用了1~3列*/
+			    grid-column-start: 1;
+			    grid-column-end: 3;
+			    /*简写：grid-colum：1/4；*/
+			    background-color: #AEF3B7;
+			}
+			.item2{
+				background-color: #FFE878;
+			}
+			.item3{
+				background-color: #5EFEFC;
+				/*这是行 2到4行*/
+				grid-row-start: 2;
+    			grid-row-end: 4;
+			}
+			.item4{
+				background-color: #E7B4FF;
+				grid-column-start: 2;
+    			grid-column-end: 4;
+			}
+			.item5{
+				background-color: #8BFECC;
+			}
+			.item6{
+				background-color: #FE9B59;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="center_content">
+			<div class="wrapper">
+			  <div class="item1">1</div>
+			  <div class="item2">2</div>
+			  <div class="item3">3</div>
+			  <div class="item4">4</div>
+			  <div class="item5">5</div>
+			  <div class="item6">6</div>
+			</div>
+		</div>
+		
+		
+		<!-- 创建一个dialog -->
+	<dialog>
+	    <h1>这是dialog的标题</h1>
+	    <div>这是dialog的内容</div>
+	    <button id="close_dialog">关闭</button>
+	</dialog>
+	<button id="open_dialog">打开</button>
+	<!-- js代码 -->
+	<script>
+	    var dialog = document.getElementsByTagName("dialog")[0],
+	        openDialog = document.getElementById("open_dialog"),
+	        closeDialog = document.getElementById("close_dialog");
+	    openDialog.onclick = function(){
+	        dialog.showModal();
+	    };
+	    closeDialog.onclick = function(){
+	        dialog.close();
+	    };
+	</script>
+	
+	</body>
+</html>

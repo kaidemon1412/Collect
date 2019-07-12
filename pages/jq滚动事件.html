@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<title></title>
+		<script src="js/jquery-3.2.1.min.js"></script>
+		<style type="text/css">
+			body{
+				width: 100%;
+				height: 2000px;
+				position: relative;
+			}
+			.box{
+				height: 500px;
+			}
+			.cstop{
+				height: 20px;
+				width: 100%;
+				background-color: #333;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			
+		</div>
+		<div class="cstop">
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+
+			
+			$(window).scroll(function(){
+			     var thisTop = $(".cstop").offset().top;
+				console.log(thisTop);
+				console.log($(window).scrollTop());
+				console.log($(window).height());
+		   });
+		});
+	</script>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css">
+    <script src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.min.js"></script>
+</head>
+<style>
+    /*插件外层容器 用来定义宽高等其他样式*/
+    .swiper-container{
+        width: 600px;
+        height: 50px;
+    }
+    .swiper-wrapper{
+        transition-timing-function: linear;
+    }
+    .swiper-container-free-mode>.swiper-wrapper {
+        -webkit-transition-timing-function: linear; /*之前是ease-out*/
+        -moz-transition-timing-function: linear;
+        -ms-transition-timing-function: linear;
+        -o-transition-timing-function: linear;
+        transition-timing-function: linear;
+        margin: 0 auto;
+    }
+</style>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 4</div>
+            <div class="swiper-slide">Slide 5</div>
+            <div class="swiper-slide">Slide 6</div>
+            <div class="swiper-slide">Slide 7</div>
+        </div>
+    </div>
+    <script>
+        var mySwiper = new Swiper ('.swiper-container', {
+            autoplay: 1,//自动滚动
+            autoplayDisableOnInteraction: false,
+            loop:true,//循环
+            speed:2000,//滚动速度
+            slidesPerView : 4.5,//'auto'
+            direction: 'horizontal',
+//          freeMode:true,
+            
+        })
+    </script>
+</body>
+</html>
+

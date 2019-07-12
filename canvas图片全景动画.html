@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+		    *{
+		        margin: 0;
+		        padding: 0;
+		    }
+			#this_mycanvas{
+			    width: 100%;
+			    height: 78px;
+			}
+			.mynav{
+			    width: 100%;
+			    height: 78px;
+			}
+			
+		</style>
+	</head>
+	<body>
+	    <div class="mynav">
+	    	<canvas id="this_mycanvas" width="100" height="200">抱歉！您的浏览器不支持canvas！</canvas>
+	    </div>
+		
+	</body>
+	<script type="text/javascript">
+		var myImg = new Image();
+		
+		myImg.src = "https://mdn.mozillademos.org/files/4553/Capitan_Meadows,_Yosemite_National_Park.jpg";
+		
+		var CanvasXsize = 800;
+		var CanvasYsize = 200;
+		var speed = 80;
+		var scale  =1.05;
+		var y = -4.5;
+		
+		var dx = 0.75,imgW,imgH,x=0,clearX,clearY,ctx;
+		
+		myImg.onload = function(){
+			imgW = myImg.width*scale;
+			imgH = myImg.height*scale;
+			
+			if(imgW > CanvasXsize){
+				x = CanvasXsize-imgW;
+			}
+			
+			if(imgW > CanvasXsize){
+				clearX = imgW;
+			}else{
+				clearX = CanvasXsize;
+			}
+			
+			if(imgH > CanvasYsize){
+				clearY  = imgH;
+			}else{
+				clearY = CanvasYsize;
+			}
+			
+			
+			ctx = document.getElementById("this_mycanvas").getContext("2d");
+			
+			return setInterval(draw,speed);
+			
+		}
+		
+		//定义定时执行函数
+		
+		function draw(){
+			//清空画板Clear Canvas
+			
+			ctx.clearRect(0,0,clearX,clearY);
+			
+			if(imgW <= CanvasXsize){
+				if(x > (CanvasXsize)){
+					x = 0;
+				}
+				
+				if(x > (CanvasXsize -imgW)){
+					ctx.drawImage(myImg,x-CanvasXsize+1,y,imgW,imgH);
+				}
+			}else{
+				if(x > (CanvasXsize)){
+					x = CanvasXsize - imgW;
+				}
+				if(x > (CanvasXsize - imgW)){
+					ctx.drawImage(myImg,x-imgW+1,y,imgW,imgH);
+				}
+			}
+			
+			//drawImage这是加载图像和多媒体到画布	
+			ctx.drawImage(myImg,x,y,imgW,imgH);
+			x += dx;
+			
+		}
+		
+		
+		
+	</script>
+</html>

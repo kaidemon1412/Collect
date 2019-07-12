@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Test</title>
+<style type="text/css">
+*{
+    margin:0 auto;
+    padding:0;
+}
+.btn{
+    width:100px;
+    height:30px;
+    line-height:30px;
+    background:green;
+    color:#fff;
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    text-align:center;
+    display:block;
+    text-decoration:none;
+    }
+.container{
+    background:#e5e5e5;
+}
+</style>
+
+</head>
+
+<body>
+    <div style="padding:10px 0">
+        <div class="btn" id="btn">截取屏幕</div>
+        <p style="color:red; text-align:center;">先点击截取屏幕后再点击截图下载</p>
+        <div style="margin-top:10px">
+            <a href="javascript:;" class="btn" id="download">截图下载</a>
+        </div>
+    </div>
+    <div class="container" id="container">
+        <p style="text-align:center">以下是测试内容</p>
+        <p>这是测试的内容，这是测试的内容，这是测试的内容。</p>
+    </div>
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdn.bootcss.com/html2canvas/0.4.1/html2canvas.js"></script>
+<script>
+
+$(function(){
+    $("#btn").click(function(){
+        html2canvas($("#container"), {
+            onrendered: function(canvas) {
+                console.log(canvas.toDataURL());
+                console.log(canvas.toDataURL("image/jpeg"));
+                
+                //把截取到的图片替换到a标签的路径下载
+                $("#download").attr('href',canvas.toDataURL());
+                //下载下来的图片名字
+                $("#download").attr('download','share.png') ; 
+//              document.body.appendChild(canvas);
+            }
+//可以带上宽高截取你所需要的部分内容
+            ,
+//          width: 300,
+//          height: 300
+        });
+    });
+});
+</script>
+
+</html>

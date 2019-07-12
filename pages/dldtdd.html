@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/demo.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div class="box2">
+
+    </div>
+    <div class="box">
+        <ul>
+            <li>
+                <div class="tu"></div>
+                <div class="wen">文章</div>
+            </li>
+            <li>
+                <div class="tu"></div>
+                <div class="wen">作品</div>
+            </li>
+            <li>
+                <div class="tu"></div>
+                <div class="wen">帖子</div>
+            </li>
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    $(function(){
+        var oT = true;
+        var oY = true;
+        var oR = true;
+        $("ul li").eq(0).on("click",function(){
+            oY = true;
+            oR = true;
+            if(oT == true){
+                $(".box2").load("index.html") //局部刷新
+                $(this).find(".tu").css("background","url(img/selected_card.png) no-repeat");
+                $("ul li").eq(1).find(".tu").css("background","url(img/article.png) no-repeat");
+                $("ul li").eq(2).find(".tu").css("background","url(img/works.png) no-repeat");
+            }
+            if(oT == false){
+                oT = true;
+                return;
+            }
+            oT = false;
+        })
+        $("ul li").eq(1).on("click",function(){
+            oT = true;
+            oR = true;
+            if(oY == true){
+                $(".box2").load("2.html");
+                $(this).find(".tu").css("background","url(img/selected_article.png) no-repeat");
+                $("ul li").eq(0).find(".tu").css("background","url(img/card.png) no-repeat");
+                $("ul li").eq(2).find(".tu").css("background","url(img/works.png) no-repeat");
+            }
+            if(oY == false){
+                oY = true;
+                return;
+            }
+            oY = false;
+        })
+        $("ul li").eq(2).on("click",function(){
+            oT = true;
+            oY = true;
+            if(oR == true){
+                $(".box2").load("3.html");
+                $(this).find(".tu").css("background","url(img/selected_works.png) no-repeat");
+                $("ul li").eq(0).find(".tu").css("background","url(img/card.png) no-repeat");
+                $("ul li").eq(1).find(".tu").css("background","url(img/article.png) no-repeat");
+            }
+            if(oR == false){
+                oR = true;
+                return;
+            }
+            oR = false;
+        })
+    })
+</script>
+</html>

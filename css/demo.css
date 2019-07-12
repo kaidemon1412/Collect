@@ -1,0 +1,35 @@
+*{
+    margin:0;
+    padding:0;
+    list-style: none;
+}
+.box{
+    width: 300px;
+    height: 100px;
+    border:1px solid #ccc;
+}
+ul{
+    width: 300px;
+    height: 100px;
+}
+ul li{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+.box ul li:nth-of-type(1) .tu{
+    width: 100px;
+    height: 84px;
+    background-size: 1rem 1rem;
+    background: url(../img/selected_card.png) no-repeat;
+}
+.box ul li:nth-of-type(2) .tu{
+    width: 100px;
+    height: 84px;
+    background: url(../img/article.png) no-repeat;
+}
+.box ul li:nth-of-type(3) .tu{
+    width: 100px;
+    height: 84px;
+    background: url(../img/works.png) no-repeat;
+}

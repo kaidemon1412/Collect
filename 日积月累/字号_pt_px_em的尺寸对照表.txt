@@ -1,0 +1,61 @@
+初号 42pt 56px 3.5em
+
+小初 36pt 48px 3em
+	34pt 45px 2.75em
+	32pt 42px 2.55em
+	30pt 40px 2.45em
+	29pt 38px 2.35em
+	28pt 37px 2.3em
+	27pt 36px 2.25em
+
+一号 26pt 35px 2.2em
+	25pt 34px 2.125em
+
+小一 24pt 32px 2em
+
+二号 22pt 29px 1.8em
+	20pt 26px 1.6em
+
+小二 18pt 24px 1.5em
+	17pt 23px 1.45em
+
+三号 16pt 22px 1.4em
+
+小三 15pt 21px 1.3em
+	14.5pt 20px 1.25em
+
+四号 14pt 19px 1.2em
+	13.5pt 18px 1.125em
+	13pt 17px 1.05em
+
+小四 12pt 16px 1em
+	11pt 15px 0.95em
+
+五号 10.5pt 14px 0.875em
+	10pt 13px 0.8em
+
+小五 9pt 12px 0.75em
+	8pt 11px 0.7em
+
+六号 7.5pt 10px 0.625em
+	7pt 9px 0.55em
+
+小六 6.5pt 8px 0.5em
+
+七号 5.5pt 7px 0.4375em
+
+八号 5pt 6px 0.375em
+
+
+【注意】：字号有中文的和阿拉伯数字的,中文的规则在上面↑↑↑↑↑，
+		阿拉伯数字的代表磅(pt),换算规则在下面↓↓↓↓↓
+		
+		1pt = (1/72)*96 px;
+		即 1pt = 1.33333333px
+		
+		例如 5磅 = 5*1.33333333像素 = 6.66666666像素
+
+
+
+
+

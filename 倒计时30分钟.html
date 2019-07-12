@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+ 
+<head>
+    <meta charset="UTF-8" />
+    <title>pro.html</title>
+    <style type="text/css">
+    </style>
+    <script>
+        var x = 1,
+            interval;
+        window.onload = function() {
+            var d = new Date("1111/1/1,0:" + x + ":0");
+            interval = setInterval(function() {
+                var m = d.getMinutes();
+                var s = d.getSeconds();
+                m = m < 10 ? "0" + m : m;
+                s = s < 10 ? "0" + s : s;
+                btn.innerHTML = "00:" + m + ":" + s;
+                if (m == 0 && s == 0) {
+                    clearInterval(interval);
+                    btn.style.display = "none";
+                    return;
+                }
+                d.setSeconds(s - 1);
+            }, 1000);
+        }
+    </script>
+</head>
+ 
+<body>
+    <div id="btn"></div>
+</body>
+ 
+</html>

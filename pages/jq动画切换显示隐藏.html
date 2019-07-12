@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+<head>  
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+<title>JQuery 动画显示和隐藏效果</title>  
+<script>  
+    /*   
+        1.$("页面元素类型").show(时间, 回调函数);以优雅的动画显示所有匹配的元素，并在显示完成后可选地触发一个回调函数;指定时间后依次执行回调函数，页面上能找到几个，就连着执行几次。时间可以为毫秒数，也可以是slow,nomal,fast  
+        2.$("页面元素").toggle();切换此元素的显示状态。如果它是显示的，让它隐藏，如果它是隐藏的，让它显示。  
+        3.$("页面元素").slideDown(时间,回调函数)通过高度变化（向下增大）来动态地显示所有匹配的元素，在显示完成后可选地触发一个回调函数。  
+        4.$("页面元素").fadeIn(时间,回调函数)通过不透明度的变化来实现所有匹配元素的淡入效果，并在动画完成后可选地触发一个回调函数。  
+    */  
+</script>  
+<script language="javascript" src="js/jquery-3.2.1.min.js" ></script>  
+  
+<script>  
+    function test_show() {  
+        //$("#myImage").show(2000,function(){alert("演示完毕！");});   
+        $("img").show(2000,function(){alert("演示完毕！");});      
+    }  
+    function test_hide() {  
+        //$("#myImage").hide(2000,function(){alert("演示完毕！");});   
+        $("img").hide(2000,function(){alert("演示完毕！");});      
+    }  
+      
+    function test_slideDown() {  
+        $("#myImage2").slideDown(500,function(){alert("滑动向下放大完毕");});  
+    }  
+    function test_slideUp() {  
+        $("#myImage2").slideUp(2000,function(){alert("滑动向上缩小完毕");});  
+    }  
+    function test_slideToggle() {  
+        $("#myImage2").slideToggle(1000,function(){alert("切换滑动效果完毕");});  
+    }  
+      
+    function test_fadeIn() {  
+        $("#myImage3").fadeIn(2000,function(){alert("淡入完毕");});   
+    }  
+    function test_fadeOut() {  
+        $("#myImage3").fadeOut(2000,function(){alert("淡出完毕");});      
+    }  
+    function test_fadeTo() {  
+        $("#myImage3").fadeTo(2000,0.25,function(){alert("调整到指定透明度完毕");});    
+    }  
+</script>  
+</head>  
+  
+<body>  
+<div>  
+    <input type="button" value="显示" onClick="$('p').show();" />  
+    <input type="button" value="隐藏" onClick="$('p').hide();" />  
+    |||       
+    <input type="button" value="延时显示" onClick="test_show()" />  
+    <input type="button" value="延时隐藏" onClick="test_hide()" />  
+    <input type="button" value="切换元素的可见状态" onclick="$('#myImage1').toggle()" />  
+    |||       
+    <input type="button" value="滑动向下放大" onClick="test_slideDown()" />  
+    <input type="button" value="滑动向上缩小" onClick="test_slideUp()" />  
+    <input type="button" value="切换滑动效果" onClick="test_slideToggle()" />  
+    |||       
+    <input type="button" value="淡入" onClick="test_fadeIn()" />  
+    <input type="button" value="淡出" onClick="test_fadeOut()" />  
+    <input type="button" value="调整到指定透明度" onClick="test_fadeTo()" />  
+</div>      
+    <p style="display:none">Hello World!</p>  
+    <p style="display:none">Hello World!</p>  
+    <p style="display:none">Hello World!</p>  
+    <p style="display:none">Hello World!</p>  
+      
+    <img id="myImage" src="jq轮播图/img/1.jpg" style="display:none" />  
+      
+    <img id="myImage1" src="jq轮播图/img/2.jpg" style="display:none" />  
+      
+    <img id="myImage2" src="jq轮播图/img/3.jpg" style="display:none" />  
+      
+    <img id="myImage3" src="jq轮播图/img/4.jpg" style="display:none" />  
+</body>  
+</html>  

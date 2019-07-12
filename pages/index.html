@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>CSS3进度条动画DEMO演示</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="css/css.css">
+</head>
+
+<body>
+
+<div class="wrapper">
+	<div class="load-bar">   
+		<div class="load-bar-inner" data-loading="0"> <span id="counter"></span> </div> 
+	</div>  
+	<h1>加载</h1>  
+	<p>请等待...</p>
+</div>
+
+<script type="text/javascript">
+$(function(){
+
+  var interval = setInterval(increment,100);
+  var current = 0;
+
+  function increment(){
+    current++;
+    $('#counter').html(current+'%'); 
+    if(current == 100) { current = 0; }
+  }
+
+  $('.load-bar').mouseover(function(){
+            clearInterval(interval);
+  }).mouseout(function(){
+      interval = setInterval(increment,100);
+         });
+
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+$thecolor : red;
+$thewidth : 100vw;
+$thismargin : 0 auto;
+$thisborder-r : 10px;
+$thisbg-color : #ccc;
+$thissize : 16px;
+$thisfont : "微软雅黑";
+$thispadding : 10px;
+
+.a{
+    &:hover{
+        .b{
+            display: block;
+        }
+    }
+}
+

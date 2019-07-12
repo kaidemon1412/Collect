@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="public_css/all-bb2128e635.css"/>
+		<link rel="stylesheet" type="text/css" href="public_css/all_v2-27192990b8.css"/>
+	
+		<style type="text/css">
+			.bs-example-modal-lg .modal-dialog .video-modal-content .vedio_footer_form{
+				padding: 33px 20px;
+				text-align: justify;
+				background-color: #223e57;
+				vertical-align: middle;
+			}
+			.bs-example-modal-lg .modal-dialog .video-modal-content .vedio_footer_form .text_enter_name,.text_select_age,.text_enter_phone{
+				width: 144px;
+				height: 37px;
+				border-radius: 4px;
+				background-color: #eee;
+				border: none;
+				text-indent: 10px;
+				margin-right: 16px;
+				outline: none;
+			}
+			.bs-example-modal-lg .modal-dialog .video-modal-content .vedio_footer_form .authentication_number{
+				width: 200px;
+				height: 37px;
+				margin-right: 16px;
+				display: inline-block;
+			}
+			
+			.bs-example-modal-lg .modal-dialog .video-modal-content .vedio_footer_form .authentication_number .text_enter_number{
+				width: 124px;
+				height: 37px;
+				border-radius: 4px;
+				background-color: #eee;
+				border: none;
+				text-indent: 10px;
+				margin-right: 4px;
+				outline: none;
+			}
+			
+			.bs-example-modal-lg .modal-dialog .video-modal-content .vedio_footer_form .authentication_number .enter_number_click{
+				width: 67px;
+				height: 37px;
+				border-radius: 4px;
+				background-color: #2284f1;
+				border: none;
+				outline: none;
+				color: #fff;
+				text-align: center;
+				line-height: 37px;
+				font-size: 14px;
+				font-family: "微软雅黑";
+			}
+			.bs-example-modal-lg .modal-dialog .video-modal-content .vedio_footer_form .goto_success{
+				width: 140px;
+				height: 40px;
+				display: inline-block;
+				background-color: #2284f1;
+				color: #fff;
+				font-size: 16px;
+				font-family: "微软雅黑";
+				text-align: center;
+				line-height: 40px;
+				border-radius: 20px;
+				text-decoration: none;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		    <div class="modal-dialog modal-lg video-modal" role="document">
+		        <div class="modal-content video-modal-content">
+		            <div class="modal-header">
+		                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+		                            class="fa fa-close fa-lg" aria-hidden="true"></span></button>
+		            </div>
+		            <div class="modal-body video-modal-content-body ">
+		                <video id="my-video" class="video-js vjs-big-play-centered video-modal-content-body-video" controls
+		                       preload="auto" 
+		                       data-setup='{"example_option": true}'>
+		                    <source src="video/jq22-sp.mp4"
+		                            type='video/mp4'>
+		                </video>
+		                
+		            </div>		                
+	                <div class="modal-footer vedio_footer_form">
+	                	<input class="text_enter_name" type="text" placeholder="孩子姓名" />
+	                	<select class="text_select_age">
+	                		<option >7-10</option>
+	                		<option >10-12</option>
+	                		<option >12-15</option>
+	                	</select>
+	                	<input class="text_enter_phone" type="text" placeholder="家长电话" />
+	                	<div class="authentication_number">
+	                		<input class="text_enter_number" type="text" placeholder="验证码" />
+	                		<button class="enter_number_click">发送</button>
+	                	</div>
+	                	<a class="goto_success" href="JavaScript:;">免费试听</a>
+	                </div>
+		        </div>
+		    </div>
+		</div>
+	<button class="click_me">点我播放</button>
+	</body>
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script> 
+		<!--<script src="js/video.min.js"></script>-->
+	<script type="text/javascript" src="public_js/all-e6f1423d6c.js"></script>
+	<script type="text/javascript" src="public_js/app-4a08808bc7.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			
+			$(".click_me").on("click",function(){
+				console.log($(this));
+				$('#myModal').modal('show');
+			});
+		});
+		
+
+
+	</script>
+	
+</html>
